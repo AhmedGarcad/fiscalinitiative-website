@@ -33,14 +33,28 @@ export default function Research() {
   ];
 
   return (
-    <section id="research" className="bg-gray-50 py-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <section
+      id="research"
+      className="
+        bg-gray-50 
+        py-16            /* ✅ NEW: better mobile spacing */
+        md:py-20         /* existing desktop spacing */
+      "
+    >
+      <div
+        className="
+          max-w-7xl 
+          mx-auto 
+          px-4            /* ✅ NEW: mobile padding */
+          md:px-6         /* existing desktop padding */
+        "
+      >
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-teal-800">
+        <div className="text-center mb-10 md:mb-12">
+          <h2 className="text-2xl md:text-4xl font-bold text-teal-800">
             Research
           </h2>
-          <p className="mt-4 max-w-3xl mx-auto text-gray-600">
+          <p className="mt-4 max-w-3xl mx-auto text-gray-600 text-sm md:text-base">
             Fiscal Initiative conducts rigorous, policy-relevant research to
             support transparent governance, sustainable development, and
             evidence-based decision-making.
@@ -48,16 +62,36 @@ export default function Research() {
         </div>
 
         {/* Research Cards */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          className="
+            grid 
+            grid-cols-1        /* ✅ NEW: single column on small phones */
+            sm:grid-cols-2 
+            lg:grid-cols-3 
+            gap-6              /* ✅ NEW: tighter gap on mobile */
+            md:gap-8           /* existing spacing on desktop */
+          "
+        >
           {researchAreas.map((area, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition"
+              className="
+                bg-white 
+                rounded-xl 
+                shadow-md 
+                p-6 
+                hover:shadow-lg 
+                transition
+                h-full           /* ✅ NEW: equal card height */
+                flex 
+                flex-col
+              "
             >
-              <h3 className="text-xl font-semibold text-teal-700 mb-3">
+              <h3 className="text-lg md:text-xl font-semibold text-teal-700 mb-3">
                 {area.title}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed flex-grow">
                 {area.description}
               </p>
 
