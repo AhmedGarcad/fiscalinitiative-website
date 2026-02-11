@@ -5,7 +5,7 @@ export default function NavBar() {
 
   return (
     <header className="fixed top-0 w-full z-50 bg-[#0d8ecf]">
-      <nav className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-16 text-white">
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 text-white">
 
         {/* LOGO */}
         <div className="font-bold text-lg">
@@ -49,10 +49,10 @@ export default function NavBar() {
           <li>Publications</li>
         </ul>
 
-        {/* MOBILE BUTTON */}
+        {/* HAMBURGER BUTTON (MOBILE) */}
         <button
-          onClick={() => setOpen(!open)}
           className="md:hidden text-2xl"
+          onClick={() => setOpen(!open)}
         >
           ☰
         </button>
@@ -60,13 +60,17 @@ export default function NavBar() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className="md:hidden bg-[#0d8ecf] text-white px-6 py-4 space-y-4 text-sm">
-          <a href="#home" onClick={() => setOpen(false)}>Home</a>
-          <a href="#about" onClick={() => setOpen(false)}>About Us</a>
-          <a href="#research" onClick={() => setOpen(false)}>Research</a>
-          <a href="#strategy" onClick={() => setOpen(false)}>Strategy</a>
-          <a href="#publications" onClick={() => setOpen(false)}>Publications</a>
-          <a href="#contact" onClick={() => setOpen(false)}>Contact</a>
+        <div className="md:hidden bg-[#0d8ecf] text-white px-6 pb-6">
+          <ul className="space-y-4 text-sm">
+
+            <li><a href="#home" onClick={() => setOpen(false)}>Home</a></li>
+            <li><a href="#about" onClick={() => setOpen(false)}>About Us</a></li>
+            <li><a href="#research" onClick={() => setOpen(false)}>Research</a></li>
+            <li><a href="#strategy" onClick={() => setOpen(false)}>Our Strategy</a></li>
+            <li><a href="#publications" onClick={() => setOpen(false)}>Publications</a></li>
+            <li><a href="#contact" onClick={() => setOpen(false)}>Contact</a></li>
+
+          </ul>
         </div>
       )}
     </header>
