@@ -5,27 +5,27 @@ export default function NavBar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#0d8ecf]">
+    <header className="fixed top-0 w-full z-50 bg-[#0d8ecf] shadow-md">
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 text-white">
 
         {/* LOGO */}
-        <a href="#home" className="flex items-center gap-2">
+        <a href="#home" className="flex items-center gap-3">
           <img
             src={logo}
             alt="Fiscal Initiative Logo"
-            className="h-8 md:h-10 w-auto object-contain"
+            className="h-10 w-10 md:h-12 md:w-12 object-contain rounded-full border-2 border-white"
           />
-          <span className="font-bold text-lg hidden sm:block">
+          <span className="font-bold text-lg md:text-xl tracking-wide">
             Fiscal Initiative
           </span>
         </a>
 
         {/* DESKTOP MENU */}
-        <ul className="hidden md:flex space-x-6 items-center text-sm font-medium">
-          <li><a href="#home">Home</a></li>
+        <ul className="hidden md:flex space-x-6 items-center text-sm md:text-base font-medium">
+          <li><a href="#home" className="hover:underline">Home</a></li>
           <li className="relative group">
-            <span className="cursor-pointer">About Us ▾</span>
-            <ul className="absolute hidden group-hover:block bg-white text-gray-800 mt-2 w-48 shadow">
+            <span className="cursor-pointer hover:underline">About Us ▾</span>
+            <ul className="absolute hidden group-hover:block bg-white text-gray-800 mt-2 w-48 shadow-lg rounded-md overflow-hidden">
               <li className="px-4 py-2 hover:bg-gray-100"><a href="#about">About Us</a></li>
               <li className="px-4 py-2 hover:bg-gray-100">Our Team</li>
               <li className="px-4 py-2 hover:bg-gray-100">Our Funding</li>
@@ -33,27 +33,27 @@ export default function NavBar() {
               <li className="px-4 py-2 hover:bg-gray-100">Contact Us</li>
             </ul>
           </li>
-          <li><a href="#research">Research</a></li>
+          <li><a href="#research" className="hover:underline">Research</a></li>
           <li className="relative group">
-            <span className="cursor-pointer">Events ▾</span>
-            <ul className="absolute hidden group-hover:block bg-white text-gray-800 mt-2 w-48 shadow">
+            <span className="cursor-pointer hover:underline">Events ▾</span>
+            <ul className="absolute hidden group-hover:block bg-white text-gray-800 mt-2 w-48 shadow-lg rounded-md overflow-hidden">
               <li className="px-4 py-2 hover:bg-gray-100">Events</li>
               <li className="px-4 py-2 hover:bg-gray-100">Previous Events</li>
             </ul>
           </li>
           <li className="relative group">
-            <span className="cursor-pointer">For Media ▾</span>
-            <ul className="absolute hidden group-hover:block bg-white text-gray-800 mt-2 w-48 shadow">
+            <span className="cursor-pointer hover:underline">For Media ▾</span>
+            <ul className="absolute hidden group-hover:block bg-white text-gray-800 mt-2 w-48 shadow-lg rounded-md overflow-hidden">
               <li className="px-4 py-2 hover:bg-gray-100">Media Statements</li>
               <li className="px-4 py-2 hover:bg-gray-100">Commentary</li>
             </ul>
           </li>
-          <li>Publications</li>
+          <li><a href="#publications" className="hover:underline">Publications</a></li>
         </ul>
 
         {/* HAMBURGER */}
         <button
-          className="md:hidden text-2xl"
+          className="md:hidden text-3xl focus:outline-none"
           onClick={() => setOpen(!open)}
         >
           ☰
@@ -63,7 +63,7 @@ export default function NavBar() {
       {/* MOBILE MENU */}
       {open && (
         <div className="md:hidden bg-[#0d8ecf] text-white px-6 pb-6">
-          <ul className="space-y-4 text-sm">
+          <ul className="space-y-4 text-sm font-medium">
             <li><a href="#home" onClick={() => setOpen(false)}>Home</a></li>
             <li><a href="#about" onClick={() => setOpen(false)}>About Us</a></li>
             <li><a href="#research" onClick={() => setOpen(false)}>Research</a></li>
