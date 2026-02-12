@@ -6,25 +6,23 @@ export default function Hero() {
       id="home"
       className="
         relative 
-        h-[85vh] 
-        md:h-screen              /* full height on desktop */
         w-full 
         mt-16
-        overflow-hidden           /* ensure background doesn't spill */
+        overflow-hidden
       "
+      style={{
+        // Set height to image aspect ratio
+        height: "calc(100vw * 1.0)", // since your image is almost square (1080x1071 ~ 1:1)
+      }}
     >
       {/* BACKGROUND IMAGE */}
       <div
-        className="
-          absolute 
-          inset-0 
-          bg-cover 
-          bg-center 
-          z-0
-        "
+        className="absolute inset-0 z-0"
         style={{
           backgroundImage: `url(${heroImage})`,
-          minHeight: "100%",         // ensures full height on iPhone
+          backgroundSize: "contain",     // show full image
+          backgroundPosition: "center",  // center it
+          backgroundRepeat: "no-repeat",
         }}
       />
 
