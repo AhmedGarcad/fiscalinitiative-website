@@ -7,45 +7,57 @@ export default function Hero() {
       className="
         relative 
         h-[85vh] 
-        md:h-screen              /* ✅ NEW: full height on desktop */
+        md:h-screen              /* full height on desktop */
         w-full 
         mt-16
-        bg-fixed                 /* ✅ NEW: background stays on scroll (desktop) */
+        overflow-hidden           /* ensure background doesn't spill */
       "
-      style={{
-        backgroundImage: `url(${heroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
     >
-      {/* LIGHT OVERLAY */}
-      <div className="absolute inset-0 bg-white/60" />
+      {/* BACKGROUND IMAGE */}
+      <div
+        className="
+          absolute 
+          inset-0 
+          bg-cover 
+          bg-center 
+          z-0
+        "
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          minHeight: "100%",         // ensures full height on iPhone
+        }}
+      />
 
-      {/* TEXT */}
+      {/* LIGHT OVERLAY */}
+      <div className="absolute inset-0 bg-white/60 z-10" />
+
+      {/* TEXT CONTENT */}
       <div
         className="
           relative 
-          z-10 
+          z-20 
           h-full 
           flex 
           items-center 
           justify-center 
           text-center 
-          px-4                   /* ✅ UPDATED: better on mobile */
-          md:px-6                /* ✅ NEW: spacing on larger screens */
+          px-4 
+          md:px-6
         "
       >
         <div className="max-w-3xl">
 
+          {/* WELCOME TEXT */}
           <p className="text-sm uppercase tracking-wide text-gray-700 mb-3">
             Welcome to Fiscal Initiative
           </p>
 
+          {/* HERO TITLE */}
           <h1
             className="
-              text-2xl            /* ✅ NEW: smaller phones */
-              sm:text-3xl         /* ✅ NEW */
-              md:text-5xl         /* existing size kept */
+              text-2xl 
+              sm:text-3xl 
+              md:text-5xl 
               font-bold 
               text-gray-900 
               mb-4
@@ -54,10 +66,11 @@ export default function Hero() {
             To Build a Stronger and More Transparent Fiscal Future
           </h1>
 
+          {/* HERO SUBTEXT */}
           <p
             className="
-              text-base           /* ✅ NEW: mobile size */
-              md:text-xl          /* existing behavior */
+              text-base 
+              md:text-xl 
               italic 
               text-gray-800
             "
