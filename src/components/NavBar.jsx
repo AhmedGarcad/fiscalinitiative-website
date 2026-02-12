@@ -5,16 +5,13 @@ export default function NavBar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#0a6ba8] shadow-lg">
-      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-24 md:h-28 text-white">
+    <header className="fixed top-0 w-full z-50 bg-white shadow-md">
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-24 md:h-28">
 
         {/* LOGO */}
-        <a
-          href="#home"
-          className="flex items-center gap-4 md:gap-6"
-        >
+        <a href="#home" className="flex items-center gap-4 md:gap-6">
           {/* Logo Circle */}
-          <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-white shadow-xl flex items-center justify-center bg-gradient-to-tr from-blue-400 to-teal-400">
+          <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-gray-300 shadow-lg flex items-center justify-center bg-white">
             <img
               src={logo}
               alt="Fiscal Initiative Logo"
@@ -24,25 +21,22 @@ export default function NavBar() {
 
           {/* Logo Text */}
           <div className="flex flex-col md:flex-row md:items-center md:gap-2">
-            <span className="font-extrabold text-xl md:text-3xl tracking-tight text-white">
+            <span className="font-extrabold text-xl md:text-3xl tracking-tight text-gray-800">
               Fiscal
             </span>
-            <span className="font-bold text-lg md:text-2xl tracking-tight text-gray-100">
+            <span className="font-bold text-lg md:text-2xl tracking-tight text-gray-600">
               Initiative
             </span>
           </div>
         </a>
 
         {/* DESKTOP MENU */}
-        <ul className="hidden md:flex space-x-8 items-center text-base font-semibold">
-          <li><a href="#home" className="hover:underline">Home</a></li>
+        <ul className="hidden md:flex space-x-8 items-center text-base font-semibold text-gray-800">
+          <li><a href="#home" className="hover:text-blue-600">Home</a></li>
 
           {/* About Us Dropdown */}
           <li className="relative group">
-            <a
-              href="#about"
-              className="cursor-pointer hover:underline flex items-center gap-1"
-            >
+            <a href="#about" className="cursor-pointer hover:text-blue-600 flex items-center gap-1">
               About Us ▾
             </a>
             <ul className="absolute hidden group-hover:block bg-white text-gray-800 mt-2 w-52 shadow-lg rounded-md overflow-hidden">
@@ -54,11 +48,11 @@ export default function NavBar() {
             </ul>
           </li>
 
-          <li><a href="#research" className="hover:underline">Research</a></li>
+          <li><a href="#research" className="hover:text-blue-600">Research</a></li>
 
           {/* Events Dropdown */}
           <li className="relative group">
-            <span className="cursor-pointer hover:underline">Events ▾</span>
+            <span className="cursor-pointer hover:text-blue-600">Events ▾</span>
             <ul className="absolute hidden group-hover:block bg-white text-gray-800 mt-2 w-52 shadow-lg rounded-md overflow-hidden">
               <li className="px-4 py-2 hover:bg-gray-100"><a href="#events">Events</a></li>
               <li className="px-4 py-2 hover:bg-gray-100"><a href="#previous-events">Previous Events</a></li>
@@ -67,19 +61,19 @@ export default function NavBar() {
 
           {/* For Media Dropdown */}
           <li className="relative group">
-            <span className="cursor-pointer hover:underline">For Media ▾</span>
+            <span className="cursor-pointer hover:text-blue-600">For Media ▾</span>
             <ul className="absolute hidden group-hover:block bg-white text-gray-800 mt-2 w-52 shadow-lg rounded-md overflow-hidden">
               <li className="px-4 py-2 hover:bg-gray-100"><a href="#media-statements">Media Statements</a></li>
               <li className="px-4 py-2 hover:bg-gray-100"><a href="#commentary">Commentary</a></li>
             </ul>
           </li>
 
-          <li><a href="#publications" className="hover:underline">Publications</a></li>
+          <li><a href="#publications" className="hover:text-blue-600">Publications</a></li>
         </ul>
 
         {/* HAMBURGER */}
         <button
-          className="md:hidden text-4xl focus:outline-none"
+          className="md:hidden text-4xl text-gray-800 focus:outline-none"
           onClick={() => setOpen(!open)}
         >
           ☰
@@ -88,7 +82,7 @@ export default function NavBar() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className="md:hidden bg-[#0a6ba8] text-white px-6 pb-6">
+        <div className="md:hidden bg-white text-gray-800 px-6 pb-6 shadow-md">
           <ul className="space-y-4 text-base font-medium">
             <li><a href="#home" onClick={() => setOpen(false)}>Home</a></li>
             <li><a href="#about" onClick={() => setOpen(false)}>About Us</a></li>
