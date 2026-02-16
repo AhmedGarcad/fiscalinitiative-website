@@ -1,104 +1,231 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.jpeg";
 
 export default function NavBar() {
-  const [open, setOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  /* 🔥 SCROLL EFFECT */
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white shadow-md">
-      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-24 md:h-28">
+    <header className="fixed top-0 w-full z-50 transition-all duration-500">
 
-        {/* LOGO */}
-        <a href="#home" className="flex items-center gap-4 md:gap-6">
-          {/* Logo Circle */}
-          <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-gray-300 shadow-lg flex items-center justify-center bg-white">
-            <img
-              src={logo}
-              alt="Fiscal Initiative Logo"
-              className="w-14 h-14 md:w-16 md:h-16 object-contain"
-            />
+      {/* 🔥 TOP WHITE STRIP */}
+      <div
+        className={`transition-all duration-500 ${
+          scrolled
+            ? "bg-white/90 backdrop-blur-md shadow-md"
+            : "bg-white"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+
+          {/* LEFT LOGO */}
+          <div className="flex items-center gap-4">
+            <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
+            <div>
+              <h1 className="text-xl font-semibold text-gray-900">
+                Fiscal Initiative
+              </h1>
+              <p className="text-xs text-red-600 tracking-wide">
+                Your Development Partner
+              </p>
+            </div>
           </div>
 
-          {/* Logo Text */}
-          <div className="flex flex-col md:flex-row md:items-center md:gap-2">
-            <span className="font-extrabold text-xl md:text-3xl tracking-tight text-gray-800">
-              Fiscal
-            </span>
-            <span className="font-bold text-lg md:text-2xl tracking-tight text-gray-600">
-              Initiative
-            </span>
+          {/* RIGHT UTILITIES */}
+          <div className="flex items-center gap-6">
+
+            {/* LANGUAGE SELECTOR */}
+            <select className="text-sm border border-gray-300 px-3 py-1 rounded">
+              <option>EN</option>
+              <option>AR</option>
+              <option>SO</option>
+            </select>
+
+            {/* SEARCH BUTTON */}
+            <button
+              onClick={() => setSearchOpen(!searchOpen)}
+              className="text-gray-700 hover:text-green-700 transition"
+            >
+              🔍
+            </button>
+
           </div>
-        </a>
+        </div>
 
-        {/* DESKTOP MENU */}
-        <ul className="hidden md:flex space-x-8 items-center text-base font-semibold text-gray-800">
-          <li><a href="#home" className="hover:text-blue-600">Home</a></li>
+        {/* 🔥 THIN GOLD DIVIDER */}
+        <div className="h-[2px] bg-gradient-to-r from-yellow-400 via-yellow-600 to-yellow-400" />
+      </div>
 
-          {/* About Us Dropdown */}
-          <li className="relative group">
-            <a href="#about" className="cursor-pointer hover:text-blue-600 flex items-center gap-1">
-              About Us ▾
-            </a>
-            <ul className="absolute hidden group-hover:block bg-white text-gray-800 mt-2 w-52 shadow-lg rounded-md overflow-hidden">
-              <li className="px-4 py-2 hover:bg-gray-100"><a href="#about">About Us</a></li>
-              <li className="px-4 py-2 hover:bg-gray-100"><a href="#team">Our Team</a></li>
-              <li className="px-4 py-2 hover:bg-gray-100"><a href="#funding">Our Funding</a></li>
-              <li className="px-4 py-2 hover:bg-gray-100"><a href="#work-with-us">Work With Us</a></li>
-              <li className="px-4 py-2 hover:bg-gray-100"><a href="#contact">Contact Us</a></li>
-            </ul>
-          </li>
+      {/* 🔥 MAIN NAVIGATION BAR */}
+      <nav
+        className={`transition-all duration-500 ${
+          scrolled
+            ? "bg-[#0E3B2E]/95 backdrop-blur-md shadow-xl"
+            : "bg-[#0E3B2E]"
+        }`}
+        onMouseLeave={() => setActiveMenu(null)}
+      >
+        <div className="max-w-7xl mx-auto px-8 flex items-center justify-center h-16 gap-12 text-sm font-medium tracking-wide text-white">
 
-          <li><a href="#research" className="hover:text-blue-600">Research</a></li>
+          <NavItem label="WHO WE ARE" onHover={() => setActiveMenu("who")} />
+          <NavItem label="WHAT WE DO" onHover={() => setActiveMenu("what")} />
+          <NavItem label="FINANCIAL REPORTS" onHover={() => setActiveMenu("financial")} />
+          <NavItem label="WHERE WE WORK" onHover={() => setActiveMenu("where")} />
+          <NavItem label="WORK WITH US" onHover={() => setActiveMenu("work")} />
 
-          {/* Events Dropdown */}
-          <li className="relative group">
-            <span className="cursor-pointer hover:text-blue-600">Events ▾</span>
-            <ul className="absolute hidden group-hover:block bg-white text-gray-800 mt-2 w-52 shadow-lg rounded-md overflow-hidden">
-              <li className="px-4 py-2 hover:bg-gray-100"><a href="#events">Events</a></li>
-              <li className="px-4 py-2 hover:bg-gray-100"><a href="#previous-events">Previous Events</a></li>
-            </ul>
-          </li>
+        </div>
 
-          {/* For Media Dropdown */}
-          <li className="relative group">
-            <span className="cursor-pointer hover:text-blue-600">For Media ▾</span>
-            <ul className="absolute hidden group-hover:block bg-white text-gray-800 mt-2 w-52 shadow-lg rounded-md overflow-hidden">
-              <li className="px-4 py-2 hover:bg-gray-100"><a href="#media-statements">Media Statements</a></li>
-              <li className="px-4 py-2 hover:bg-gray-100"><a href="#commentary">Commentary</a></li>
-            </ul>
-          </li>
+        {/* 🔥 MEGA MENU PANEL */}
+        {activeMenu && (
+          <div className="absolute left-0 w-full bg-[#145A42] text-white shadow-2xl border-t border-green-700 animate-fadeIn">
 
-          <li><a href="#publications" className="hover:text-blue-600">Publications</a></li>
-        </ul>
+            <div className="max-w-7xl mx-auto px-16 py-14 grid grid-cols-4 gap-12 max-h-[500px] overflow-y-auto">
 
-        {/* HAMBURGER */}
-        <button
-          className="md:hidden text-4xl text-gray-800 focus:outline-none"
-          onClick={() => setOpen(!open)}
-        >
-          ☰
-        </button>
+              {activeMenu === "who" && (
+                <>
+                  <MegaSection
+                    title="Leadership"
+                    items={[
+                      { label: "President", to: "/team" },
+                      { label: "Board of Directors", to: "/team" },
+                      { label: "Executive Management", to: "/team" },
+                    ]}
+                  />
+
+                  <MegaSection
+                    title="Institution"
+                    items={[
+                      { label: "Mission & Vision", to: "/about" },
+                      { label: "Governance Framework", to: "/about" },
+                      { label: "Strategic Plan", to: "/about" },
+                    ]}
+                  />
+
+                  <MegaSection
+                    title="Accountability"
+                    items={[
+                      { label: "Annual Reports", to: "/publications" },
+                      { label: "Financial Statements", to: "/publications" },
+                    ]}
+                  />
+
+                  <MegaSection
+                    title="Engage"
+                    items={[
+                      { label: "Careers", to: "/about" },
+                      { label: "Contact Us", to: "/contact" },
+                    ]}
+                  />
+                </>
+              )}
+
+              {activeMenu === "what" && (
+                <>
+                  <MegaSection
+                    title="Research"
+                    items={[
+                      { label: "Taxation", to: "/research" },
+                      { label: "Budget Policy", to: "/research" },
+                      { label: "Debt Management", to: "/research" },
+                      { label: "Fiscal Federalism", to: "/research" },
+                    ]}
+                  />
+
+                  <MegaSection
+                    title="Programs"
+                    items={[
+                      { label: "Capacity Development", to: "/capacity" },
+                      { label: "Policy Dialogues", to: "/forums" },
+                      { label: "Economic Forums", to: "/forums" },
+                    ]}
+                  />
+
+                  <MegaSection
+                    title="Publications"
+                    items={[
+                      { label: "Policy Reports", to: "/publications" },
+                      { label: "Research Briefs", to: "/publications" },
+                    ]}
+                  />
+
+                  <MegaSection
+                    title="Media"
+                    items={[
+                      { label: "Press Releases", to: "/media" },
+                      { label: "Videos & Photos", to: "/media" },
+                    ]}
+                  />
+                </>
+              )}
+
+            </div>
+          </div>
+        )}
+
       </nav>
 
-      {/* MOBILE MENU */}
-      {open && (
-        <div className="md:hidden bg-white text-gray-800 px-6 pb-6 shadow-md">
-          <ul className="space-y-4 text-base font-medium">
-            <li><a href="#home" onClick={() => setOpen(false)}>Home</a></li>
-            <li><a href="#about" onClick={() => setOpen(false)}>About Us</a></li>
-            <li><a href="#team" onClick={() => setOpen(false)}>Our Team</a></li>
-            <li><a href="#funding" onClick={() => setOpen(false)}>Our Funding</a></li>
-            <li><a href="#work-with-us" onClick={() => setOpen(false)}>Work With Us</a></li>
-            <li><a href="#contact" onClick={() => setOpen(false)}>Contact Us</a></li>
-            <li><a href="#research" onClick={() => setOpen(false)}>Research</a></li>
-            <li><a href="#events" onClick={() => setOpen(false)}>Events</a></li>
-            <li><a href="#previous-events" onClick={() => setOpen(false)}>Previous Events</a></li>
-            <li><a href="#media-statements" onClick={() => setOpen(false)}>Media Statements</a></li>
-            <li><a href="#commentary" onClick={() => setOpen(false)}>Commentary</a></li>
-            <li><a href="#publications" onClick={() => setOpen(false)}>Publications</a></li>
-          </ul>
+      {/* 🔥 SEARCH OVERLAY */}
+      {searchOpen && (
+        <div className="absolute top-0 left-0 w-full h-full bg-black/70 flex items-center justify-center animate-fadeIn">
+          <div className="bg-white w-2/3 p-8 rounded-xl shadow-2xl">
+            <input
+              type="text"
+              placeholder="Search Fiscal Initiative..."
+              className="w-full border-b-2 border-green-700 focus:outline-none text-xl py-3"
+            />
+            <button
+              onClick={() => setSearchOpen(false)}
+              className="mt-6 text-green-800 font-semibold"
+            >
+              Close
+            </button>
+          </div>
         </div>
       )}
+
     </header>
+  );
+}
+
+/* NAV ITEM */
+function NavItem({ label, onHover }) {
+  return (
+    <button
+      onMouseEnter={onHover}
+      className="hover:text-green-300 transition"
+    >
+      {label} ▾
+    </button>
+  );
+}
+
+/* MEGA SECTION */
+function MegaSection({ title, items }) {
+  return (
+    <div>
+      <h4 className="text-green-200 font-semibold mb-6 uppercase tracking-wider text-xs">
+        {title}
+      </h4>
+      <ul className="space-y-4 text-sm">
+        {items.map((item, i) => (
+          <li key={i}>
+            <Link to={item.to} className="hover:text-green-300 transition">
+              {item.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

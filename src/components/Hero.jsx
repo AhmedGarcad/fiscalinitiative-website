@@ -3,80 +3,33 @@ import heroImage from "../assets/images/home-hero.jpg";
 export default function Hero() {
   return (
     <section
-      id="home"
-      className="
-        relative 
-        w-full 
-        mt-16
-        overflow-hidden
-      "
+      className="relative h-screen flex items-center justify-center text-center text-white"
       style={{
-        // Set height to image aspect ratio
-        height: "calc(100vw * 1.0)", // since your image is almost square (1080x1071 ~ 1:1)
+        backgroundImage: `linear-gradient(rgba(11,31,42,0.75), rgba(11,31,42,0.75)), url(${heroImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
       }}
     >
-      {/* BACKGROUND IMAGE */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: "contain",     // show full image
-          backgroundPosition: "center",  // center it
-          backgroundRepeat: "no-repeat",
-        }}
-      />
+      <div className="max-w-4xl px-6 fade-in">
 
-      {/* LIGHT OVERLAY */}
-      <div className="absolute inset-0 bg-white/60 z-10" />
+        <h1 className="text-5xl md:text-6xl font-semibold leading-tight">
+          Strengthening Fiscal Governance  
+          <br />
+          for Sustainable Development
+        </h1>
 
-      {/* TEXT CONTENT */}
-      <div
-        className="
-          relative 
-          z-20 
-          h-full 
-          flex 
-          items-center 
-          justify-center 
-          text-center 
-          px-4 
-          md:px-6
-        "
-      >
-        <div className="max-w-3xl">
+        <div className="gold-divider mx-auto"></div>
 
-          {/* WELCOME TEXT */}
-          <p className="text-sm uppercase tracking-wide text-gray-700 mb-3">
-            Welcome to Fiscal Initiative
-          </p>
+        <p className="mt-6 text-lg text-gray-200 max-w-2xl mx-auto">
+          Fiscal Initiative is an independent policy research institution
+          advancing transparency, fiscal stability, and economic reform.
+        </p>
 
-          {/* HERO TITLE */}
-          <h1
-            className="
-              text-2xl 
-              sm:text-3xl 
-              md:text-5xl 
-              font-bold 
-              text-gray-900 
-              mb-4
-            "
-          >
-            To Build a Stronger and More Transparent Fiscal Future
-          </h1>
+        <button className="mt-10 px-8 py-3 bg-[#C6A75E] text-[#0B1F2A] font-semibold rounded-md hover:opacity-90 transition">
+          Explore Our Research
+        </button>
 
-          {/* HERO SUBTEXT */}
-          <p
-            className="
-              text-base 
-              md:text-xl 
-              italic 
-              text-gray-800
-            "
-          >
-            Building trust through evidence-based fiscal governance
-          </p>
-
-        </div>
       </div>
     </section>
   );
