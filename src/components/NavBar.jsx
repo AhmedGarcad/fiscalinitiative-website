@@ -4,10 +4,11 @@ import logo from "../assets/images/logo.jpeg";
 
 export default function NavBar() {
   const [activeMenu, setActiveMenu] = useState(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
-  /* 🔥 SCROLL EFFECT */
+  /* SCROLL SHRINK EFFECT */
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
@@ -16,58 +17,69 @@ export default function NavBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /* LOCK BODY SCROLL WHEN MOBILE MENU OPEN */
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "auto";
+  }, [mobileOpen]);
+
   return (
     <header className="fixed top-0 w-full z-50 transition-all duration-500">
 
-      {/* 🔥 TOP WHITE STRIP */}
+      {/* ================= TOP WHITE STRIP ================= */}
       <div
         className={`transition-all duration-500 ${
           scrolled
-            ? "bg-white/90 backdrop-blur-md shadow-md"
+            ? "bg-white/95 backdrop-blur-md shadow-md"
             : "bg-white"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-          {/* LEFT LOGO */}
-          <div className="flex items-center gap-4">
+          {/* LOGO */}
+          <Link to="/" className="flex items-center gap-4">
             <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
             <div>
-              <h1 className="text-xl font-semibold text-gray-900">
+              <h1 className="text-lg font-semibold text-gray-900">
                 Fiscal Initiative
               </h1>
               <p className="text-xs text-red-600 tracking-wide">
                 Your Development Partner
               </p>
             </div>
-          </div>
+          </Link>
 
-          {/* RIGHT UTILITIES */}
-          <div className="flex items-center gap-6">
+          {/* UTILITIES */}
+          <div className="hidden md:flex items-center gap-6">
 
-            {/* LANGUAGE SELECTOR */}
             <select className="text-sm border border-gray-300 px-3 py-1 rounded">
               <option>EN</option>
               <option>AR</option>
               <option>SO</option>
             </select>
 
-            {/* SEARCH BUTTON */}
             <button
-              onClick={() => setSearchOpen(!searchOpen)}
+              onClick={() => setSearchOpen(true)}
               className="text-gray-700 hover:text-green-700 transition"
             >
               🔍
             </button>
 
           </div>
+
+          {/* MOBILE HAMBURGER */}
+          <button
+            className="md:hidden text-2xl text-gray-800"
+            onClick={() => setMobileOpen(true)}
+          >
+            ☰
+          </button>
         </div>
 
-        {/* 🔥 THIN GOLD DIVIDER */}
+        {/* GOLD DIVIDER */}
         <div className="h-[2px] bg-gradient-to-r from-yellow-400 via-yellow-600 to-yellow-400" />
       </div>
 
-      {/* 🔥 MAIN NAVIGATION BAR */}
+      {/* ================= MAIN NAVIGATION ================= */}
       <nav
         className={`transition-all duration-500 ${
           scrolled
@@ -76,7 +88,7 @@ export default function NavBar() {
         }`}
         onMouseLeave={() => setActiveMenu(null)}
       >
-        <div className="max-w-7xl mx-auto px-8 flex items-center justify-center h-16 gap-12 text-sm font-medium tracking-wide text-white">
+        <div className="hidden md:flex max-w-7xl mx-auto px-8 items-center justify-center h-16 gap-12 text-sm font-medium tracking-wide text-white">
 
           <NavItem label="WHO WE ARE" onHover={() => setActiveMenu("who")} />
           <NavItem label="WHAT WE DO" onHover={() => setActiveMenu("what")} />
@@ -86,9 +98,9 @@ export default function NavBar() {
 
         </div>
 
-        {/* 🔥 MEGA MENU PANEL */}
+        {/* ================= DESKTOP MEGA PANEL ================= */}
         {activeMenu && (
-          <div className="absolute left-0 w-full bg-[#145A42] text-white shadow-2xl border-t border-green-700 animate-fadeIn">
+          <div className="hidden md:block absolute left-0 w-full bg-[#145A42] text-white shadow-2xl border-t border-green-700 animate-fadeIn">
 
             <div className="max-w-7xl mx-auto px-16 py-14 grid grid-cols-4 gap-12 max-h-[500px] overflow-y-auto">
 
@@ -175,10 +187,39 @@ export default function NavBar() {
 
       </nav>
 
-      {/* 🔥 SEARCH OVERLAY */}
+      {/* ================= MOBILE SLIDE PANEL ================= */}
+      {mobileOpen && (
+        <div className="fixed inset-0 bg-black/50 z-50">
+
+          <div className="absolute right-0 top-0 w-72 h-full bg-[#0E3B2E] text-white p-8 shadow-2xl animate-slideIn">
+
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="text-white text-xl mb-8"
+            >
+              ✕
+            </button>
+
+            <div className="space-y-6 text-sm font-medium">
+              <Link to="/" onClick={() => setMobileOpen(false)}>Home</Link>
+              <Link to="/about" onClick={() => setMobileOpen(false)}>About</Link>
+              <Link to="/team" onClick={() => setMobileOpen(false)}>Leadership</Link>
+              <Link to="/research" onClick={() => setMobileOpen(false)}>Research</Link>
+              <Link to="/capacity" onClick={() => setMobileOpen(false)}>Capacity</Link>
+              <Link to="/forums" onClick={() => setMobileOpen(false)}>Forums</Link>
+              <Link to="/publications" onClick={() => setMobileOpen(false)}>Publications</Link>
+              <Link to="/media" onClick={() => setMobileOpen(false)}>Media</Link>
+              <Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* ================= SEARCH OVERLAY ================= */}
       {searchOpen && (
-        <div className="absolute top-0 left-0 w-full h-full bg-black/70 flex items-center justify-center animate-fadeIn">
-          <div className="bg-white w-2/3 p-8 rounded-xl shadow-2xl">
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-white w-11/12 md:w-2/3 p-8 rounded-xl shadow-2xl">
             <input
               type="text"
               placeholder="Search Fiscal Initiative..."

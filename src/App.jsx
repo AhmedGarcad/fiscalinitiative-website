@@ -2,9 +2,14 @@ import { Routes, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import StatsSection from "./components/StatsSection";
 
+/* HOME COMPONENTS */
+import Hero from "./components/Hero";
+import HomeIntro from "./components/HomeIntro";
+import HomeStats from "./components/HomeStats";
+import HomeResearch from "./components/HomeResearch";
+
+/* PAGES */
 import AboutPage from "./components/AboutPage";
 import TeamPage from "./components/TeamPage";
 import FundingPage from "./components/FundingPage";
@@ -22,36 +27,38 @@ export default function App() {
 
       <Routes>
 
-        {/* HOME */}
+        {/* ================= HOME ================= */}
         <Route
           path="/"
           element={
             <>
               <Hero />
-              <StatsSection />
+              <HomeIntro />
+              <HomeStats />
+              <HomeResearch />
             </>
           }
         />
 
-        {/* ABOUT SECTION */}
+        {/* ================= ABOUT ================= */}
         <Route path="/about" element={<AboutPage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/funding" element={<FundingPage />} />
         <Route path="/contact" element={<ContactPage />} />
 
-        {/* RESEARCH */}
+        {/* ================= RESEARCH ================= */}
         <Route path="/research" element={<ResearchFocus />} />
 
-        {/* CAPACITY */}
+        {/* ================= CAPACITY ================= */}
         <Route path="/capacity" element={<CapacityDevelopment />} />
 
-        {/* FORUMS */}
+        {/* ================= FORUMS ================= */}
         <Route path="/forums" element={<Forums />} />
 
-        {/* PUBLICATIONS */}
+        {/* ================= PUBLICATIONS ================= */}
         <Route path="/publications" element={<Publications />} />
 
-        {/* MEDIA */}
+        {/* ================= MEDIA ================= */}
         <Route path="/media" element={<Media />} />
 
       </Routes>
