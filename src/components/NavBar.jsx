@@ -1,43 +1,45 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.jpeg";
 
 export default function NavBar() {
-  const [activeMenu, setActiveMenu] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
-  /* SCROLL SHRINK EFFECT */
+  const navRef = useRef();
+
+  /* SCROLL TRANSITION */
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 60);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /* LOCK BODY SCROLL WHEN MOBILE MENU OPEN */
+  /* OUTSIDE CLICK CLOSE */
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "auto";
-  }, [mobileOpen]);
+    const handleClick = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setActiveMenu(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
 
   return (
-    <header className="fixed top-0 w-full z-50 transition-all duration-500">
+    <header ref={navRef} className="fixed top-0 w-full z-50">
 
       {/* ================= TOP WHITE STRIP ================= */}
-      <div
-        className={`transition-all duration-500 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-md"
-            : "bg-white"
-        }`}
-      >
+      <div className={`transition-all duration-500 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-white"}`}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-          {/* LOGO */}
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-4">
-            <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
+            <img src={logo} className="w-12 h-12 object-contain" />
             <div>
               <h1 className="text-lg font-semibold text-gray-900">
                 Fiscal Initiative
@@ -48,61 +50,59 @@ export default function NavBar() {
             </div>
           </Link>
 
-          {/* UTILITIES */}
+          {/* Utilities */}
           <div className="hidden md:flex items-center gap-6">
 
-            <select className="text-sm border border-gray-300 px-3 py-1 rounded">
+            <select className="text-sm border px-2 py-1 rounded">
               <option>EN</option>
-              <option>AR</option>
               <option>SO</option>
+              <option>AR</option>
             </select>
 
             <button
               onClick={() => setSearchOpen(true)}
-              className="text-gray-700 hover:text-green-700 transition"
+              className="text-gray-700 hover:text-green-800 transition"
             >
               🔍
             </button>
-
           </div>
 
-          {/* MOBILE HAMBURGER */}
+          {/* Mobile */}
           <button
-            className="md:hidden text-2xl text-gray-800"
             onClick={() => setMobileOpen(true)}
+            className="md:hidden text-2xl text-gray-800"
           >
             ☰
           </button>
         </div>
 
-        {/* GOLD DIVIDER */}
+        {/* Gold divider */}
         <div className="h-[2px] bg-gradient-to-r from-yellow-400 via-yellow-600 to-yellow-400" />
       </div>
 
-      {/* ================= MAIN NAVIGATION ================= */}
+      {/* ================= MAIN NAV ================= */}
       <nav
-        className={`transition-all duration-500 ${
+        className={`hidden md:block transition-all duration-500 ${
           scrolled
             ? "bg-[#0E3B2E]/95 backdrop-blur-md shadow-xl"
             : "bg-[#0E3B2E]"
         }`}
         onMouseLeave={() => setActiveMenu(null)}
       >
-        <div className="hidden md:flex max-w-7xl mx-auto px-8 items-center justify-center h-16 gap-12 text-sm font-medium tracking-wide text-white">
+        <div className="max-w-7xl mx-auto h-16 flex justify-center items-center gap-14 text-white text-sm font-medium tracking-wide">
 
           <NavItem label="WHO WE ARE" onHover={() => setActiveMenu("who")} />
           <NavItem label="WHAT WE DO" onHover={() => setActiveMenu("what")} />
-          <NavItem label="FINANCIAL REPORTS" onHover={() => setActiveMenu("financial")} />
-          <NavItem label="WHERE WE WORK" onHover={() => setActiveMenu("where")} />
-          <NavItem label="WORK WITH US" onHover={() => setActiveMenu("work")} />
+          <NavItem label="FINANCIAL REPORTS" />
+          <NavItem label="WHERE WE WORK" />
+          <NavItem label="WORK WITH US" />
 
         </div>
 
-        {/* ================= DESKTOP MEGA PANEL ================= */}
+        {/* ================= MEGA PANEL ================= */}
         {activeMenu && (
-          <div className="hidden md:block absolute left-0 w-full bg-[#145A42] text-white shadow-2xl border-t border-green-700 animate-fadeIn">
-
-            <div className="max-w-7xl mx-auto px-16 py-14 grid grid-cols-4 gap-12 max-h-[500px] overflow-y-auto">
+          <div className="absolute left-0 w-full bg-[#145A42] text-white shadow-2xl border-t border-green-700 animate-fadeIn">
+            <div className="max-w-7xl mx-auto px-16 py-16 grid grid-cols-4 gap-12">
 
               {activeMenu === "who" && (
                 <>
@@ -114,7 +114,6 @@ export default function NavBar() {
                       { label: "Executive Management", to: "/team" },
                     ]}
                   />
-
                   <MegaSection
                     title="Institution"
                     items={[
@@ -123,7 +122,6 @@ export default function NavBar() {
                       { label: "Strategic Plan", to: "/about" },
                     ]}
                   />
-
                   <MegaSection
                     title="Accountability"
                     items={[
@@ -131,12 +129,11 @@ export default function NavBar() {
                       { label: "Financial Statements", to: "/publications" },
                     ]}
                   />
-
                   <MegaSection
-                    title="Engage"
+                    title="Engagement"
                     items={[
                       { label: "Careers", to: "/about" },
-                      { label: "Contact Us", to: "/contact" },
+                      { label: "Contact", to: "/contact" },
                     ]}
                   />
                 </>
@@ -150,19 +147,15 @@ export default function NavBar() {
                       { label: "Taxation", to: "/research" },
                       { label: "Budget Policy", to: "/research" },
                       { label: "Debt Management", to: "/research" },
-                      { label: "Fiscal Federalism", to: "/research" },
                     ]}
                   />
-
                   <MegaSection
                     title="Programs"
                     items={[
                       { label: "Capacity Development", to: "/capacity" },
                       { label: "Policy Dialogues", to: "/forums" },
-                      { label: "Economic Forums", to: "/forums" },
                     ]}
                   />
-
                   <MegaSection
                     title="Publications"
                     items={[
@@ -170,60 +163,58 @@ export default function NavBar() {
                       { label: "Research Briefs", to: "/publications" },
                     ]}
                   />
-
                   <MegaSection
                     title="Media"
                     items={[
                       { label: "Press Releases", to: "/media" },
-                      { label: "Videos & Photos", to: "/media" },
                     ]}
                   />
                 </>
               )}
-
             </div>
           </div>
         )}
-
       </nav>
 
-      {/* ================= MOBILE SLIDE PANEL ================= */}
+      {/* ================= MOBILE PANEL ================= */}
       {mobileOpen && (
-        <div className="fixed inset-0 bg-black/50 z-50">
+        <>
+          <div
+            className="fixed inset-0 bg-black/50 z-40"
+            onClick={() => setMobileOpen(false)}
+          />
 
-          <div className="absolute right-0 top-0 w-72 h-full bg-[#0E3B2E] text-white p-8 shadow-2xl animate-slideIn">
+          <div className="fixed top-0 left-0 h-full w-80 bg-[#0E3B2E] text-white p-8 z-50 animate-slideLeft shadow-2xl">
 
-            <button
-              onClick={() => setMobileOpen(false)}
-              className="text-white text-xl mb-8"
-            >
-              ✕
-            </button>
-
-            <div className="space-y-6 text-sm font-medium">
-              <Link to="/" onClick={() => setMobileOpen(false)}>Home</Link>
-              <Link to="/about" onClick={() => setMobileOpen(false)}>About</Link>
-              <Link to="/team" onClick={() => setMobileOpen(false)}>Leadership</Link>
-              <Link to="/research" onClick={() => setMobileOpen(false)}>Research</Link>
-              <Link to="/capacity" onClick={() => setMobileOpen(false)}>Capacity</Link>
-              <Link to="/forums" onClick={() => setMobileOpen(false)}>Forums</Link>
-              <Link to="/publications" onClick={() => setMobileOpen(false)}>Publications</Link>
-              <Link to="/media" onClick={() => setMobileOpen(false)}>Media</Link>
-              <Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link>
+            <div className="flex justify-end mb-10">
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="text-3xl"
+              >
+                ✕
+              </button>
             </div>
 
+            <div className="flex flex-col gap-8 text-lg font-medium">
+              <MobileLink to="/" label="Home" close={setMobileOpen} />
+              <MobileLink to="/about" label="About" close={setMobileOpen} />
+              <MobileLink to="/research" label="Research" close={setMobileOpen} />
+              <MobileLink to="/capacity" label="Capacity" close={setMobileOpen} />
+              <MobileLink to="/forums" label="Forums" close={setMobileOpen} />
+              <MobileLink to="/media" label="Media" close={setMobileOpen} />
+              <MobileLink to="/contact" label="Contact" close={setMobileOpen} />
+            </div>
           </div>
-        </div>
+        </>
       )}
 
-      {/* ================= SEARCH OVERLAY ================= */}
+      {/* ================= SEARCH MODAL ================= */}
       {searchOpen && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-          <div className="bg-white w-11/12 md:w-2/3 p-8 rounded-xl shadow-2xl">
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 animate-fadeIn">
+          <div className="bg-white w-2/3 p-8 rounded-xl shadow-2xl">
             <input
-              type="text"
               placeholder="Search Fiscal Initiative..."
-              className="w-full border-b-2 border-green-700 focus:outline-none text-xl py-3"
+              className="w-full border-b-2 border-green-800 text-xl py-3 focus:outline-none"
             />
             <button
               onClick={() => setSearchOpen(false)}
@@ -234,28 +225,24 @@ export default function NavBar() {
           </div>
         </div>
       )}
-
     </header>
   );
 }
 
-/* NAV ITEM */
+/* ================= SUB COMPONENTS ================= */
+
 function NavItem({ label, onHover }) {
   return (
-    <button
-      onMouseEnter={onHover}
-      className="hover:text-green-300 transition"
-    >
+    <button onMouseEnter={onHover} className="hover:text-green-300 transition">
       {label} ▾
     </button>
   );
 }
 
-/* MEGA SECTION */
 function MegaSection({ title, items }) {
   return (
     <div>
-      <h4 className="text-green-200 font-semibold mb-6 uppercase tracking-wider text-xs">
+      <h4 className="text-green-200 uppercase text-xs font-semibold mb-6 tracking-wider">
         {title}
       </h4>
       <ul className="space-y-4 text-sm">
@@ -268,5 +255,17 @@ function MegaSection({ title, items }) {
         ))}
       </ul>
     </div>
+  );
+}
+
+function MobileLink({ to, label, close }) {
+  return (
+    <Link
+      to={to}
+      onClick={() => close(false)}
+      className="border-b border-green-700 pb-4 hover:text-green-300"
+    >
+      {label}
+    </Link>
   );
 }
