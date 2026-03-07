@@ -22,25 +22,24 @@ export default function Hero() {
         <div className="max-w-lg">
 
           <p className="text-green-700 uppercase tracking-[0.25em] text-[11px] mb-5 font-medium">
-            Institute for Fiscal Governance
+            Non-Partisan Fiscal Policy Research Institute
           </p>
 
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 leading-snug mb-5">
-            Strengthening Fiscal Institutions
+            Advancing Transparent Fiscal Governance
             <br />
-            for Sustainable Development
+            in Somalia
           </h1>
 
           <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-7">
-            Independent research. Evidence-based policy engagement.
-            Institutional capacity strengthening.
+            Fiscal Initiative (FI) is an independent policy research institute dedicated to strengthening fiscal governance, promoting evidence-based policy, and supporting inclusive economic development in Somalia.
           </p>
 
           <Link
             to="/research"
             className="inline-block bg-green-800 hover:bg-green-700 text-white px-7 py-3 rounded-md text-sm font-medium transition"
           >
-            Explore Research
+            Explore Our Research
           </Link>
 
         </div>

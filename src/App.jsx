@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
+import ScrollToTop from "./components/ScrollToTop";
+
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
@@ -23,11 +25,13 @@ import Media from "./components/Media";
 export default function App() {
   return (
     <>
+      <ScrollToTop />
+
       <NavBar />
 
       <Routes>
 
-        {/* ================= HOME ================= */}
+        {/* HOME */}
         <Route
           path="/"
           element={
@@ -40,25 +44,25 @@ export default function App() {
           }
         />
 
-        {/* ================= ABOUT ================= */}
+        {/* ABOUT */}
         <Route path="/about" element={<AboutPage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/funding" element={<FundingPage />} />
         <Route path="/contact" element={<ContactPage />} />
 
-        {/* ================= RESEARCH ================= */}
+        {/* RESEARCH */}
         <Route path="/research" element={<ResearchFocus />} />
 
-        {/* ================= CAPACITY ================= */}
+        {/* CAPACITY */}
         <Route path="/capacity" element={<CapacityDevelopment />} />
 
-        {/* ================= FORUMS ================= */}
+        {/* FORUMS */}
         <Route path="/forums" element={<Forums />} />
 
-        {/* ================= PUBLICATIONS ================= */}
+        {/* PUBLICATIONS */}
         <Route path="/publications" element={<Publications />} />
 
-        {/* ================= MEDIA ================= */}
+        {/* MEDIA */}
         <Route path="/media" element={<Media />} />
 
       </Routes>

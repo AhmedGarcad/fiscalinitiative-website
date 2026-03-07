@@ -1,44 +1,72 @@
+import PageBanner from "./PageBanner";
+
 export default function Forums() {
-  const forums = [
-    "Somalia Tax Policy Forum",
-    "Annual Budget Engagement Roundtable",
-    "Ministerial Fiscal Federalism Dialogue",
-    "Somalia Fiscal Outlook Conference",
-    "Annual Anniversary and Fundraising Dinner",
-  ];
 
   return (
-    <section id="forums" className="py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
 
-        {/* SECTION HEADER */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-green-900 mb-4">
-            Forums
-          </h2>
+    <div>
 
-          <p className="max-w-3xl mx-auto text-gray-600 text-lg">
-            Fiscal Initiative convenes national-level forums that bring together
-            policymakers, economists, civil society leaders, and development
-            partners to shape Somalia’s fiscal future.
-          </p>
+      <PageBanner title="Policy Forums" />
+
+      <section className="max-w-6xl mx-auto px-6 py-16">
+
+        <h2 className="text-2xl font-semibold text-gray-800 mb-10">
+          Fiscal Initiative Forums
+        </h2>
+
+        <div className="space-y-8">
+
+          <div className="border-b pb-6">
+            <h3 className="text-lg font-semibold text-gray-900">
+              Somalia Tax Policy Forum
+            </h3>
+            <p className="text-gray-600 mt-2">
+              A national platform for discussing tax reforms and improving Somalia's tax policy framework.
+            </p>
+          </div>
+
+          <div className="border-b pb-6">
+            <h3 className="text-lg font-semibold text-gray-900">
+              Annual Budget Engagement Roundtable
+            </h3>
+            <p className="text-gray-600 mt-2">
+              Dialogue between policymakers, experts, and stakeholders on national budget priorities.
+            </p>
+          </div>
+
+          <div className="border-b pb-6">
+            <h3 className="text-lg font-semibold text-gray-900">
+              Ministerial Fiscal Federalism Dialogue
+            </h3>
+            <p className="text-gray-600 mt-2">
+              High-level discussions between federal and state governments on fiscal federalism.
+            </p>
+          </div>
+
+          <div className="border-b pb-6">
+            <h3 className="text-lg font-semibold text-gray-900">
+              Somalia Fiscal Outlook Conference
+            </h3>
+            <p className="text-gray-600 mt-2">
+              An annual conference reviewing Somalia's fiscal performance and economic outlook.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900">
+              Annual Anniversary and Fundraising Dinner
+            </h3>
+            <p className="text-gray-600 mt-2">
+              A gathering of partners and stakeholders to celebrate achievements and support fiscal reforms.
+            </p>
+          </div>
+
         </div>
 
-        {/* FORUM LIST */}
-        <div className="grid md:grid-cols-2 gap-10">
-          {forums.map((forum, index) => (
-            <div
-              key={index}
-              className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition"
-            >
-              <h3 className="text-2xl font-semibold text-green-800">
-                {forum}
-              </h3>
-            </div>
-          ))}
-        </div>
+      </section>
 
-      </div>
-    </section>
+    </div>
+
   );
+
 }
