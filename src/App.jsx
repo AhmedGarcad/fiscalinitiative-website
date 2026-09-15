@@ -5,13 +5,11 @@ import ScrollToTop from "./components/ScrollToTop";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
-/* HOME COMPONENTS */
 import Hero from "./components/Hero";
 import HomeIntro from "./components/HomeIntro";
 import HomeStats from "./components/HomeStats";
 import HomeResearch from "./components/HomeResearch";
 
-/* PAGES */
 import AboutPage from "./components/AboutPage";
 import TeamPage from "./components/TeamPage";
 import FundingPage from "./components/FundingPage";
@@ -21,6 +19,10 @@ import CapacityDevelopment from "./components/CapacityDevelopment";
 import Forums from "./components/Forums";
 import Publications from "./components/Publications";
 import Media from "./components/Media";
+import AdminPage from "./components/AdminPage";
+
+import PublicationDetail from "./components/PublicationDetail";
+import AdminPublications from "./components/AdminPublications";
 
 export default function App() {
   return (
@@ -30,8 +32,6 @@ export default function App() {
       <NavBar />
 
       <Routes>
-
-        {/* HOME */}
         <Route
           path="/"
           element={
@@ -44,27 +44,37 @@ export default function App() {
           }
         />
 
-        {/* ABOUT */}
         <Route path="/about" element={<AboutPage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/funding" element={<FundingPage />} />
         <Route path="/contact" element={<ContactPage />} />
 
-        {/* RESEARCH */}
         <Route path="/research" element={<ResearchFocus />} />
 
-        {/* CAPACITY */}
         <Route path="/capacity" element={<CapacityDevelopment />} />
 
-        {/* FORUMS */}
         <Route path="/forums" element={<Forums />} />
 
-        {/* PUBLICATIONS */}
         <Route path="/publications" element={<Publications />} />
 
-        {/* MEDIA */}
+        <Route
+          path="/publications/:slug"
+          element={<PublicationDetail />}
+        />
+
+        <Route
+          path="/content/:slug"
+          element={<PublicationDetail />}
+        />
+
+        <Route
+          path="/admin/publications"
+          element={<AdminPublications />}
+        />
+
         <Route path="/media" element={<Media />} />
 
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
 
       <Footer />

@@ -1,22 +1,79 @@
+import { mission, pillars, vision } from "../content/siteContent";
+import { profileAssets } from "../content/profileAssets";
+
 export default function HomeIntro() {
   return (
     <section className="bg-white py-24">
-      <div className="max-w-4xl mx-auto px-6 text-center">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center mb-20">
+          <div>
+            <p className="text-xs uppercase tracking-[0.28em] text-green-700 font-semibold mb-4">
+              Company Profile
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-950 leading-tight mb-6">
+              A national platform for fiscal evidence, capacity, and dialogue.
+            </h2>
+            <p className="text-gray-600 leading-relaxed text-lg">
+              Fiscal Initiative works where evidence, institutions, and citizens
+              meet. The model is practical: build trust, strengthen systems, and
+              make fiscal policy easier to understand, debate, and improve.
+            </p>
+          </div>
 
-        <h2 className="text-3xl font-semibold text-gray-900 mb-6">
-          Advancing Transparent and Sustainable Public Finance Systems
-        </h2>
+          <div className="relative min-h-[420px] rounded-2xl overflow-hidden shadow-2xl">
+            <img
+              src={profileAssets.mission}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#052f2a]/90 via-[#052f2a]/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+              <p className="text-sm uppercase tracking-[0.25em] text-yellow-300 mb-3">
+                Building Trust
+              </p>
+              <p className="text-2xl font-semibold">Building Growth</p>
+            </div>
+          </div>
+        </div>
 
-        <div className="w-20 h-[3px] bg-yellow-500 mx-auto mb-8"></div>
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <IntroPanel title="Our Mission" text={mission} />
+          <IntroPanel title="Our Vision" text={vision} />
+        </div>
 
-        <p className="text-gray-600 leading-relaxed text-lg">
-          Fiscal Initiative works to strengthen fiscal governance through 
-          rigorous research, structured policy dialogue, and institutional 
-          capacity development. Our work supports sound macroeconomic 
-          management and credible public financial systems.
-        </p>
-
+        <div className="grid md:grid-cols-3 gap-6">
+          {pillars.map((pillar, index) => (
+            <div
+              key={pillar.title}
+              className="group bg-slate-50 border border-slate-200 p-7 rounded-xl hover:bg-[#0B2E25] hover:text-white transition duration-300"
+            >
+              <span className="text-5xl font-black text-green-100 group-hover:text-white/10">
+                0{index + 1}
+              </span>
+              <h3 className="text-xl font-bold text-green-900 group-hover:text-white mb-3 mt-4">
+                {pillar.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-gray-600 group-hover:text-green-50">
+                {pillar.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
+  );
+}
+
+function IntroPanel({ title, text }) {
+  return (
+    <div className="bg-[#0B2E25] text-white p-8 md:p-10 rounded-xl relative overflow-hidden">
+      <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full border border-white/10" />
+      <p className="text-xs uppercase tracking-[0.25em] text-yellow-400 mb-4">
+        {title}
+      </p>
+      <p className="text-base md:text-lg leading-relaxed text-green-50">
+        {text}
+      </p>
+    </div>
   );
 }

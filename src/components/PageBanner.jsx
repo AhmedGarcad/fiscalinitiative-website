@@ -1,29 +1,31 @@
 export default function PageBanner({ title, subtitle, background }) {
   return (
     <section
-      className="mt-28 w-full h-[50vh] flex items-center justify-center text-center text-white relative overflow-hidden"
+      className="mt-36 md:mt-[145px] w-full min-h-[360px] md:min-h-[460px] flex items-center text-white relative overflow-hidden"
       style={{
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#042f2a]/95 via-[#075a52]/75 to-black/35" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F7F9F8] to-transparent" />
 
-      {/* Banner Content */}
-      <div className="relative z-10 max-w-4xl px-6">
-
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+        <div className="max-w-3xl">
+          <p className="text-xs uppercase tracking-[0.28em] text-yellow-300 mb-5">
+            The Fiscal Initiative
+          </p>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-5 leading-none">
           {title}
         </h1>
 
         {subtitle && (
-          <p className="text-base md:text-lg text-gray-200 leading-relaxed">
+          <p className="text-base md:text-xl text-green-50 leading-relaxed max-w-2xl">
             {subtitle}
           </p>
         )}
-
+        </div>
       </div>
     </section>
   );

@@ -1,58 +1,60 @@
+import PageBanner from "./PageBanner";
+import SupabaseContentGrid from "./SupabaseContentGrid";
+import { programs } from "../content/siteContent";
+import { profileAssets } from "../content/profileAssets";
+
 export default function CapacityDevelopment() {
-  const programs = [
-    {
-      title: "Macroeconomics Analysis and Forecasting Workshop",
-      description:
-        "Technical training program designed to strengthen institutional capacity in macroeconomic modelling, fiscal forecasting, and policy analysis for government officials and economic practitioners.",
-    },
-    {
-      title: "Young Economist Program",
-      description:
-        "A structured mentorship and research initiative supporting emerging Somali economists through applied research experience, policy writing, and academic engagement.",
-    },
-    {
-      title: "Taxpayers Education Program",
-      description:
-        "Public awareness and engagement initiative aimed at improving tax literacy, fiscal transparency, and citizen participation in revenue governance.",
-    },
-  ];
-
   return (
-    <section id="capacity" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <div>
+      <PageBanner
+        title="Capacity Development"
+        subtitle="Technical training, mentorship, and institutional support for stronger fiscal policy leadership."
+        background={profileAssets.priorities}
+      />
 
-        {/* HEADER */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-green-900 mb-4">
-            Capacity Development
-          </h2>
-
-          <p className="max-w-3xl mx-auto text-gray-600 text-lg">
-            Fiscal Initiative delivers high-level training and institutional
-            development programs to strengthen Somalia’s fiscal governance
-            architecture and policy leadership.
-          </p>
-        </div>
-
-        {/* PROGRAM BLOCKS */}
-        <div className="space-y-12">
-          {programs.map((program, index) => (
-            <div
-              key={index}
-              className="border-l-4 border-green-700 pl-8"
-            >
-              <h3 className="text-2xl font-semibold text-green-800 mb-4">
-                {program.title}
-              </h3>
-
-              <p className="text-gray-600 leading-relaxed max-w-4xl">
-                {program.description}
+      <section id="capacity" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-[380px_1fr] gap-10">
+            <div>
+              <p className="text-xs uppercase tracking-[0.28em] text-green-700 font-semibold mb-4">
+                Learning Platforms
+              </p>
+              <h2 className="text-4xl font-black text-gray-950 leading-tight mb-6">
+                Building practical fiscal capability.
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+                FI supports public institutions and emerging experts with tools
+                for fiscal modelling, tax simulations, expenditure tracking, and
+                debt sustainability analysis.
               </p>
             </div>
-          ))}
-        </div>
 
-      </div>
-    </section>
+            <SupabaseContentGrid
+              contentType="program"
+              fallback={
+                <div className="space-y-6">
+                  {programs.map((program, index) => (
+                    <div
+                      key={program.title}
+                      className="bg-gray-50 border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition"
+                    >
+                      <p className="text-xs font-black text-yellow-600 mb-4">
+                        Program {String(index + 1).padStart(2, "0")}
+                      </p>
+                      <h3 className="text-2xl font-bold text-green-900 mb-4">
+                        {program.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        {program.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              }
+            />
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
