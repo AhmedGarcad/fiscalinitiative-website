@@ -135,7 +135,7 @@ export default function NavBar() {
             />
 
             <div className="text-left">
-              <h1 className="text-xl font-semibold tracking-tight md:text-2xl">
+              <h1 className="site-brand text-xl font-semibold tracking-tight md:text-2xl">
                 {organization.shortName}
               </h1>
 
