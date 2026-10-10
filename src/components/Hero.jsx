@@ -26,7 +26,7 @@ export default function Hero() {
             </p>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[0.98] max-w-4xl">
-              Strengthening Somalia's Fiscal Governance Through Evidence
+              Evidence for Somalia’s Fiscal Governance.
             </h1>
 
             <p className="mt-7 text-blue-50/90 text-base md:text-xl leading-relaxed max-w-2xl">

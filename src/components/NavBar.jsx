@@ -139,7 +139,7 @@ export default function NavBar() {
               </h1>
 
               <p className="text-xs text-sky-100 md:text-sm">
-                Evidence for Somalia's Fiscal Future
+                Evidence for Somalia’s Fiscal Governance.
               </p>
             </div>
           </Link>
