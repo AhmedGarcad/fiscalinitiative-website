@@ -33,12 +33,20 @@ const menus = [
   {
     id: "about",
     label: "ABOUT US",
-    items: [
-      { label: "About Us", to: "/about" },
-      { label: "FI Team", to: "/team" },
-      { label: "Our Funding", to: "/funding" },
-      { label: "Work With Us", to: "/work-with-us" },
-      { label: "Contact Us", to: "/contact" },
+    columns: [
+      {
+        items: [
+          { label: "About Us", to: "/about" },
+          { label: "FI Team", to: "/team" },
+          { label: "Our Funding", to: "/funding" },
+        ],
+      },
+      {
+        items: [
+          { label: "Work With Us", to: "/work-with-us" },
+          { label: "Contact Us", to: "/contact" },
+        ],
+      },
     ],
   },
   {
@@ -160,13 +168,19 @@ export default function NavBar() {
             <div
               key={menu.id}
               className="relative h-full flex items-center"
-              onMouseEnter={() => setActiveMenu(menu.id)}
-              onMouseLeave={() => setActiveMenu(null)}
             >
-              <NavItem label={menu.label} active={activeMenu === menu.id} />
+              <NavItem
+                label={menu.label}
+                active={activeMenu === menu.id}
+                onClick={() =>
+                  setActiveMenu((current) =>
+                    current === menu.id ? null : menu.id
+                  )
+                }
+              />
 
               {activeMenu === menu.id && (
-                <div className="absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-b-lg border border-slate-100 py-3 flex gap-10 z-50">
+                <div className="absolute left-1/2 top-full z-50 flex min-w-max -translate-x-1/2 gap-2 border-t-4 border-sky-500 bg-white py-3 text-gray-900 shadow-xl">
                   {menu.columns
                     ? menu.columns.map((column, index) => (
                         <MegaSection
@@ -270,9 +284,12 @@ export default function NavBar() {
   );
 }
 
-function NavItem({ label, active }) {
+function NavItem({ label, active, onClick }) {
   return (
     <button
+      type="button"
+      onClick={onClick}
+      aria-expanded={active}
       className={`h-full flex items-center gap-1 px-1 font-medium transition ${
         active ? "text-white" : "text-white/90 hover:text-white"
       }`}
@@ -287,7 +304,7 @@ function NavItem({ label, active }) {
 
 function MegaSection({ title, items, onNavigate }) {
   return (
-    <div className="min-w-[220px]">
+    <div className="min-w-[190px]">
       {title && (
         <h4 className="text-sky-600 text-xs uppercase font-semibold px-5 pb-2 mb-1 border-b border-slate-100">
           {title}
@@ -299,7 +316,7 @@ function MegaSection({ title, items, onNavigate }) {
           <li key={item.label}>
             <Link
               to={item.to}
-              className="block px-5 py-2 text-sm hover:bg-sky-50 hover:text-sky-700 transition whitespace-nowrap"
+              className="block px-5 py-2.5 text-sm font-medium hover:bg-sky-50 hover:text-sky-700 transition whitespace-nowrap"
               onClick={onNavigate}
             >
               {item.label}
