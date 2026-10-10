@@ -31,8 +31,13 @@ const searchItems = [
 
 const menus = [
   {
+    id: "home",
+    label: "Home",
+    to: "/",
+  },
+  {
     id: "about",
-    label: "ABOUT US",
+    label: "About Us",
     columns: [
       {
         items: [
@@ -51,7 +56,7 @@ const menus = [
   },
   {
     id: "research",
-    label: "RESEARCH FOCUS",
+    label: "Our Research",
     items: [
       { label: "Research Focus", to: "/research" },
       ...researchAreas.map((area) => ({
@@ -61,21 +66,15 @@ const menus = [
     ],
   },
   {
-    id: "capacity",
-    label: "CAPACITY DEVELOPMENT",
+    id: "forums",
+    label: "Events",
     items: [
+      { label: "Forums", to: "/forums" },
       { label: "Capacity Development", to: "/capacity" },
       ...programs.map((program) => ({
         label: program.title,
         to: `/capacity#${slugify(program.title)}`,
       })),
-    ],
-  },
-  {
-    id: "forums",
-    label: "FORUMS",
-    items: [
-      { label: "Forums", to: "/forums" },
       ...forums.map((forum) => ({
         label: forum.title,
         to: `/forums#${slugify(forum.title)}`,
@@ -84,7 +83,7 @@ const menus = [
   },
   {
     id: "publications",
-    label: "PUBLICATIONS",
+    label: "Publications",
     columns: publicationGroups.map((group) => ({
       title: group.title,
       items: group.types.map((type) => ({
@@ -95,7 +94,7 @@ const menus = [
   },
   {
     id: "media",
-    label: "MEDIA",
+    label: "Media & Commentary",
     items: [
       { label: "Videos", to: "/media#videos" },
       { label: "Photos", to: "/media#photos" },
@@ -163,21 +162,31 @@ export default function NavBar() {
       </div>
 
       <nav className={`${scrolled ? "bg-sky-700" : "bg-sky-600"} hidden border-t border-white/30 md:block`}>
-        <div className="relative mx-auto flex h-14 max-w-7xl items-center justify-center gap-10 text-sm text-white">
+        <div className="relative mx-auto flex h-14 max-w-7xl items-center justify-center gap-5 text-xs text-white lg:gap-8 lg:text-sm xl:gap-10">
           {menus.map((menu) => (
             <div
               key={menu.id}
               className="relative h-full flex items-center"
             >
-              <NavItem
-                label={menu.label}
-                active={activeMenu === menu.id}
-                onClick={() =>
-                  setActiveMenu((current) =>
-                    current === menu.id ? null : menu.id
-                  )
-                }
-              />
+              {menu.to ? (
+                <Link
+                  to={menu.to}
+                  onClick={() => setActiveMenu(null)}
+                  className="flex h-full items-center px-1 font-bold text-white/90 transition hover:text-white"
+                >
+                  {menu.label}
+                </Link>
+              ) : (
+                <NavItem
+                  label={menu.label}
+                  active={activeMenu === menu.id}
+                  onClick={() =>
+                    setActiveMenu((current) =>
+                      current === menu.id ? null : menu.id
+                    )
+                  }
+                />
+              )}
 
               {activeMenu === menu.id && (
                 <div className="absolute left-1/2 top-full z-50 flex min-w-max -translate-x-1/2 gap-2 border-t-4 border-sky-500 bg-white py-3 text-gray-900 shadow-xl">
@@ -203,7 +212,7 @@ export default function NavBar() {
 
           <button
             onClick={() => setSearchOpen(true)}
-            className="absolute right-6 text-sm font-semibold text-white/90 transition hover:text-white"
+            className="absolute right-4 text-xs font-bold text-white/90 transition hover:text-white lg:right-6 lg:text-sm"
             aria-label="Open search"
           >
             Search
@@ -215,22 +224,32 @@ export default function NavBar() {
         <div className="md:hidden bg-blue-900 text-white px-6 py-6 space-y-4 shadow-xl max-h-[70vh] overflow-y-auto">
           {menus.map((menu) => (
             <div key={menu.id}>
-              <p className="text-xs uppercase tracking-widest text-sky-300 mb-2">
-                {menu.label}
-              </p>
-              <div className="space-y-2 mb-4">
-                {(menu.columns
-                  ? menu.columns.flatMap((column) => column.items)
-                  : menu.items
-                ).map((item) => (
-                  <MobileLink
-                    key={item.label}
-                    to={item.to}
-                    label={item.label}
-                    setMobileOpen={setMobileOpen}
-                  />
-                ))}
-              </div>
+              {menu.to ? (
+                <MobileLink
+                  to={menu.to}
+                  label={menu.label}
+                  setMobileOpen={setMobileOpen}
+                />
+              ) : (
+                <>
+                  <p className="text-xs uppercase tracking-widest text-sky-300 mb-2">
+                    {menu.label}
+                  </p>
+                  <div className="space-y-2 mb-4">
+                    {(menu.columns
+                      ? menu.columns.flatMap((column) => column.items)
+                      : menu.items
+                    ).map((item) => (
+                      <MobileLink
+                        key={item.label}
+                        to={item.to}
+                        label={item.label}
+                        setMobileOpen={setMobileOpen}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
           ))}
         </div>
@@ -290,7 +309,7 @@ function NavItem({ label, active, onClick }) {
       type="button"
       onClick={onClick}
       aria-expanded={active}
-      className={`h-full flex items-center gap-1 px-1 font-medium transition ${
+      className={`h-full flex items-center gap-1 px-1 font-bold transition ${
         active ? "text-white" : "text-white/90 hover:text-white"
       }`}
     >
