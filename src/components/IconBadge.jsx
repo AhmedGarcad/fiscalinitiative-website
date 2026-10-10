@@ -31,7 +31,7 @@ const icons = {
 export default function IconBadge({ icon = "target", size = 96 }) {
   return (
     <div
-      className="rounded-full bg-[#0B2A4A] text-white flex items-center justify-center mx-auto"
+      className="rounded-full bg-[#00564F] text-white flex items-center justify-center mx-auto"
       style={{ width: size, height: size }}
     >
       <svg

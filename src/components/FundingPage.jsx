@@ -3,7 +3,7 @@ export default function FundingPage() {
     <section className="pt-32 pb-20 bg-white min-h-screen">
       <div className="max-w-5xl mx-auto px-6">
 
-        <h1 className="text-4xl font-bold text-blue-800 mb-6">
+        <h1 className="text-4xl font-bold text-emerald-800 mb-6">
           Our Funding
         </h1>
 
@@ -14,7 +14,7 @@ export default function FundingPage() {
         </p>
 
         <div className="bg-gray-50 p-8 rounded-xl shadow mb-8">
-          <h2 className="text-xl font-semibold text-blue-700 mb-4">
+          <h2 className="text-xl font-semibold text-emerald-700 mb-4">
             Funding Principles
           </h2>
           <ul className="space-y-3 text-gray-600">
@@ -25,8 +25,8 @@ export default function FundingPage() {
           </ul>
         </div>
 
-        <div className="bg-blue-50 p-8 rounded-xl">
-          <h2 className="text-xl font-semibold text-blue-700 mb-4">
+        <div className="bg-emerald-50 p-8 rounded-xl">
+          <h2 className="text-xl font-semibold text-emerald-700 mb-4">
             Institutional Support
           </h2>
           <p className="text-gray-700">

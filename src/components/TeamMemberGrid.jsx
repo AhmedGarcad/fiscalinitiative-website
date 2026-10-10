@@ -63,7 +63,7 @@ export default function TeamMemberGrid({ contentType, fallback = null }) {
               <PersonPlaceholder />
             )}
           </div>
-          <h4 className="text-lg font-bold text-blue-700">{member.title}</h4>
+          <h4 className="text-lg font-bold text-emerald-700">{member.title}</h4>
           {member.summary && (
             <p className="text-gray-600 text-sm mt-1">{member.summary}</p>
           )}

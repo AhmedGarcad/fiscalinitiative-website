@@ -41,8 +41,8 @@ export default function TeamPage() {
                 onClick={() => setActive(group.id)}
                 className={`px-6 py-3 rounded-full text-sm font-semibold transition ${
                   active === group.id
-                    ? "bg-[#0B2A4A] text-white"
-                    : "bg-white text-gray-700 border border-slate-200 hover:border-blue-300"
+                    ? "bg-[#00564F] text-white"
+                    : "bg-white text-gray-700 border border-slate-200 hover:border-emerald-300"
                 }`}
               >
                 {group.title}
@@ -58,7 +58,7 @@ export default function TeamPage() {
             contentType={groupContentType[active]}
             fallback={
               <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center">
-                <h3 className="text-xl font-bold text-blue-900 mb-3">
+                <h3 className="text-xl font-bold text-emerald-900 mb-3">
                   {activeGroup.title} profiles coming soon
                 </h3>
                 <p className="text-gray-600 max-w-xl mx-auto">
@@ -71,7 +71,7 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-[#0B2A4A] text-white">
+      <section className="py-20 bg-[#00564F] text-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-2xl font-semibold mb-8 text-center">
             How FI Works
@@ -80,7 +80,7 @@ export default function TeamPage() {
             {operatingValues.map((value) => (
               <div
                 key={value}
-                className="border border-white/15 bg-white/5 rounded-lg p-4 text-sm text-blue-50 text-center"
+                className="border border-white/15 bg-white/5 rounded-lg p-4 text-sm text-white/90 text-center"
               >
                 {value}
               </div>

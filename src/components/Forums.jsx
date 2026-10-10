@@ -15,7 +15,7 @@ export default function Forums() {
 
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-xs uppercase tracking-[0.28em] text-blue-700 font-semibold mb-4">
+          <p className="text-xs uppercase tracking-[0.28em] text-emerald-700 font-semibold mb-4">
             Fiscal Initiative Forums
           </p>
           <h2 className="text-4xl font-black text-gray-950 leading-tight mb-12 max-w-3xl">
@@ -32,10 +32,10 @@ export default function Forums() {
                     id={slugify(forum.title)}
                     className="bg-gray-50 border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition scroll-mt-40"
                   >
-                    <p className="text-xs font-black text-sky-600 mb-4">
+                    <p className="text-xs font-black text-teal-600 mb-4">
                       {String(index + 1).padStart(2, "0")}
                     </p>
-                    <h3 className="text-xl font-bold text-blue-900 mb-3">
+                    <h3 className="text-xl font-bold text-emerald-900 mb-3">
                       {forum.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">

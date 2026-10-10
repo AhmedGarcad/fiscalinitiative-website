@@ -17,7 +17,7 @@ export default function ResearchFocus() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr_420px] gap-12 items-start mb-16">
             <div>
-              <p className="text-xs uppercase tracking-[0.28em] text-blue-700 font-semibold mb-4">
+              <p className="text-xs uppercase tracking-[0.28em] text-emerald-700 font-semibold mb-4">
                 Our Research
               </p>
               <h2 className="text-4xl md:text-5xl font-black text-gray-950 leading-tight mb-6">
@@ -44,10 +44,10 @@ export default function ResearchFocus() {
                     id={slugify(area.title)}
                     className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-slate-100 scroll-mt-40"
                   >
-                    <p className="text-xs font-black text-sky-600 mb-6">
+                    <p className="text-xs font-black text-teal-600 mb-6">
                       {String(index + 1).padStart(2, "0")}
                     </p>
-                    <h3 className="text-xl font-bold text-blue-900 mb-4">
+                    <h3 className="text-xl font-bold text-emerald-900 mb-4">
                       {area.title}
                     </h3>
                     <p className="text-gray-600 text-sm leading-relaxed">

@@ -99,11 +99,11 @@ export default function SupabaseContentGrid({
           )}
 
           <div className="p-7">
-            <p className="text-xs uppercase tracking-[0.2em] text-blue-700 mb-3">
+            <p className="text-xs uppercase tracking-[0.2em] text-emerald-700 mb-3">
               {formatType(item.content_type)}
             </p>
 
-            <h3 className="text-xl font-semibold text-blue-900 mb-3">
+            <h3 className="text-xl font-semibold text-emerald-900 mb-3">
               {item.title}
             </h3>
 
@@ -115,13 +115,13 @@ export default function SupabaseContentGrid({
 
             <div className="flex flex-wrap gap-2 mt-5">
               {item.file_url && (
-                <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-800">
+                <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
                   {item.file_type === "pdf" ? "PDF attached" : "File attached"}
                 </span>
               )}
 
               {item.video_url && (
-                <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-800">
+                <span className="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-800">
                   Video attached
                 </span>
               )}
@@ -136,7 +136,7 @@ export default function SupabaseContentGrid({
             {item.slug && (
               <Link
                 to={`/content/${item.slug}`}
-                className="inline-block mt-5 text-blue-700 font-medium hover:underline"
+                className="inline-block mt-5 text-emerald-700 font-medium hover:underline"
               >
                 View Details
               </Link>
@@ -147,7 +147,7 @@ export default function SupabaseContentGrid({
                 href={item.url}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-block mt-5 text-blue-700 font-medium hover:underline"
+                className="inline-block mt-5 text-emerald-700 font-medium hover:underline"
               >
                 Open Link
               </a>

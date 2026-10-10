@@ -115,18 +115,18 @@ export default function AdminPublications() {
 
         <div className="flex items-center justify-between mb-10">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-blue-700 mb-3">
+            <p className="text-xs uppercase tracking-[0.3em] text-emerald-700 mb-3">
               Admin CMS
             </p>
 
-            <h1 className="text-5xl font-black text-blue-950">
+            <h1 className="text-5xl font-black text-emerald-950">
               Manage Publications
             </h1>
           </div>
 
           <Link
             to="/admin"
-            className="bg-blue-800 text-white px-5 py-3 rounded-xl"
+            className="bg-emerald-800 text-white px-5 py-3 rounded-xl"
           >
             Back to Admin
           </Link>
@@ -184,7 +184,7 @@ export default function AdminPublications() {
 
                     <button
                       onClick={() => saveEdit(item.id)}
-                      className="bg-blue-700 text-white px-5 py-2 rounded-lg"
+                      className="bg-emerald-700 text-white px-5 py-2 rounded-lg"
                     >
                       Save
                     </button>
@@ -202,11 +202,11 @@ export default function AdminPublications() {
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
 
                   <div>
-                    <p className="text-xs uppercase tracking-wide text-blue-700 mb-2">
+                    <p className="text-xs uppercase tracking-wide text-emerald-700 mb-2">
                       {item.content_type}
                     </p>
 
-                    <h2 className="text-2xl font-bold text-blue-950">
+                    <h2 className="text-2xl font-bold text-emerald-950">
                       {item.title}
                     </h2>
 
@@ -219,14 +219,14 @@ export default function AdminPublications() {
 
                     <Link
                       to={`/content/${item.slug}`}
-                      className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+                      className="bg-emerald-600 text-white px-4 py-2 rounded-lg"
                     >
                       View
                     </Link>
 
                     <button
                       onClick={() => startEditing(item)}
-                      className="bg-sky-500 text-white px-4 py-2 rounded-lg"
+                      className="bg-teal-500 text-white px-4 py-2 rounded-lg"
                     >
                       Edit
                     </button>

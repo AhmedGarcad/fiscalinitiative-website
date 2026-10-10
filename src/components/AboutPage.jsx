@@ -93,10 +93,10 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {pillars.map((pillar, index) => (
-              <div key={pillar.title} className="bg-[#0B2A4A] text-white p-8 rounded-xl">
-                <span className="text-sky-300 font-black">0{index + 1}</span>
+              <div key={pillar.title} className="bg-[#00564F] text-white p-8 rounded-xl">
+                <span className="text-white/75 font-black">0{index + 1}</span>
                 <h3 className="text-xl font-bold mt-4 mb-3">{pillar.title}</h3>
-                <p className="text-blue-50 text-sm leading-relaxed">
+                <p className="text-white/90 text-sm leading-relaxed">
                   {pillar.description}
                 </p>
               </div>

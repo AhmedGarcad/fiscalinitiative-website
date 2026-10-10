@@ -3,12 +3,12 @@ import { organization, researchAreas } from "../content/siteContent";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-b from-[#0A2540] to-[#071427] text-blue-100 pt-36 pb-20 overflow-hidden">
+    <footer className="relative bg-gradient-to-b from-[#004D47] to-[#003D39] text-white pt-36 pb-20 overflow-hidden">
       <div className="absolute inset-0 bg-black/10" />
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="mb-24 text-center">
-          <h4 className="text-xs tracking-[0.25em] uppercase text-blue-300 mb-10">
+          <h4 className="text-xs tracking-[0.25em] uppercase text-white/80 mb-10">
             Strategic Work Areas
           </h4>
 
@@ -26,7 +26,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-sky-500 to-transparent mb-24" />
+        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-teal-500 to-transparent mb-24" />
 
         <div className="grid md:grid-cols-4 gap-16">
           <div>
@@ -34,11 +34,11 @@ export default function Footer() {
               {organization.shortName}
             </h3>
 
-            <p className="text-blue-200 text-sm leading-relaxed mb-10">
+            <p className="text-white/80 text-sm leading-relaxed mb-10">
               {organization.description}
             </p>
 
-            <button className="px-8 py-3 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-black text-sm font-semibold rounded-full transition shadow-lg">
+            <button className="px-8 py-3 bg-[#00796F] hover:bg-[#006B63] text-white text-sm font-semibold rounded-full transition shadow-lg">
               Company Profile
             </button>
           </div>
@@ -63,24 +63,24 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold text-lg mb-6">Contact</h4>
 
-            <ul className="space-y-4 text-sm text-blue-200 mb-8">
+            <ul className="space-y-4 text-sm text-white/80 mb-8">
               <li>{organization.email}</li>
               <li>{organization.location}</li>
               <li>{organization.tagline}</li>
             </ul>
 
-            <div className="px-5 py-4 bg-white/5 border border-white/10 rounded-lg text-xs text-blue-200">
+            <div className="px-5 py-4 bg-white/5 border border-white/10 rounded-lg text-xs text-white/80">
               Evidence-based fiscal policy, institutional capacity, and
               inclusive dialogue.
             </div>
           </div>
         </div>
 
-        <div className="mt-28 border-t border-blue-800 pt-8 text-center text-xs tracking-[0.2em] uppercase text-blue-400">
+        <div className="mt-28 border-t border-white/20 pt-8 text-center text-xs tracking-[0.2em] uppercase text-white/75">
           Building Trust | Strengthening Institutions | Advancing Fiscal Reform
         </div>
 
-        <div className="mt-4 text-center text-xs text-blue-500">
+        <div className="mt-4 text-center text-xs text-white/60">
           Copyright {new Date().getFullYear()} Fiscal Initiative. All Rights
           Reserved.
         </div>
@@ -94,10 +94,10 @@ function FooterList({ title, items }) {
     <div>
       <h4 className="text-white font-semibold text-lg mb-6">{title}</h4>
 
-      <ul className="space-y-4 text-sm text-blue-200">
+      <ul className="space-y-4 text-sm text-white/80">
         {items.map((item) => (
           <li key={item.label}>
-            <Link to={item.to} className="hover:text-sky-400 transition">
+            <Link to={item.to} className="hover:text-white transition">
               {item.label}
             </Link>
           </li>

@@ -17,7 +17,7 @@ export default function CapacityDevelopment() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[380px_1fr] gap-10">
             <div>
-              <p className="text-xs uppercase tracking-[0.28em] text-blue-700 font-semibold mb-4">
+              <p className="text-xs uppercase tracking-[0.28em] text-emerald-700 font-semibold mb-4">
                 Learning Platforms
               </p>
               <h2 className="text-4xl font-black text-gray-950 leading-tight mb-6">
@@ -40,10 +40,10 @@ export default function CapacityDevelopment() {
                       id={slugify(program.title)}
                       className="bg-gray-50 border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition scroll-mt-40"
                     >
-                      <p className="text-xs font-black text-sky-600 mb-4">
+                      <p className="text-xs font-black text-teal-600 mb-4">
                         Program {String(index + 1).padStart(2, "0")}
                       </p>
-                      <h3 className="text-2xl font-bold text-blue-900 mb-4">
+                      <h3 className="text-2xl font-bold text-emerald-900 mb-4">
                         {program.title}
                       </h3>
                       <p className="text-gray-600 leading-relaxed">

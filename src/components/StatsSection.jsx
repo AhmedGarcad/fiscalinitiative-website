@@ -1,6 +1,6 @@
 export default function StatsSection() {
   return (
-    <section className="bg-[#0B1F2A] text-white py-20">
+    <section className="bg-[#003D39] text-white py-20">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 text-center">
 
         <Stat number="25+" label="Policy Publications" />

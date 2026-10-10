@@ -10,7 +10,7 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${profileAssets.cover})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#071427]/95 via-[#0B6FA6]/80 to-[#05101C]/50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#003D39]/95 via-[#00796F]/80 to-[#002B28]/50" />
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
@@ -18,10 +18,10 @@ export default function Hero() {
           <div className="max-w-4xl">
             <div className="inline-flex items-center gap-4 bg-white/10 border border-white/20 backdrop-blur px-5 py-3 rounded-full mb-8">
               <img src={logo} alt="" className="h-10 w-10 rounded-full object-cover" />
-              <span className="text-sm text-blue-50">{organization.tagline}</span>
+              <span className="text-sm text-white/90">{organization.tagline}</span>
             </div>
 
-            <p className="text-sky-300 uppercase tracking-[0.28em] text-xs mb-5 font-semibold">
+            <p className="text-white/80 uppercase tracking-[0.28em] text-xs mb-5 font-semibold">
               Independent Fiscal Policy Research Institute
             </p>
 
@@ -29,14 +29,14 @@ export default function Hero() {
               Evidence for Somalia’s Fiscal Governance.
             </h1>
 
-            <p className="mt-7 text-blue-50/90 text-base md:text-xl leading-relaxed max-w-2xl">
+            <p className="mt-7 text-white/90 text-base md:text-xl leading-relaxed max-w-2xl">
               {organization.description}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-9">
               <Link
                 to="/research"
-                className="bg-sky-400 hover:bg-sky-300 text-[#0A2540] px-8 py-4 rounded-md text-sm font-bold transition text-center"
+                className="bg-[#00796F] hover:bg-[#006B63] text-white px-8 py-4 rounded-md text-sm font-bold transition text-center"
               >
                 Explore Research
               </Link>

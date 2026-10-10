@@ -138,7 +138,7 @@ export default function NavBar() {
                 {organization.shortName}
               </h1>
 
-              <p className="text-xs text-sky-100 md:text-sm">
+              <p className="text-xs text-white/85 md:text-sm">
                 Evidence for Somalia’s Fiscal Governance.
               </p>
             </div>
@@ -232,7 +232,7 @@ export default function NavBar() {
                 />
               ) : (
                 <>
-              <p className="text-xs uppercase tracking-widest text-emerald-200 mb-2">
+                  <p className="text-xs uppercase tracking-widest text-white/80 mb-2">
                     {menu.label}
                   </p>
                   <div className="space-y-2 mb-4">
@@ -265,7 +265,7 @@ export default function NavBar() {
 
               <button
                 onClick={() => setSearchOpen(false)}
-                className="text-gray-500 text-sm font-semibold hover:text-blue-800"
+                className="text-gray-500 text-sm font-semibold hover:text-emerald-800"
               >
                 Close
               </button>
@@ -286,7 +286,7 @@ export default function NavBar() {
                   key={item.to}
                   to={item.to}
                   onClick={() => setSearchOpen(false)}
-                  className="block hover:text-blue-700"
+                  className="block hover:text-emerald-700"
                 >
                   {item.label}
                 </Link>
@@ -325,7 +325,7 @@ function MegaSection({ title, items, onNavigate }) {
   return (
     <div className="min-w-[190px]">
       {title && (
-        <h4 className="text-sky-600 text-xs uppercase font-semibold px-5 pb-2 mb-1 border-b border-slate-100">
+        <h4 className="text-teal-600 text-xs uppercase font-semibold px-5 pb-2 mb-1 border-b border-slate-100">
           {title}
         </h4>
       )}
@@ -335,7 +335,7 @@ function MegaSection({ title, items, onNavigate }) {
           <li key={item.label}>
             <Link
               to={item.to}
-              className="block px-5 py-2.5 text-sm font-medium hover:bg-sky-50 hover:text-sky-700 transition whitespace-nowrap"
+              className="block px-5 py-2.5 text-sm font-medium hover:bg-teal-50 hover:text-teal-700 transition whitespace-nowrap"
               onClick={onNavigate}
             >
               {item.label}
@@ -352,7 +352,7 @@ function MobileLink({ to, label, setMobileOpen }) {
     <Link
       to={to}
       onClick={() => setMobileOpen(false)}
-      className="block hover:text-emerald-200"
+      className="block hover:text-white/75"
     >
       {label}
     </Link>

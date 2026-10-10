@@ -14,13 +14,13 @@ export default function ContactPage() {
   return (
     <section className="pt-32 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-5xl mx-auto px-6">
-        <h1 className="text-4xl font-bold text-blue-800 mb-6">
+        <h1 className="text-4xl font-bold text-emerald-800 mb-6">
           Contact Us
         </h1>
 
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-xl font-semibold text-blue-700 mb-4">
+            <h2 className="text-xl font-semibold text-emerald-700 mb-4">
               Get in Touch
             </h2>
 
@@ -64,7 +64,7 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="bg-blue-700 text-white px-6 py-3 rounded hover:bg-blue-800 transition"
+              className="bg-emerald-700 text-white px-6 py-3 rounded hover:bg-emerald-800 transition"
             >
               Send Message
             </button>

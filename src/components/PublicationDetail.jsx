@@ -46,10 +46,10 @@ export default function PublicationDetail() {
     return (
       <section className="pt-40 px-6 min-h-screen bg-gray-50">
         <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow p-8">
-          <h1 className="text-3xl font-black text-blue-950 mb-4">
+          <h1 className="text-3xl font-black text-emerald-950 mb-4">
             Content not found
           </h1>
-          <Link to="/publications" className="text-blue-700 font-semibold">
+          <Link to="/publications" className="text-emerald-700 font-semibold">
             Back to publications
           </Link>
         </div>
@@ -76,11 +76,11 @@ export default function PublicationDetail() {
           )}
 
           <div className="p-8 md:p-12">
-            <p className="text-xs uppercase tracking-[0.3em] text-blue-700 mb-5">
+            <p className="text-xs uppercase tracking-[0.3em] text-emerald-700 mb-5">
               {formatType(publication.content_type)}
             </p>
 
-            <h1 className="text-4xl md:text-6xl font-black text-blue-950 mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-black text-emerald-950 mb-6 leading-tight">
               {publication.title}
             </h1>
 
@@ -96,7 +96,7 @@ export default function PublicationDetail() {
                   href={publication.file_url}
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-blue-800 text-white px-5 py-3 rounded-xl font-semibold"
+                  className="bg-emerald-800 text-white px-5 py-3 rounded-xl font-semibold"
                 >
                   Open PDF
                 </a>
@@ -107,7 +107,7 @@ export default function PublicationDetail() {
                   href={publication.file_url}
                   target="_blank"
                   rel="noreferrer"
-                  className="border border-blue-800 text-blue-900 px-5 py-3 rounded-xl font-semibold"
+                  className="border border-emerald-800 text-emerald-900 px-5 py-3 rounded-xl font-semibold"
                 >
                   Download File
                 </a>
@@ -118,7 +118,7 @@ export default function PublicationDetail() {
                   href={publication.video_url}
                   target="_blank"
                   rel="noreferrer"
-                  className="border border-sky-600 text-sky-700 px-5 py-3 rounded-xl font-semibold"
+                  className="border border-teal-600 text-teal-700 px-5 py-3 rounded-xl font-semibold"
                 >
                   Open Video
                 </a>
@@ -132,7 +132,7 @@ export default function PublicationDetail() {
             )}
 
             {isMedia && !hasAttachment && (
-              <div className="rounded-2xl border border-sky-200 bg-sky-50 p-6 text-sky-950 mb-12">
+              <div className="rounded-2xl border border-teal-200 bg-teal-50 p-6 text-teal-950 mb-12">
                 <h2 className="text-xl font-bold mb-2">
                   No media file is attached yet
                 </h2>
@@ -144,7 +144,7 @@ export default function PublicationDetail() {
 
             {hasPdf && (
               <section className="mb-14">
-                <h2 className="text-2xl font-bold text-blue-900 mb-5">
+                <h2 className="text-2xl font-bold text-emerald-900 mb-5">
                   PDF Report
                 </h2>
 
@@ -158,7 +158,7 @@ export default function PublicationDetail() {
 
             {hasVideo && (
               <section className="mb-4">
-                <h2 className="text-2xl font-bold text-blue-900 mb-5">
+                <h2 className="text-2xl font-bold text-emerald-900 mb-5">
                   Video
                 </h2>
 

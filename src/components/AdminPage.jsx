@@ -238,7 +238,7 @@ export default function AdminPage() {
         <div className="max-w-3xl mx-auto px-6">
           <div className="bg-white rounded-xl shadow p-8">
 
-            <h1 className="text-3xl font-bold text-blue-900 mb-4">
+            <h1 className="text-3xl font-bold text-emerald-900 mb-4">
               Supabase Not Configured
             </h1>
 
@@ -260,7 +260,7 @@ export default function AdminPage() {
 
           <div className="bg-white rounded-xl shadow p-8">
 
-            <h1 className="text-3xl font-bold text-blue-900 mb-2">
+            <h1 className="text-3xl font-bold text-emerald-900 mb-2">
               Admin Access
             </h1>
 
@@ -306,7 +306,7 @@ export default function AdminPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-blue-800 text-white rounded-lg px-4 py-3"
+                className="w-full bg-emerald-800 text-white rounded-lg px-4 py-3"
               >
                 {loading
                   ? "Please wait..."
@@ -326,7 +326,7 @@ export default function AdminPage() {
                     : "login"
                 )
               }
-              className="mt-5 text-sm text-blue-700 hover:underline"
+              className="mt-5 text-sm text-emerald-700 hover:underline"
             >
               {mode === "login"
                 ? "Need an account? Sign up"
@@ -353,18 +353,18 @@ export default function AdminPage() {
         <div className="flex items-center justify-between mb-10">
 
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-blue-700 mb-3">
+            <p className="text-xs uppercase tracking-[0.25em] text-emerald-700 mb-3">
               Supabase CMS
             </p>
 
-            <h1 className="text-4xl font-bold text-blue-900">
+            <h1 className="text-4xl font-bold text-emerald-900">
               Fiscal Initiative Admin
             </h1>
           </div>
 
           <button
             onClick={handleSignOut}
-            className="border border-blue-800 text-blue-900 px-5 py-2 rounded-lg"
+            className="border border-emerald-800 text-emerald-900 px-5 py-2 rounded-lg"
           >
             Sign Out
           </button>
@@ -659,7 +659,7 @@ export default function AdminPage() {
 
             {["video", "photo"].includes(contentForm.content_type) &&
               !hasAttachedMedia(contentForm) && (
-                <div className="rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-900">
+                <div className="rounded-xl border border-teal-200 bg-teal-50 p-4 text-sm text-teal-900">
                   Video and Photo pages need a visible attachment. Upload a video or image, or paste a YouTube URL, before pressing Upload Content.
                 </div>
               )}
@@ -667,7 +667,7 @@ export default function AdminPage() {
             {(contentForm.file_url ||
               contentForm.image_url ||
               contentForm.video_url) && (
-              <div className="rounded-xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900 space-y-2">
+              <div className="rounded-xl border border-emerald-100 bg-emerald-50 p-4 text-sm text-emerald-900 space-y-2">
                 <p className="font-semibold">Attached files ready:</p>
 
                 {contentForm.file_url && (
@@ -710,7 +710,7 @@ export default function AdminPage() {
               disabled={
                 loading || uploading
               }
-              className="bg-blue-800 text-white rounded-lg px-6 py-3"
+              className="bg-emerald-800 text-white rounded-lg px-6 py-3"
             >
               {uploading
                 ? "Uploading..."
@@ -741,7 +741,7 @@ export default function AdminPage() {
                   className="border-b pb-4"
                 >
 
-                  <p className="text-xs uppercase tracking-wide text-blue-700">
+                  <p className="text-xs uppercase tracking-wide text-emerald-700">
                     {item.content_type}
                   </p>
 
@@ -757,12 +757,12 @@ export default function AdminPage() {
 
                   <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
                     {item.file_url && (
-                      <span className="rounded-full bg-blue-50 px-2 py-1 text-blue-800">
+                      <span className="rounded-full bg-emerald-50 px-2 py-1 text-emerald-800">
                         File
                       </span>
                     )}
                     {item.video_url && (
-                      <span className="rounded-full bg-sky-50 px-2 py-1 text-sky-800">
+                      <span className="rounded-full bg-teal-50 px-2 py-1 text-teal-800">
                         Video
                       </span>
                     )}
@@ -781,7 +781,7 @@ export default function AdminPage() {
                   {item.slug && (
                     <a
                       href={`/content/${item.slug}`}
-                      className="mt-3 inline-block text-xs font-semibold text-blue-700 hover:underline"
+                      className="mt-3 inline-block text-xs font-semibold text-emerald-700 hover:underline"
                     >
                       View page
                     </a>
