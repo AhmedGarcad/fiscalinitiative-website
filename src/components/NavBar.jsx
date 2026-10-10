@@ -117,41 +117,33 @@ export default function NavBar() {
 
   return (
     <header className="fixed top-0 w-full z-50">
-      <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-4">
+      <div className="bg-sky-600 text-white shadow-md">
+        <div className="relative mx-auto flex min-h-[104px] items-center justify-center px-6 py-4 md:min-h-[116px]">
+          <Link to="/" className="flex items-center gap-3 text-center" aria-label="Fiscal Initiative home">
             <img
               src={logo}
               alt="Fiscal Initiative"
-              className="w-16 md:w-20 object-contain"
+              className="h-14 w-14 rounded-full bg-white object-contain shadow-sm md:h-16 md:w-16"
             />
 
-            <div>
-              <h1 className="text-xl md:text-2xl font-semibold text-gray-900">
+            <div className="text-left">
+              <h1 className="text-xl font-semibold tracking-tight md:text-2xl">
                 {organization.shortName}
               </h1>
 
-              <p className="text-xs md:text-sm text-blue-700">
+              <p className="text-xs text-sky-100 md:text-sm">
                 Evidence for Somalia's Fiscal Future
               </p>
             </div>
           </Link>
 
-          <div className="flex items-center gap-5">
-            <select className="text-sm border border-gray-300 px-2 py-1 rounded">
+          <div className="absolute right-4 flex items-center gap-3 md:right-8">
+            <select className="hidden rounded border border-white/35 bg-transparent px-2 py-1 text-xs text-white md:block">
               <option value="EN">EN</option>
             </select>
 
             <button
-              onClick={() => setSearchOpen(true)}
-              className="text-gray-600 hover:text-blue-700 text-sm font-semibold"
-              aria-label="Open search"
-            >
-              Search
-            </button>
-
-            <button
-              className="md:hidden text-sm font-semibold text-blue-900"
+              className="text-sm font-semibold text-white md:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -160,11 +152,10 @@ export default function NavBar() {
           </div>
         </div>
 
-        <div className="h-[3px] bg-gradient-to-r from-sky-400 via-sky-600 to-sky-400" />
       </div>
 
-      <nav className={`${scrolled ? "bg-sky-700" : "bg-sky-600"} hidden md:block`}>
-        <div className="max-w-7xl mx-auto flex justify-center gap-10 h-14 items-center text-white text-sm">
+      <nav className={`${scrolled ? "bg-sky-700" : "bg-sky-600"} hidden border-t border-white/30 md:block`}>
+        <div className="relative mx-auto flex h-14 max-w-7xl items-center justify-center gap-10 text-sm text-white">
           {menus.map((menu) => (
             <div
               key={menu.id}
@@ -195,6 +186,14 @@ export default function NavBar() {
               )}
             </div>
           ))}
+
+          <button
+            onClick={() => setSearchOpen(true)}
+            className="absolute right-6 text-sm font-semibold text-white/90 transition hover:text-white"
+            aria-label="Open search"
+          >
+            Search
+          </button>
         </div>
       </nav>
 
