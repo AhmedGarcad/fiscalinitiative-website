@@ -124,7 +124,7 @@ export default function NavBar() {
 
   return (
     <header className="fixed top-0 w-full z-50">
-      <div className="bg-sky-600 text-white shadow-md">
+      <div className="bg-[#006B63] text-white shadow-md">
         <div className="relative mx-auto flex min-h-[104px] items-center justify-center px-6 py-4 md:min-h-[116px]">
           <Link to="/" className="flex items-center gap-3 text-center" aria-label="Fiscal Initiative home">
             <img
@@ -161,7 +161,7 @@ export default function NavBar() {
 
       </div>
 
-      <nav className={`${scrolled ? "bg-sky-700" : "bg-sky-600"} hidden border-t border-white/30 md:block`}>
+      <nav className={`${scrolled ? "bg-[#00564F]" : "bg-[#006B63]"} hidden border-t border-white/30 md:block`}>
         <div className="relative mx-auto flex h-14 max-w-7xl items-center justify-center gap-5 text-xs text-white lg:gap-8 lg:text-sm xl:gap-10">
           {menus.map((menu) => (
             <div
@@ -189,7 +189,7 @@ export default function NavBar() {
               )}
 
               {activeMenu === menu.id && (
-                <div className="absolute left-1/2 top-full z-50 flex min-w-max -translate-x-1/2 gap-2 border-t-4 border-sky-500 bg-white py-3 text-gray-900 shadow-xl">
+                <div className="absolute left-1/2 top-full z-50 flex min-w-max -translate-x-1/2 gap-2 border-t-4 border-[#00978C] bg-white py-3 text-gray-900 shadow-xl">
                   {menu.columns
                     ? menu.columns.map((column, index) => (
                         <MegaSection
@@ -221,7 +221,7 @@ export default function NavBar() {
       </nav>
 
       {mobileOpen && (
-        <div className="md:hidden bg-blue-900 text-white px-6 py-6 space-y-4 shadow-xl max-h-[70vh] overflow-y-auto">
+        <div className="md:hidden bg-[#00564F] text-white px-6 py-6 space-y-4 shadow-xl max-h-[70vh] overflow-y-auto">
           {menus.map((menu) => (
             <div key={menu.id}>
               {menu.to ? (
@@ -232,7 +232,7 @@ export default function NavBar() {
                 />
               ) : (
                 <>
-                  <p className="text-xs uppercase tracking-widest text-sky-300 mb-2">
+              <p className="text-xs uppercase tracking-widest text-emerald-200 mb-2">
                     {menu.label}
                   </p>
                   <div className="space-y-2 mb-4">
@@ -352,7 +352,7 @@ function MobileLink({ to, label, setMobileOpen }) {
     <Link
       to={to}
       onClick={() => setMobileOpen(false)}
-      className="block hover:text-sky-300"
+      className="block hover:text-emerald-200"
     >
       {label}
     </Link>
