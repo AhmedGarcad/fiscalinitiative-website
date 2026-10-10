@@ -6,12 +6,13 @@ import {
   mission,
   organization,
   pillars,
+  purpose,
   vision,
 } from "../content/siteContent";
 import { profileAssets } from "../content/profileAssets";
 
 const purposeVisionMission = [
-  { icon: "target", title: "Purpose", text: organization.description },
+  { icon: "target", title: "Purpose", text: purpose },
   { icon: "binoculars", title: "Vision", text: vision },
   { icon: "compass", title: "Mission", text: mission },
 ];

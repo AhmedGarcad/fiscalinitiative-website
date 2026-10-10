@@ -9,11 +9,14 @@ export const organization = {
   location: "Mogadishu, Somalia",
 };
 
+export const purpose =
+  "Independent fiscal research advancing accountable governance and inclusive growth in Somalia.";
+
 export const mission =
-  "To strengthen Somalia's fiscal governance by delivering cutting-edge analysis, building institutional capacity, and promoting evidence-based policymaking that drives inclusive growth, fiscal equity, and sustainable development.";
+  "To strengthen Somalia's fiscal governance through evidence, capacity, and inclusive policy dialogue.";
 
 export const vision =
-  "To become Somalia's leading national institution for fiscal research, capacity-building, and policy innovation - a trusted partner that enables government, citizens, and development actors to co-create effective and equitable fiscal solutions.";
+  "A trusted national leader in fiscal research, capacity-building, and policy innovation.";
 
 export const pillars = [
   {
