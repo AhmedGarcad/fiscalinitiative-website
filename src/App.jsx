@@ -14,6 +14,7 @@ import AboutPage from "./components/AboutPage";
 import TeamPage from "./components/TeamPage";
 import FundingPage from "./components/FundingPage";
 import ContactPage from "./components/ContactPage";
+import WorkWithUs from "./components/WorkWithUs";
 import ResearchFocus from "./components/ResearchFocus";
 import CapacityDevelopment from "./components/CapacityDevelopment";
 import Forums from "./components/Forums";
@@ -46,6 +47,7 @@ export default function App() {
 
         <Route path="/about" element={<AboutPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/work-with-us" element={<WorkWithUs />} />
         <Route path="/funding" element={<FundingPage />} />
         <Route path="/contact" element={<ContactPage />} />
 

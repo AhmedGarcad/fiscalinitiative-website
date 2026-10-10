@@ -46,10 +46,10 @@ export default function PublicationDetail() {
     return (
       <section className="pt-40 px-6 min-h-screen bg-gray-50">
         <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow p-8">
-          <h1 className="text-3xl font-black text-green-950 mb-4">
+          <h1 className="text-3xl font-black text-blue-950 mb-4">
             Content not found
           </h1>
-          <Link to="/publications" className="text-green-700 font-semibold">
+          <Link to="/publications" className="text-blue-700 font-semibold">
             Back to publications
           </Link>
         </div>
@@ -59,7 +59,7 @@ export default function PublicationDetail() {
 
   const hasPdf = publication.file_url && publication.file_type === "pdf";
   const hasVideo = publication.video_url || publication.file_type === "video";
-  const isMedia = publication.content_type === "media";
+  const isMedia = ["video", "photo"].includes(publication.content_type);
   const hasAttachment =
     publication.image_url || publication.file_url || publication.video_url;
 
@@ -76,11 +76,11 @@ export default function PublicationDetail() {
           )}
 
           <div className="p-8 md:p-12">
-            <p className="text-xs uppercase tracking-[0.3em] text-green-700 mb-5">
+            <p className="text-xs uppercase tracking-[0.3em] text-blue-700 mb-5">
               {formatType(publication.content_type)}
             </p>
 
-            <h1 className="text-4xl md:text-6xl font-black text-green-950 mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-black text-blue-950 mb-6 leading-tight">
               {publication.title}
             </h1>
 
@@ -96,7 +96,7 @@ export default function PublicationDetail() {
                   href={publication.file_url}
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-green-800 text-white px-5 py-3 rounded-xl font-semibold"
+                  className="bg-blue-800 text-white px-5 py-3 rounded-xl font-semibold"
                 >
                   Open PDF
                 </a>
@@ -107,7 +107,7 @@ export default function PublicationDetail() {
                   href={publication.file_url}
                   target="_blank"
                   rel="noreferrer"
-                  className="border border-green-800 text-green-900 px-5 py-3 rounded-xl font-semibold"
+                  className="border border-blue-800 text-blue-900 px-5 py-3 rounded-xl font-semibold"
                 >
                   Download File
                 </a>
@@ -118,7 +118,7 @@ export default function PublicationDetail() {
                   href={publication.video_url}
                   target="_blank"
                   rel="noreferrer"
-                  className="border border-yellow-600 text-yellow-700 px-5 py-3 rounded-xl font-semibold"
+                  className="border border-sky-600 text-sky-700 px-5 py-3 rounded-xl font-semibold"
                 >
                   Open Video
                 </a>
@@ -132,7 +132,7 @@ export default function PublicationDetail() {
             )}
 
             {isMedia && !hasAttachment && (
-              <div className="rounded-2xl border border-yellow-200 bg-yellow-50 p-6 text-yellow-950 mb-12">
+              <div className="rounded-2xl border border-sky-200 bg-sky-50 p-6 text-sky-950 mb-12">
                 <h2 className="text-xl font-bold mb-2">
                   No media file is attached yet
                 </h2>
@@ -144,7 +144,7 @@ export default function PublicationDetail() {
 
             {hasPdf && (
               <section className="mb-14">
-                <h2 className="text-2xl font-bold text-green-900 mb-5">
+                <h2 className="text-2xl font-bold text-blue-900 mb-5">
                   PDF Report
                 </h2>
 
@@ -158,7 +158,7 @@ export default function PublicationDetail() {
 
             {hasVideo && (
               <section className="mb-4">
-                <h2 className="text-2xl font-bold text-green-900 mb-5">
+                <h2 className="text-2xl font-bold text-blue-900 mb-5">
                   Video
                 </h2>
 

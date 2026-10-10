@@ -1,32 +1,10 @@
 import SupabaseContentGrid from "./SupabaseContentGrid";
+import { publicationGroups } from "../content/siteContent";
 import { profileAssets } from "../content/profileAssets";
 
-const publicationGroups = [
-  {
-    title: "Policy Briefs",
-    text: "Short, actionable analysis for decision-makers and fiscal reform partners.",
-  },
-  {
-    title: "Policy Reports",
-    text: "Deeper research on revenue, expenditure, fiscal federalism, and public finance systems.",
-  },
-  {
-    title: "Fiscal Outlook Notes",
-    text: "Accessible updates on Somalia's fiscal performance and macro-fiscal trends.",
-  },
-  {
-    title: "Applied Research Papers",
-    text: "Evidence-driven work on taxation, debt sustainability, informal economy, and climate finance.",
-  },
-  {
-    title: "Citizen Budget Explainers",
-    text: "Plain-language materials that make public finance easier for citizens to understand.",
-  },
-  {
-    title: "Young Economist Voices",
-    text: "Emerging Somali economists contributing analysis, commentary, and policy ideas.",
-  },
-];
+const allContentTypes = publicationGroups.flatMap((group) =>
+  group.types.map((type) => type.contentType)
+);
 
 export default function Publications() {
   return (
@@ -37,15 +15,15 @@ export default function Publications() {
           alt=""
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#041f1d]/95 via-[#075a52]/80 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071427]/95 via-[#0B6FA6]/80 to-black/20" />
         <div className="relative max-w-7xl mx-auto px-6 py-24 text-white">
-          <p className="text-xs uppercase tracking-[0.28em] text-yellow-300 mb-5">
+          <p className="text-xs uppercase tracking-[0.28em] text-sky-300 mb-5">
             Evidence Library
           </p>
           <h1 className="text-5xl md:text-7xl font-black leading-none mb-6">
             Publications
           </h1>
-          <p className="max-w-2xl text-green-50 text-lg leading-relaxed">
+          <p className="max-w-2xl text-blue-50 text-lg leading-relaxed">
             Accessible, policy-relevant analysis for decision-makers,
             institutions, researchers, and citizens.
           </p>
@@ -54,18 +32,30 @@ export default function Publications() {
 
       <div className="max-w-7xl mx-auto px-6 py-20">
         <SupabaseContentGrid
-          contentTypes={[
-            "publication",
-            "policy_brief",
-            "report",
-            "research_paper",
-            "fiscal_outlook",
-            "citizen_explainer",
-          ]}
+          contentTypes={allContentTypes}
           fallback={
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {publicationGroups.map((item, index) => (
-                <PublicationCard key={item.title} item={item} index={index + 1} />
+            <div className="space-y-20">
+              {publicationGroups.map((group) => (
+                <div key={group.id} id={group.id} className="scroll-mt-40">
+                  <div className="max-w-3xl mb-10">
+                    <p className="text-xs uppercase tracking-[0.28em] text-blue-700 font-semibold mb-4">
+                      {group.title}
+                    </p>
+                    <p className="text-gray-600 text-lg leading-relaxed">
+                      {group.description}
+                    </p>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {group.types.map((type, index) => (
+                      <PublicationCard
+                        key={type.title}
+                        item={type}
+                        index={index + 1}
+                      />
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           }
@@ -78,14 +68,13 @@ export default function Publications() {
 function PublicationCard({ item, index }) {
   return (
     <div className="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-xl transition border border-slate-100">
-      <p className="text-xs font-black text-yellow-600 mb-6">
+      <p className="text-xs font-black text-sky-600 mb-6">
         {String(index).padStart(2, "0")}
       </p>
-      <h4 className="text-2xl font-bold text-green-900 mb-4">{item.title}</h4>
-      <p className="text-gray-600 text-sm leading-relaxed">{item.text}</p>
-      <button className="mt-6 text-green-700 font-bold hover:underline">
-        View Publications
-      </button>
+      <h4 className="text-2xl font-bold text-blue-900 mb-4">{item.title}</h4>
+      <p className="text-gray-600 text-sm leading-relaxed">
+        {item.description}
+      </p>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import PageWrapper from "./PageWrapper";
 export default function PageLayout({ children }) {
   return (
     <PageWrapper>
-      <section className="py-24 bg-[#F7F9F8]">
+      <section className="py-24 bg-[#F5F8FC]">
         <div className="max-w-7xl mx-auto px-6">
           {children}
         </div>

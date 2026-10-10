@@ -1,17 +1,98 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.jpeg";
-import { organization } from "../content/siteContent";
+import { organization, researchAreas, programs, forums, publicationGroups } from "../content/siteContent";
+import { slugify } from "../lib/slugify";
 
 const searchItems = [
   { label: "About Fiscal Initiative", to: "/about" },
-  { label: "Leadership", to: "/team" },
+  { label: "FI Team", to: "/team" },
+  { label: "Work With Us", to: "/work-with-us" },
+  { label: "Our Funding", to: "/funding" },
+  { label: "Contact Us", to: "/contact" },
   { label: "Research Focus", to: "/research" },
+  ...researchAreas.map((area) => ({
+    label: area.title,
+    to: `/research#${slugify(area.title)}`,
+  })),
   { label: "Capacity Development", to: "/capacity" },
-  { label: "Policy Forums", to: "/forums" },
+  ...programs.map((program) => ({
+    label: program.title,
+    to: `/capacity#${slugify(program.title)}`,
+  })),
+  { label: "Forums", to: "/forums" },
+  ...forums.map((forum) => ({
+    label: forum.title,
+    to: `/forums#${slugify(forum.title)}`,
+  })),
   { label: "Publications", to: "/publications" },
   { label: "Media", to: "/media" },
-  { label: "Contact", to: "/contact" },
+];
+
+const menus = [
+  {
+    id: "about",
+    label: "ABOUT US",
+    items: [
+      { label: "About Us", to: "/about" },
+      { label: "FI Team", to: "/team" },
+      { label: "Our Funding", to: "/funding" },
+      { label: "Work With Us", to: "/work-with-us" },
+      { label: "Contact Us", to: "/contact" },
+    ],
+  },
+  {
+    id: "research",
+    label: "RESEARCH FOCUS",
+    items: [
+      { label: "Research Focus", to: "/research" },
+      ...researchAreas.map((area) => ({
+        label: area.title,
+        to: `/research#${slugify(area.title)}`,
+      })),
+    ],
+  },
+  {
+    id: "capacity",
+    label: "CAPACITY DEVELOPMENT",
+    items: [
+      { label: "Capacity Development", to: "/capacity" },
+      ...programs.map((program) => ({
+        label: program.title,
+        to: `/capacity#${slugify(program.title)}`,
+      })),
+    ],
+  },
+  {
+    id: "forums",
+    label: "FORUMS",
+    items: [
+      { label: "Forums", to: "/forums" },
+      ...forums.map((forum) => ({
+        label: forum.title,
+        to: `/forums#${slugify(forum.title)}`,
+      })),
+    ],
+  },
+  {
+    id: "publications",
+    label: "PUBLICATIONS",
+    columns: publicationGroups.map((group) => ({
+      title: group.title,
+      items: group.types.map((type) => ({
+        label: type.title,
+        to: `/publications#${group.id}`,
+      })),
+    })),
+  },
+  {
+    id: "media",
+    label: "MEDIA",
+    items: [
+      { label: "Videos", to: "/media#videos" },
+      { label: "Photos", to: "/media#photos" },
+    ],
+  },
 ];
 
 export default function NavBar() {
@@ -50,7 +131,7 @@ export default function NavBar() {
                 {organization.shortName}
               </h1>
 
-              <p className="text-xs md:text-sm text-green-700">
+              <p className="text-xs md:text-sm text-blue-700">
                 Evidence for Somalia's Fiscal Future
               </p>
             </div>
@@ -63,14 +144,14 @@ export default function NavBar() {
 
             <button
               onClick={() => setSearchOpen(true)}
-              className="text-gray-600 hover:text-green-700 text-sm font-semibold"
+              className="text-gray-600 hover:text-blue-700 text-sm font-semibold"
               aria-label="Open search"
             >
               Search
             </button>
 
             <button
-              className="md:hidden text-sm font-semibold text-green-900"
+              className="md:hidden text-sm font-semibold text-blue-900"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -79,92 +160,65 @@ export default function NavBar() {
           </div>
         </div>
 
-        <div className="h-[3px] bg-gradient-to-r from-yellow-400 via-yellow-600 to-yellow-400" />
+        <div className="h-[3px] bg-gradient-to-r from-sky-400 via-sky-600 to-sky-400" />
       </div>
 
-      <nav
-        className={`${scrolled ? "bg-green-900" : "bg-green-800"} hidden md:block`}
-        onMouseLeave={() => setActiveMenu(null)}
-      >
-        <div className="max-w-7xl mx-auto flex justify-center gap-12 h-14 items-center text-white text-sm">
-          <NavItem label="WHO WE ARE" onHover={() => setActiveMenu("who")} />
-          <NavItem label="WHAT WE DO" onHover={() => setActiveMenu("what")} />
-          <NavItem label="PUBLICATIONS" onHover={() => setActiveMenu("reports")} />
-          <NavItem label="WHERE WE WORK" onHover={() => setActiveMenu("where")} />
-          <NavItem label="WORK WITH US" onHover={() => setActiveMenu("work")} />
-        </div>
+      <nav className={`${scrolled ? "bg-sky-700" : "bg-sky-600"} hidden md:block`}>
+        <div className="max-w-7xl mx-auto flex justify-center gap-10 h-14 items-center text-white text-sm">
+          {menus.map((menu) => (
+            <div
+              key={menu.id}
+              className="relative h-full flex items-center"
+              onMouseEnter={() => setActiveMenu(menu.id)}
+              onMouseLeave={() => setActiveMenu(null)}
+            >
+              <NavItem label={menu.label} active={activeMenu === menu.id} />
 
-        {activeMenu && (
-          <div className="absolute left-0 w-full bg-green-900 text-white shadow-xl">
-            <div className="max-w-7xl mx-auto px-16 py-12 grid grid-cols-4 gap-10">
-              {activeMenu === "who" && (
-                <MegaSection
-                  title="Institution"
-                  items={[
-                    { label: "About Fiscal Initiative", to: "/about" },
-                    { label: "Leadership", to: "/team" },
-                    { label: "Contact", to: "/contact" },
-                  ]}
-                />
-              )}
-
-              {activeMenu === "what" && (
-                <MegaSection
-                  title="Programs"
-                  items={[
-                    { label: "Research", to: "/research" },
-                    { label: "Capacity Development", to: "/capacity" },
-                    { label: "Policy Forums", to: "/forums" },
-                  ]}
-                />
-              )}
-
-              {activeMenu === "reports" && (
-                <MegaSection
-                  title="Publications"
-                  items={[
-                    { label: "Policy Briefs", to: "/publications" },
-                    { label: "Reports", to: "/publications" },
-                    { label: "Research Papers", to: "/publications" },
-                  ]}
-                />
-              )}
-
-              {activeMenu === "where" && (
-                <MegaSection
-                  title="Focus"
-                  items={[
-                    { label: "Somalia", to: "/research" },
-                    { label: "Federal Institutions", to: "/capacity" },
-                    { label: "State-Level Dialogues", to: "/forums" },
-                  ]}
-                />
-              )}
-
-              {activeMenu === "work" && (
-                <MegaSection
-                  title="Engage"
-                  items={[
-                    { label: "Young Economist Program", to: "/capacity" },
-                    { label: "Partnerships", to: "/contact" },
-                    { label: "Media", to: "/media" },
-                  ]}
-                />
+              {activeMenu === menu.id && (
+                <div className="absolute top-full left-0 bg-white text-gray-800 shadow-xl rounded-b-lg border border-slate-100 py-3 flex gap-10 z-50">
+                  {menu.columns
+                    ? menu.columns.map((column, index) => (
+                        <MegaSection
+                          key={column.title || index}
+                          title={column.title}
+                          items={column.items}
+                          onNavigate={() => setActiveMenu(null)}
+                        />
+                      ))
+                    : (
+                        <MegaSection
+                          items={menu.items}
+                          onNavigate={() => setActiveMenu(null)}
+                        />
+                      )}
+                </div>
               )}
             </div>
-          </div>
-        )}
+          ))}
+        </div>
       </nav>
 
       {mobileOpen && (
-        <div className="md:hidden bg-green-900 text-white px-6 py-6 space-y-4 shadow-xl">
-          {searchItems.map((item) => (
-            <MobileLink
-              key={item.to}
-              to={item.to}
-              label={item.label}
-              setMobileOpen={setMobileOpen}
-            />
+        <div className="md:hidden bg-blue-900 text-white px-6 py-6 space-y-4 shadow-xl max-h-[70vh] overflow-y-auto">
+          {menus.map((menu) => (
+            <div key={menu.id}>
+              <p className="text-xs uppercase tracking-widest text-sky-300 mb-2">
+                {menu.label}
+              </p>
+              <div className="space-y-2 mb-4">
+                {(menu.columns
+                  ? menu.columns.flatMap((column) => column.items)
+                  : menu.items
+                ).map((item) => (
+                  <MobileLink
+                    key={item.label}
+                    to={item.to}
+                    label={item.label}
+                    setMobileOpen={setMobileOpen}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       )}
@@ -179,7 +233,7 @@ export default function NavBar() {
 
               <button
                 onClick={() => setSearchOpen(false)}
-                className="text-gray-500 text-sm font-semibold hover:text-green-800"
+                className="text-gray-500 text-sm font-semibold hover:text-blue-800"
               >
                 Close
               </button>
@@ -194,13 +248,13 @@ export default function NavBar() {
               autoFocus
             />
 
-            <div className="mt-6 space-y-3 text-sm">
+            <div className="mt-6 space-y-3 text-sm max-h-[50vh] overflow-y-auto">
               {filteredItems.map((item) => (
                 <Link
                   key={item.to}
                   to={item.to}
                   onClick={() => setSearchOpen(false)}
-                  className="block hover:text-green-700"
+                  className="block hover:text-blue-700"
                 >
                   {item.label}
                 </Link>
@@ -217,23 +271,38 @@ export default function NavBar() {
   );
 }
 
-function NavItem({ label, onHover }) {
+function NavItem({ label, active }) {
   return (
-    <button onMouseEnter={onHover} className="hover:text-yellow-400">
+    <button
+      className={`h-full flex items-center gap-1 px-1 font-medium transition ${
+        active ? "text-white" : "text-white/90 hover:text-white"
+      }`}
+    >
       {label}
+      <span className={`text-[10px] transition ${active ? "rotate-180" : ""}`}>
+        ▾
+      </span>
     </button>
   );
 }
 
-function MegaSection({ title, items }) {
+function MegaSection({ title, items, onNavigate }) {
   return (
-    <div>
-      <h4 className="text-yellow-400 text-xs uppercase mb-4">{title}</h4>
+    <div className="min-w-[220px]">
+      {title && (
+        <h4 className="text-sky-600 text-xs uppercase font-semibold px-5 pb-2 mb-1 border-b border-slate-100">
+          {title}
+        </h4>
+      )}
 
-      <ul className="space-y-2 text-sm">
+      <ul>
         {items.map((item) => (
-          <li key={item.to}>
-            <Link to={item.to} className="hover:text-yellow-300">
+          <li key={item.label}>
+            <Link
+              to={item.to}
+              className="block px-5 py-2 text-sm hover:bg-sky-50 hover:text-sky-700 transition whitespace-nowrap"
+              onClick={onNavigate}
+            >
               {item.label}
             </Link>
           </li>
@@ -248,7 +317,7 @@ function MobileLink({ to, label, setMobileOpen }) {
     <Link
       to={to}
       onClick={() => setMobileOpen(false)}
-      className="block hover:text-yellow-300"
+      className="block hover:text-sky-300"
     >
       {label}
     </Link>

@@ -8,7 +8,7 @@ export default function HomeResearch() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-[420px_1fr] gap-10 items-start">
           <div className="sticky top-44">
-            <p className="text-xs uppercase tracking-[0.28em] text-green-700 font-semibold mb-4">
+            <p className="text-xs uppercase tracking-[0.28em] text-blue-700 font-semibold mb-4">
               Research Focus
             </p>
             <h2 className="text-4xl md:text-5xl font-black text-gray-950 leading-tight mb-6">
@@ -28,15 +28,15 @@ export default function HomeResearch() {
 
           <div>
             <div className="grid md:grid-cols-2 gap-5">
-              {researchAreas.slice(0, 8).map((area, index) => (
-                <Card key={area} title={area} index={index + 1} />
+              {researchAreas.map((area, index) => (
+                <Card key={area.title} title={area.title} index={index + 1} />
               ))}
             </div>
 
             <div className="mt-10">
               <Link
                 to="/research"
-                className="inline-block bg-[#0B2E25] text-white px-8 py-4 rounded-md hover:bg-[#134438] transition font-semibold"
+                className="inline-block bg-[#0B2A4A] text-white px-8 py-4 rounded-md hover:bg-[#123A63] transition font-semibold"
               >
                 View All Research
               </Link>
@@ -51,7 +51,7 @@ export default function HomeResearch() {
 function Card({ title, index }) {
   return (
     <div className="bg-white p-7 rounded-xl shadow-sm hover:shadow-xl transition border border-slate-100">
-      <p className="text-xs font-bold text-yellow-600 mb-5">
+      <p className="text-xs font-bold text-sky-600 mb-5">
         {String(index).padStart(2, "0")}
       </p>
       <h3 className="text-xl font-bold text-gray-900">{title}</h3>

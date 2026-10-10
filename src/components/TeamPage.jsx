@@ -1,20 +1,15 @@
-const leadershipAreas = [
-  {
-    title: "Strategic Leadership",
-    description:
-      "Guides FI's institutional direction, partnerships, governance standards, and long-term fiscal reform contribution.",
-  },
-  {
-    title: "Research & Policy Analysis",
-    description:
-      "Leads applied research on revenue mobilization, public financial management, fiscal federalism, and macro-fiscal policy.",
-  },
-  {
-    title: "Capacity & Dialogue Programs",
-    description:
-      "Coordinates workshops, convenings, and learning platforms that connect Somali institutions, experts, and citizens.",
-  },
-];
+import { useState } from "react";
+import PageBanner from "./PageBanner";
+import SectionHeading from "./SectionHeading";
+import TeamMemberGrid from "./TeamMemberGrid";
+import { teamGroups } from "../content/siteContent";
+import { profileAssets } from "../content/profileAssets";
+
+const groupContentType = {
+  board: "board_member",
+  management: "management_member",
+  advisors: "advisor",
+};
 
 const operatingValues = [
   "Non-partisan evidence",
@@ -24,49 +19,75 @@ const operatingValues = [
 ];
 
 export default function TeamPage() {
+  const [active, setActive] = useState(teamGroups[0].id);
+  const activeGroup = teamGroups.find((group) => group.id === active);
+
   return (
-    <section className="pt-32 pb-20 bg-gray-50 min-h-screen">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-green-800 mb-4">
-            Leadership & Expertise
-          </h1>
-          <p className="text-gray-600 max-w-3xl mx-auto">
-            Fiscal Initiative brings together fiscal policy, public finance,
-            research, and convening expertise to support Somalia's fiscal
-            governance ecosystem.
+    <div>
+      <PageBanner
+        title="FI Team"
+        subtitle="Fiscal policy, public finance, research, and convening expertise supporting Somalia's fiscal governance ecosystem."
+        background={profileAssets.pillars}
+      />
+
+      <section className="py-24 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <SectionHeading eyebrow="FI Team" title={activeGroup.title} />
+
+          <div className="flex flex-wrap justify-center gap-3 -mt-6 mb-12">
+            {teamGroups.map((group) => (
+              <button
+                key={group.id}
+                onClick={() => setActive(group.id)}
+                className={`px-6 py-3 rounded-full text-sm font-semibold transition ${
+                  active === group.id
+                    ? "bg-[#0B2A4A] text-white"
+                    : "bg-white text-gray-700 border border-slate-200 hover:border-blue-300"
+                }`}
+              >
+                {group.title}
+              </button>
+            ))}
+          </div>
+
+          <p className="max-w-2xl mx-auto text-center text-gray-600 leading-relaxed mb-16">
+            {activeGroup.description}
           </p>
-        </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {leadershipAreas.map((area) => (
-            <div
-              key={area.title}
-              className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
-            >
-              <h3 className="text-lg font-bold text-gray-800">{area.title}</h3>
-              <div className="w-10 h-1 bg-green-700 my-4" />
-              <p className="text-gray-600 text-sm leading-relaxed">
-                {area.description}
-              </p>
-            </div>
-          ))}
+          <TeamMemberGrid
+            contentType={groupContentType[active]}
+            fallback={
+              <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center">
+                <h3 className="text-xl font-bold text-blue-900 mb-3">
+                  {activeGroup.title} profiles coming soon
+                </h3>
+                <p className="text-gray-600 max-w-xl mx-auto">
+                  Profiles for FI's {activeGroup.title.toLowerCase()} will
+                  appear here as they are added.
+                </p>
+              </div>
+            }
+          />
         </div>
+      </section>
 
-        <div className="bg-[#0B2E25] rounded-xl p-8 md:p-10 text-white">
-          <h2 className="text-2xl font-semibold mb-6">How FI Works</h2>
+      <section className="py-20 bg-[#0B2A4A] text-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-2xl font-semibold mb-8 text-center">
+            How FI Works
+          </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {operatingValues.map((value) => (
               <div
                 key={value}
-                className="border border-white/15 bg-white/5 rounded-lg p-4 text-sm text-green-50"
+                className="border border-white/15 bg-white/5 rounded-lg p-4 text-sm text-blue-50 text-center"
               >
                 {value}
               </div>
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

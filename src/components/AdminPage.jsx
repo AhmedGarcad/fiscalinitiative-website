@@ -2,18 +2,26 @@ import { useCallback, useEffect, useState } from "react";
 import { supabase, isSupabaseConfigured } from "../lib/supabaseClient";
 
 const contentTypes = [
+  { value: "expert_commentary", label: "Expert Commentary" },
+  { value: "young_economist_voice", label: "Young Economist Voice" },
+  { value: "budget_insight", label: "Budget Insight" },
   { value: "policy_brief", label: "Policy Brief" },
-  { value: "report", label: "Report" },
-  { value: "research_paper", label: "Research Paper" },
-  { value: "fiscal_outlook", label: "Fiscal Outlook" },
-  { value: "citizen_explainer", label: "Citizen Explainer" },
-  { value: "media", label: "Media" },
-  { value: "program", label: "Program" },
+  { value: "policy_report", label: "Policy Report" },
+  { value: "special_issue", label: "Special Issue" },
+  { value: "occasional_paper", label: "Occasional Empirical Paper" },
+  { value: "book_monograph", label: "Book / Monograph" },
+  { value: "research", label: "Research Focus Item" },
+  { value: "video", label: "Media - Video" },
+  { value: "photo", label: "Media - Photo" },
+  { value: "program", label: "Capacity Development Program" },
   { value: "forum", label: "Forum" },
+  { value: "board_member", label: "Team - Board Member" },
+  { value: "management_member", label: "Team - Management Member" },
+  { value: "advisor", label: "Team - Honorary Advisor" },
 ];
 
 const initialForm = {
-  content_type: "report",
+  content_type: "policy_brief",
   title: "",
   summary: "",
   body: "",
@@ -174,11 +182,11 @@ export default function AdminPage() {
     }
 
     if (
-      contentForm.content_type === "media" &&
+      ["video", "photo"].includes(contentForm.content_type) &&
       !hasAttachedMedia(contentForm)
     ) {
       setMessage(
-        "Media content needs an uploaded image, uploaded video, PDF/file, or YouTube URL before publishing."
+        "Video and Photo content need an uploaded image, uploaded video, PDF/file, or YouTube URL before publishing."
       );
       setLoading(false);
       return;
@@ -230,7 +238,7 @@ export default function AdminPage() {
         <div className="max-w-3xl mx-auto px-6">
           <div className="bg-white rounded-xl shadow p-8">
 
-            <h1 className="text-3xl font-bold text-green-900 mb-4">
+            <h1 className="text-3xl font-bold text-blue-900 mb-4">
               Supabase Not Configured
             </h1>
 
@@ -252,7 +260,7 @@ export default function AdminPage() {
 
           <div className="bg-white rounded-xl shadow p-8">
 
-            <h1 className="text-3xl font-bold text-green-900 mb-2">
+            <h1 className="text-3xl font-bold text-blue-900 mb-2">
               Admin Access
             </h1>
 
@@ -298,7 +306,7 @@ export default function AdminPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-green-800 text-white rounded-lg px-4 py-3"
+                className="w-full bg-blue-800 text-white rounded-lg px-4 py-3"
               >
                 {loading
                   ? "Please wait..."
@@ -318,7 +326,7 @@ export default function AdminPage() {
                     : "login"
                 )
               }
-              className="mt-5 text-sm text-green-700 hover:underline"
+              className="mt-5 text-sm text-blue-700 hover:underline"
             >
               {mode === "login"
                 ? "Need an account? Sign up"
@@ -345,18 +353,18 @@ export default function AdminPage() {
         <div className="flex items-center justify-between mb-10">
 
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-green-700 mb-3">
+            <p className="text-xs uppercase tracking-[0.25em] text-blue-700 mb-3">
               Supabase CMS
             </p>
 
-            <h1 className="text-4xl font-bold text-green-900">
+            <h1 className="text-4xl font-bold text-blue-900">
               Fiscal Initiative Admin
             </h1>
           </div>
 
           <button
             onClick={handleSignOut}
-            className="border border-green-800 text-green-900 px-5 py-2 rounded-lg"
+            className="border border-blue-800 text-blue-900 px-5 py-2 rounded-lg"
           >
             Sign Out
           </button>
@@ -582,7 +590,7 @@ export default function AdminPage() {
 
                     setContentForm((prev) => ({
                       ...prev,
-                      content_type: "media",
+                      content_type: "video",
                       video_url: url,
                       file_type: "video",
                     }));
@@ -613,7 +621,7 @@ export default function AdminPage() {
                     ...prev,
                     content_type: event.target
                       .value
-                      ? "media"
+                      ? "video"
                       : prev.content_type,
                     video_url:
                       event.target.value,
@@ -649,17 +657,17 @@ export default function AdminPage() {
 
             </label>
 
-            {contentForm.content_type === "media" &&
+            {["video", "photo"].includes(contentForm.content_type) &&
               !hasAttachedMedia(contentForm) && (
-                <div className="rounded-xl border border-yellow-200 bg-yellow-50 p-4 text-sm text-yellow-900">
-                  Media pages need a visible attachment. Upload a video or image, or paste a YouTube URL, before pressing Upload Content.
+                <div className="rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-900">
+                  Video and Photo pages need a visible attachment. Upload a video or image, or paste a YouTube URL, before pressing Upload Content.
                 </div>
               )}
 
             {(contentForm.file_url ||
               contentForm.image_url ||
               contentForm.video_url) && (
-              <div className="rounded-xl border border-green-100 bg-green-50 p-4 text-sm text-green-900 space-y-2">
+              <div className="rounded-xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900 space-y-2">
                 <p className="font-semibold">Attached files ready:</p>
 
                 {contentForm.file_url && (
@@ -702,7 +710,7 @@ export default function AdminPage() {
               disabled={
                 loading || uploading
               }
-              className="bg-green-800 text-white rounded-lg px-6 py-3"
+              className="bg-blue-800 text-white rounded-lg px-6 py-3"
             >
               {uploading
                 ? "Uploading..."
@@ -733,7 +741,7 @@ export default function AdminPage() {
                   className="border-b pb-4"
                 >
 
-                  <p className="text-xs uppercase tracking-wide text-green-700">
+                  <p className="text-xs uppercase tracking-wide text-blue-700">
                     {item.content_type}
                   </p>
 
@@ -749,12 +757,12 @@ export default function AdminPage() {
 
                   <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
                     {item.file_url && (
-                      <span className="rounded-full bg-green-50 px-2 py-1 text-green-800">
+                      <span className="rounded-full bg-blue-50 px-2 py-1 text-blue-800">
                         File
                       </span>
                     )}
                     {item.video_url && (
-                      <span className="rounded-full bg-yellow-50 px-2 py-1 text-yellow-800">
+                      <span className="rounded-full bg-sky-50 px-2 py-1 text-sky-800">
                         Video
                       </span>
                     )}
@@ -773,7 +781,7 @@ export default function AdminPage() {
                   {item.slug && (
                     <a
                       href={`/content/${item.slug}`}
-                      className="mt-3 inline-block text-xs font-semibold text-green-700 hover:underline"
+                      className="mt-3 inline-block text-xs font-semibold text-blue-700 hover:underline"
                     >
                       View page
                     </a>
