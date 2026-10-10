@@ -139,7 +139,7 @@ export default function NavBar() {
               </h1>
 
               <p className="site-tagline mt-1 text-[11px] text-white/90 md:text-sm">
-                Evidence for Somalia’s Fiscal Governance.
+                Building Trust, Igniting Growth
               </p>
             </div>
           </Link>

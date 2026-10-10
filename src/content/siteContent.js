@@ -2,7 +2,7 @@ export const organization = {
   name: "The Fiscal Initiative",
   shortName: "Fiscal Initiative",
   acronym: "FI",
-  tagline: "Building Trust, Building Growth",
+  tagline: "Building Trust, Igniting Growth",
   description:
     "An independent, non-partisan fiscal policy research institute strengthening Somalia's fiscal governance through applied research, institutional capacity building, and inclusive policy dialogue.",
   email: "info@fiscalinitiative.org",
