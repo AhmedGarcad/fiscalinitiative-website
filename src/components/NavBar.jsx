@@ -134,11 +134,11 @@ export default function NavBar() {
             />
 
             <div className="text-left">
-              <h1 className="site-brand text-xl font-semibold tracking-tight md:text-2xl">
+              <h1 className="site-brand text-2xl font-bold leading-none md:text-3xl">
                 {organization.shortName}
               </h1>
 
-              <p className="text-xs text-white/85 md:text-sm">
+              <p className="site-tagline mt-1 text-[11px] text-white/90 md:text-sm">
                 Evidence for Somalia’s Fiscal Governance.
               </p>
             </div>

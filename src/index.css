@@ -1,40 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Open+Sans:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;500;600;700;800&family=Roboto+Condensed:wght@600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  body {
-    font-family: "Open Sans", Arial, sans-serif;
-  }
-
-  h1,
-  h2 {
-    font-family: "Libre Baskerville", Georgia, serif;
-    letter-spacing: -0.025em;
-  }
+  body { font-family: "Open Sans", Arial, sans-serif; }
+  h1, h2 { font-family: "Libre Baskerville", Georgia, serif; letter-spacing: -0.025em; }
 }
 
-.site-brand {
-  font-family: "Open Sans", Arial, sans-serif;
-  letter-spacing: -0.03em;
-}
+.site-brand { font-family: "Roboto Condensed", Arial, sans-serif; letter-spacing: 0.01em; text-transform: uppercase; }
+.site-tagline { font-family: "Libre Baskerville", Georgia, serif; font-style: italic; letter-spacing: 0.01em; }
 
-body {
-  @apply bg-slate-50 text-slate-900;
-}
+body { @apply bg-slate-50 text-slate-900; }
+
 @keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-slideDown {
-  animation: slideDown 0.25s ease forwards;
-}
+.animate-slideDown { animation: slideDown 0.25s ease forwards; }
