@@ -1,4 +1,4 @@
-export default function PageBanner({ title, subtitle, background }) {
+export default function PageBanner({ title, subtitle, background, eyebrow = "The Fiscal Initiative" }) {
   return (
     <section
       className="mt-36 md:mt-[145px] w-full min-h-[360px] md:min-h-[460px] flex items-center text-white relative overflow-hidden"
@@ -13,9 +13,11 @@ export default function PageBanner({ title, subtitle, background }) {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
         <div className="max-w-3xl">
-          <p className="text-xs uppercase tracking-[0.28em] text-white/80 mb-5">
-            The Fiscal Initiative
-          </p>
+          {eyebrow && (
+            <p className="text-xs uppercase tracking-[0.28em] text-white/80 mb-5">
+              {eyebrow}
+            </p>
+          )}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-5 leading-none">
           {title}
         </h1>

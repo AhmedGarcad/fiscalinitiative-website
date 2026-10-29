@@ -11,20 +11,14 @@ export default function ResearchFocus() {
     <div>
       <PageBanner
         title="Our Research"
-        subtitle="Rigorous fiscal analysis designed to strengthen decisions, institutions, and public accountability."
+        eyebrow={null}
         background={profileAssets.guiding}
       />
 
       <section id="research" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-20">
-            <p className="text-xs uppercase tracking-[0.28em] text-emerald-700 font-semibold mb-4">
-              Our Research
-            </p>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-950 leading-tight mb-6">
-              Applied research for Somalia's fiscal governance priorities.
-            </h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
+            <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
               {researchNote}
             </p>
           </div>

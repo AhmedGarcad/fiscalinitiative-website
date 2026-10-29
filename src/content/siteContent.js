@@ -16,7 +16,7 @@ export const mission =
   "To strengthen Somalia's fiscal governance through evidence, capacity, and inclusive policy dialogue.";
 
 export const vision =
-  "A trusted national leader in fiscal research, capacity-building, and policy innovation.";
+  "We at FI strive to contribute to Somalia's economic transformation as a leading national fiscal policy think tank.";
 
 export const pillars = [
   {
@@ -40,7 +40,7 @@ export const approach =
   "FI integrates co-creation, capacity building, and rigorous evidence. By directly engaging Somali institutions, we support local ownership and sustainability through fiscal modelling, tax simulations, expenditure tracking, debt sustainability analysis, and dialogue platforms that connect policymakers, academia, civil society, and citizens.";
 
 export const researchNote =
-  "FI conducts independent and evidence-based research on fiscal policy issues shaping Somalia's resilience and growth. Its work focuses on sustainable fiscal policy, accountable governance, economic resilience, and social services through practical and policy-oriented recommendations. By engaging policymakers, civil society, academics, businesses, and the public, FI aims to contribute towards a more transparent, prosperous, and inclusive development grounded in strong public finance institutions and good governance.";
+  "FI's research is organized into six core areas that reflect the breadth of its policy work: Public Finance, Accountability and Integrity, International Trade and Economic Integration, Inclusive Social Services, Climate and Food Security Resilience, and Digital Public Infrastructure and AI. Each specialty brings together experts and scholars to conduct independent policy and empirical research aimed at strengthening transparent fiscal policy, expanding the government's envelope for critical social services, and safeguarding citizens' needs in fiscal policymaking. This structure enables FI to address fiscal policy challenges with interdisciplinary insights and a commitment to sound governance and inclusive growth.";
 
 export const researchAreas = [
   {

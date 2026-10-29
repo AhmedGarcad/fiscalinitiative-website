@@ -43,7 +43,7 @@ const menus = [
     columns: [
       {
         items: [
-          { label: "About Us", to: "/about" },
+          { label: "About Fiscal Initiative", to: "/about" },
           { label: "FI Team", to: "/team" },
           { label: "Our Funding", to: "/funding" },
         ],
@@ -62,7 +62,7 @@ const menus = [
     columns: [
       {
         items: [
-          { label: "Our Research", to: "/research", icon: "document" },
+          { label: "All Research Areas", to: "/research", icon: "document" },
           ...researchAreas.slice(0, 3).map((area) => ({
             label: area.title,
             to: `/research/${slugify(area.title)}`,
@@ -115,6 +115,7 @@ const menus = [
 export default function NavBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
+  const [mobileSection, setMobileSection] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -231,7 +232,7 @@ export default function NavBar() {
       </nav>
 
       {mobileOpen && (
-        <div className="md:hidden bg-[#00564F] text-white px-6 py-6 space-y-4 shadow-xl max-h-[70vh] overflow-y-auto">
+        <div className="md:hidden bg-[#00564F] text-white px-6 py-3 shadow-xl max-h-[75vh] overflow-y-auto divide-y divide-white/10">
           {menus.map((menu) => (
             <div key={menu.id}>
               {menu.to ? (
@@ -239,25 +240,42 @@ export default function NavBar() {
                   to={menu.to}
                   label={menu.label}
                   setMobileOpen={setMobileOpen}
+                  className="block py-4 text-base font-semibold hover:text-white/75"
                 />
               ) : (
                 <>
-                  <p className="text-xs uppercase tracking-widest text-white/80 mb-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setMobileSection((current) => (current === menu.id ? null : menu.id))
+                    }
+                    aria-expanded={mobileSection === menu.id}
+                    className="w-full flex items-center justify-between py-4 text-base font-semibold"
+                  >
                     {menu.label}
-                  </p>
-                  <div className="space-y-2 mb-4">
-                    {(menu.columns
-                      ? menu.columns.flatMap((column) => column.items)
-                      : menu.items
-                    ).map((item) => (
-                      <MobileLink
-                        key={item.label}
-                        to={item.to}
-                        label={item.label}
-                        setMobileOpen={setMobileOpen}
-                      />
-                    ))}
-                  </div>
+                    <span
+                      className={`text-white/70 transition-transform duration-200 ${
+                        mobileSection === menu.id ? "rotate-180" : ""
+                      }`}
+                    >
+                      ▾
+                    </span>
+                  </button>
+                  {mobileSection === menu.id && (
+                    <div className="space-y-3 pb-4 pl-3 border-l-2 border-white/20 ml-1">
+                      {(menu.columns
+                        ? menu.columns.flatMap((column) => column.items)
+                        : menu.items
+                      ).map((item) => (
+                        <MobileLink
+                          key={item.label}
+                          to={item.to}
+                          label={item.label}
+                          setMobileOpen={setMobileOpen}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </>
               )}
             </div>
@@ -362,12 +380,12 @@ function MegaSection({ title, items, onNavigate }) {
   );
 }
 
-function MobileLink({ to, label, setMobileOpen }) {
+function MobileLink({ to, label, setMobileOpen, className = "block text-white/90 hover:text-white" }) {
   return (
     <Link
       to={to}
       onClick={() => setMobileOpen(false)}
-      className="block hover:text-white/75"
+      className={className}
     >
       {label}
     </Link>
