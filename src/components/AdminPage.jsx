@@ -43,7 +43,6 @@ function hasAttachedMedia(form) {
 export default function AdminPage() {
   const [session, setSession] = useState(null);
 
-  const [mode, setMode] = useState("login");
 
   const [authForm, setAuthForm] = useState({
     email: "",
@@ -142,24 +141,12 @@ export default function AdminPage() {
 
     setMessage("");
 
-    const action =
-      mode === "login"
-        ? supabase.auth.signInWithPassword(
-            authForm
-          )
-        : supabase.auth.signUp(authForm);
+    const { error } =
+      await supabase.auth.signInWithPassword(authForm);
 
-    const { error } = await action;
-
-    if (error) {
-      setMessage(error.message);
-    } else {
-      setMessage(
-        mode === "login"
-          ? "Logged in successfully."
-          : "Account created successfully."
-      );
-    }
+    setMessage(
+      error ? error.message : "Logged in successfully."
+    );
 
     setLoading(false);
   }
@@ -308,30 +295,10 @@ export default function AdminPage() {
                 disabled={loading}
                 className="w-full bg-emerald-800 text-white rounded-lg px-4 py-3"
               >
-                {loading
-                  ? "Please wait..."
-                  : mode === "login"
-                  ? "Login"
-                  : "Sign Up"}
+                {loading ? "Please wait..." : "Login"}
               </button>
 
             </form>
-
-            <button
-              type="button"
-              onClick={() =>
-                setMode(
-                  mode === "login"
-                    ? "signup"
-                    : "login"
-                )
-              }
-              className="mt-5 text-sm text-emerald-700 hover:underline"
-            >
-              {mode === "login"
-                ? "Need an account? Sign up"
-                : "Already have an account? Login"}
-            </button>
 
             {message && (
               <p className="mt-4 text-sm text-gray-600">

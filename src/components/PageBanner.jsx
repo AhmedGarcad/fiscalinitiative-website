@@ -1,5 +1,12 @@
 // Banners use a plain brand colour; callers may still pass a `background` image, which is ignored.
 export default function PageBanner({ title, subtitle, eyebrow = "The Fiscal Initiative" }) {
+  // Without a title the banner is just a slim strip of brand colour.
+  if (!title) {
+    return (
+      <section className="mt-20 md:mt-[172px] w-full h-28 md:h-40 bg-gradient-to-r from-[#004D47] to-[#00796F]" />
+    );
+  }
+
   return (
     <section className="mt-36 md:mt-[145px] w-full min-h-[300px] md:min-h-[380px] flex items-center text-white relative overflow-hidden bg-gradient-to-r from-[#004D47] to-[#00796F]">
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">

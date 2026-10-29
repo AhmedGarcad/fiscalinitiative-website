@@ -1,16 +1,11 @@
 import PageBanner from "./PageBanner";
 import IconLinkGrid from "./IconLinkGrid";
 import { aboutSections, organization } from "../content/siteContent";
-import { profileAssets } from "../content/profileAssets";
 
 export default function AboutPage() {
   return (
     <div>
-      <PageBanner
-        title="About Fiscal Initiative"
-        subtitle="Advancing fiscal governance, transparency, and evidence-based policy in Somalia."
-        background={profileAssets.cover}
-      />
+      <PageBanner />
 
       <section className="py-24 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
