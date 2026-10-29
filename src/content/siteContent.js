@@ -286,12 +286,6 @@ export const teamMembers = [
     email: "uweis.ali@fiscalinitiative.com",
   },
   {
-    name: "Abdihakim Ainte",
-    title: "Founding Associate",
-    phone: "+254 743 145 035",
-    email: "abdihakim.ainte@fiscalinitiative.com",
-  },
-  {
     name: "Sadia Osman",
     title: "Admin and Finance Manager",
     phone: "+252 61 289 6434",
@@ -392,3 +386,18 @@ export const eventGroups = [
 export const events = eventGroups.flatMap((group) =>
   group.items.map((item) => ({ ...item, group: group.title }))
 );
+
+export const boardMembers = [
+  {
+    name: "Dr. Uweis Abdulahi Ali",
+    title: "Co-founder and Board Member",
+    phone: "+252 61 380 8055",
+    email: "uweis.ali@fiscalinitiative.com",
+  },
+  {
+    name: "Abdihakim Ainte",
+    title: "Co-founder and Board Member",
+    phone: "+254 743 145 035",
+    email: "abdihakim.ainte@fiscalinitiative.com",
+  },
+];

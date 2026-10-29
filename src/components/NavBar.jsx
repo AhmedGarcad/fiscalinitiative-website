@@ -4,6 +4,7 @@ import logo from "../assets/images/logo.jpeg";
 import IconBadge from "./IconBadge";
 import { organization, researchAreas, programs, forums, publicationGroups, eventGroups } from "../content/siteContent";
 import { slugify } from "../lib/slugify";
+import { useAdminSession } from "../lib/useAdminSession";
 
 const searchItems = [
   { label: "About Fiscal Initiative", to: "/about" },
@@ -59,25 +60,7 @@ const menus = [
   {
     id: "research",
     label: "Our Research",
-    columns: [
-      {
-        items: [
-          { label: "All Research Areas", to: "/research", icon: "document" },
-          ...researchAreas.slice(0, 3).map((area) => ({
-            label: area.title,
-            to: `/research/${slugify(area.title)}`,
-            icon: area.icon,
-          })),
-        ],
-      },
-      {
-        items: researchAreas.slice(3).map((area) => ({
-          label: area.title,
-          to: `/research/${slugify(area.title)}`,
-          icon: area.icon,
-        })),
-      },
-    ],
+    to: "/research",
   },
   {
     id: "forums",
@@ -113,6 +96,8 @@ const menus = [
 ];
 
 export default function NavBar() {
+  const isAdmin = useAdminSession();
+  const visibleMenus = isAdmin ? menus : menus.map(withoutTeamLink);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
   const [mobileSection, setMobileSection] = useState(null);
@@ -129,7 +114,7 @@ export default function NavBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const filteredItems = searchItems.filter((item) =>
+  const filteredItems = searchItems.filter((item) => (isAdmin || item.to !== "/team") &&
     item.label.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -174,7 +159,7 @@ export default function NavBar() {
 
       <nav className={`${scrolled ? "bg-[#00564F]" : "bg-[#006B63]"} hidden border-t border-white/30 md:block`}>
         <div className="relative mx-auto flex h-14 max-w-7xl items-center justify-center gap-5 text-xs text-white lg:gap-8 lg:text-sm xl:gap-10">
-          {menus.map((menu) => (
+          {visibleMenus.map((menu) => (
             <div
               key={menu.id}
               className="relative h-full flex items-center"
@@ -233,7 +218,7 @@ export default function NavBar() {
 
       {mobileOpen && (
         <div className="md:hidden bg-[#00564F] text-white px-6 py-3 shadow-xl max-h-[75vh] overflow-y-auto divide-y divide-white/10">
-          {menus.map((menu) => (
+          {visibleMenus.map((menu) => (
             <div key={menu.id}>
               {menu.to ? (
                 <MobileLink
@@ -390,4 +375,13 @@ function MobileLink({ to, label, setMobileOpen, className = "block text-white/90
       {label}
     </Link>
   );
+}
+
+// The team page is admin-only, so its menu link is hidden from visitors.
+function withoutTeamLink(menu) {
+  const keep = (item) => item.to !== "/team";
+  if (menu.columns) {
+    return { ...menu, columns: menu.columns.map((column) => ({ ...column, items: column.items.filter(keep) })) };
+  }
+  return menu.items ? { ...menu, items: menu.items.filter(keep) } : menu;
 }

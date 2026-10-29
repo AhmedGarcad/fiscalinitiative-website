@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import PageBanner from "./PageBanner";
 import SectionHeading from "./SectionHeading";
 import TeamMemberGrid from "./TeamMemberGrid";
-import { teamGroups, teamMembers } from "../content/siteContent";
+import { boardMembers, teamGroups, teamMembers } from "../content/siteContent";
+import { useAdminSession } from "../lib/useAdminSession";
 import { profileAssets } from "../content/profileAssets";
 import { slugify } from "../lib/slugify";
 
@@ -31,7 +33,15 @@ const operatingValues = [
 
 export default function TeamPage() {
   const [active, setActive] = useState("management");
-  const activeGroup = teamGroups.find((group) => group.id === active);
+  const isAdmin = useAdminSession();
+
+  // The team page is only for people signed in through the admin page.
+  if (isAdmin === null) return null;
+  if (!isAdmin) return <Navigate to="/" replace />;
+
+  const visibleGroups = teamGroups;
+  const activeGroup = visibleGroups.find((group) => group.id === active) || visibleGroups[0];
+  const staticMembers = { management: teamMembers, board: boardMembers };
 
   return (
     <div>
@@ -46,7 +56,7 @@ export default function TeamPage() {
           <SectionHeading eyebrow="FI Team" title={activeGroup.title} />
 
           <div className="flex flex-wrap justify-center gap-3 -mt-6 mb-12">
-            {teamGroups.map((group) => (
+            {visibleGroups.map((group) => (
               <button
                 key={group.id}
                 onClick={() => setActive(group.id)}
@@ -65,10 +75,12 @@ export default function TeamPage() {
             {activeGroup.description}
           </p>
 
-          {active === "management" ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {teamMembers.map((member) => (
-                <TeamMemberCard key={member.email} member={member} />
+          {staticMembers[active] ? (
+            <div className="flex flex-wrap justify-center gap-8">
+              {staticMembers[active].map((member) => (
+                <div key={member.email} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.4rem)]">
+                  <TeamMemberCard member={member} />
+                </div>
               ))}
             </div>
           ) : (

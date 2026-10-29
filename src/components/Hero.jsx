@@ -6,11 +6,7 @@ import { profileAssets } from "../content/profileAssets";
 export default function Hero() {
   return (
     <section className="relative w-full min-h-screen flex items-center overflow-hidden pt-44 md:pt-48">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${profileAssets.cover})` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#003D39]/95 via-[#00796F]/80 to-[#002B28]/50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#003D39] via-[#00635B] to-[#00796F]" />
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">

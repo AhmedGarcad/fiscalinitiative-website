@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { organization, researchAreas } from "../content/siteContent";
 import { slugify } from "../lib/slugify";
+import { useAdminSession } from "../lib/useAdminSession";
 
 export default function Footer() {
+  const isAdmin = useAdminSession();
   return (
     <footer className="relative bg-gradient-to-b from-[#004D47] to-[#003D39] text-white pt-36 pb-20 overflow-hidden">
       <div className="absolute inset-0 bg-black/10" />
@@ -48,7 +50,7 @@ export default function Footer() {
             title="About"
             items={[
               { label: "About Us", to: "/about" },
-              { label: "FI Team", to: "/team" },
+              ...(isAdmin ? [{ label: "FI Team", to: "/team" }] : []),
               { label: "Our Funding", to: "/funding" },
               { label: "Work With Us", to: "/work-with-us" },
             ]}
