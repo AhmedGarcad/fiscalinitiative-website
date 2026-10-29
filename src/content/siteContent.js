@@ -5,7 +5,7 @@ export const organization = {
   tagline: "Grounded in Evidence, Built for Growth.",
   description:
     "An independent, non-partisan fiscal policy research institute strengthening Somalia's fiscal governance through applied research, institutional capacity building, and inclusive policy dialogue.",
-  email: "info@fiscalinitiative.org",
+  email: "info@fiscalinitiative.com",
   location: "Airport Road, Wadajir District, Mogadishu, Somalia",
 };
 
