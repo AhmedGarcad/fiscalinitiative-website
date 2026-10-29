@@ -77,7 +77,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-28 border-t border-white/20 pt-8 text-center text-xs tracking-[0.2em] uppercase text-white/75">
-          Building Trust, Igniting Growth
+          Grounded in Evidence, Built for Growth.
         </div>
 
         <div className="mt-4 text-center text-xs text-white/60">

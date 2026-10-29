@@ -1,6 +1,7 @@
 import PageBanner from "./PageBanner";
 import SupabaseContentGrid from "./SupabaseContentGrid";
-import { researchAreas, researchNote } from "../content/siteContent";
+import IconBadge from "./IconBadge";
+import { researchAreas, researchNote, researchTopicIcons } from "../content/siteContent";
 import { profileAssets } from "../content/profileAssets";
 import { slugify } from "../lib/slugify";
 
@@ -34,19 +35,23 @@ export default function ResearchFocus() {
             />
           </div>
 
-          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8 mb-12">
-            <h3 className="text-2xl font-bold text-gray-950 mb-5">
-              Our areas of research:
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm px-6 py-12 mb-12">
+            <h3 className="icon-label text-2xl md:text-3xl font-bold text-gray-900 text-center mb-10">
+              Our Areas of Research
             </h3>
-            <ol className="grid gap-3 sm:grid-cols-2">
-              {researchAreas.map((area, index) => (
+            <ol className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-10">
+              {researchAreas.map((area) => (
                 <li key={area.title}>
                   <a
                     href={`#${slugify(area.title)}`}
-                    className="flex gap-3 text-emerald-900 font-semibold hover:text-emerald-700"
+                    className="group flex flex-col items-center text-center"
                   >
-                    <span className="text-teal-600">{index + 1}.</span>
-                    {area.title}
+                    <span className="transition duration-300 group-hover:-translate-y-1.5 group-hover:drop-shadow-lg">
+                      <IconBadge icon={area.icon} size={100} />
+                    </span>
+                    <span className="icon-label mt-5 text-lg font-bold leading-snug text-gray-800 group-hover:text-emerald-700 transition">
+                      {area.title}
+                    </span>
                   </a>
                 </li>
               ))}
@@ -54,32 +59,44 @@ export default function ResearchFocus() {
           </div>
 
           <div className="space-y-8">
-            {researchAreas.map((area, index) => (
+            {researchAreas.map((area) => (
               <article
                 key={area.title}
                 id={slugify(area.title)}
-                className="bg-white p-8 md:p-10 rounded-2xl shadow-md border border-slate-100 scroll-mt-40"
+                className="bg-white p-8 md:p-12 rounded-2xl shadow-md border border-slate-100 scroll-mt-40"
               >
-                <p className="text-xs font-black text-teal-600 mb-4">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h3 className="text-2xl md:text-3xl font-bold text-emerald-900 mb-5">
-                  {area.title}
-                </h3>
+                <div className="flex items-center gap-5 mb-6">
+                  <div className="shrink-0">
+                    <IconBadge icon={area.icon} size={64} />
+                  </div>
+                  <h3 className="icon-label text-2xl md:text-3xl font-bold text-emerald-900">
+                    {area.title}
+                  </h3>
+                </div>
                 <p className="text-gray-700 text-base md:text-lg leading-relaxed">
                   {area.description}
                 </p>
                 {area.topics && (
-                  <ul className="flex flex-wrap gap-2 mt-6">
-                    {area.topics.map((topic) => (
-                      <li
-                        key={topic}
-                        className="text-sm font-semibold text-emerald-800 bg-emerald-50 px-4 py-1.5 rounded-full"
-                      >
-                        {topic}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="mt-10 pt-10 border-t border-slate-100">
+                    <h4 className="icon-label text-xl font-bold text-gray-800 text-center mb-8">
+                      Research Topics
+                    </h4>
+                    <ul className="flex flex-wrap justify-center gap-x-6 gap-y-8">
+                      {area.topics.map((topic) => (
+                        <li
+                          key={topic}
+                          className="group w-36 flex flex-col items-center text-center"
+                        >
+                          <span className="transition duration-300 group-hover:-translate-y-1">
+                            <IconBadge icon={researchTopicIcons[topic]} size={84} />
+                          </span>
+                          <span className="icon-label mt-4 text-base font-bold leading-snug text-gray-800">
+                            {topic}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
               </article>
             ))}

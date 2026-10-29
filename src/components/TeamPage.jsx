@@ -2,8 +2,19 @@ import { useState } from "react";
 import PageBanner from "./PageBanner";
 import SectionHeading from "./SectionHeading";
 import TeamMemberGrid from "./TeamMemberGrid";
-import { teamGroups } from "../content/siteContent";
+import { teamGroups, teamMembers } from "../content/siteContent";
 import { profileAssets } from "../content/profileAssets";
+import { slugify } from "../lib/slugify";
+
+// Drop a photo named after the person (e.g. sadia-osman.jpg) into src/assets/team.
+const teamPhotos = Object.fromEntries(
+  Object.entries(
+    import.meta.glob("../assets/team/*.{jpg,jpeg,png,webp}", {
+      eager: true,
+      import: "default",
+    })
+  ).map(([path, url]) => [path.split("/").pop().replace(/\.\w+$/, ""), url])
+);
 
 const groupContentType = {
   board: "board_member",
@@ -19,7 +30,7 @@ const operatingValues = [
 ];
 
 export default function TeamPage() {
-  const [active, setActive] = useState(teamGroups[0].id);
+  const [active, setActive] = useState("management");
   const activeGroup = teamGroups.find((group) => group.id === active);
 
   return (
@@ -54,6 +65,13 @@ export default function TeamPage() {
             {activeGroup.description}
           </p>
 
+          {active === "management" ? (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {teamMembers.map((member) => (
+                <TeamMemberCard key={member.email} member={member} />
+              ))}
+            </div>
+          ) : (
           <TeamMemberGrid
             contentType={groupContentType[active]}
             fallback={
@@ -68,6 +86,7 @@ export default function TeamPage() {
               </div>
             }
           />
+          )}
         </div>
       </section>
 
@@ -89,5 +108,84 @@ export default function TeamPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+function TeamMemberCard({ member }) {
+  const photo = teamPhotos[slugify(member.name)];
+  const initials = member.name
+    .replace(/^Dr\.\s*/, "")
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("");
+
+  return (
+    <article className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 overflow-hidden text-center">
+      <div className="h-24 bg-gradient-to-r from-[#00564F] to-teal-600" />
+      <div className="-mt-16 px-6 pb-8">
+        <div className="w-32 h-32 mx-auto rounded-full ring-4 ring-white shadow-lg overflow-hidden bg-[#00564F] flex items-center justify-center">
+          {photo ? (
+            <img
+              src={photo}
+              alt={member.name}
+              className="w-full h-full object-cover object-top"
+            />
+          ) : (
+            <span className="icon-label text-4xl font-bold text-white">
+              {initials}
+            </span>
+          )}
+        </div>
+
+        <h3 className="icon-label mt-5 text-xl font-bold text-gray-900">
+          {member.name}
+        </h3>
+        <p className="mt-1 text-sm font-semibold text-emerald-700">
+          {member.title}
+        </p>
+
+        <div className="mt-6 pt-5 border-t border-slate-100 space-y-2 text-sm">
+          <a
+            href={`tel:${member.phone.replace(/\s/g, "")}`}
+            className="flex items-center justify-center gap-2 text-gray-600 hover:text-emerald-700 transition"
+          >
+            <ContactIcon type="phone" />
+            {member.phone}
+          </a>
+          <a
+            href={`mailto:${member.email}`}
+            className="flex items-center justify-center gap-2 text-gray-600 hover:text-emerald-700 transition break-all"
+          >
+            <ContactIcon type="email" />
+            {member.email}
+          </a>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function ContactIcon({ type }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="w-4 h-4 shrink-0 text-emerald-700"
+    >
+      {type === "phone" ? (
+        <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2" />
+      ) : (
+        <>
+          <path d="M3 6h18v12H3z" />
+          <path d="M3 7l9 6 9-6" />
+        </>
+      )}
+    </svg>
   );
 }

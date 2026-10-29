@@ -139,7 +139,7 @@ export default function NavBar() {
               </h1>
 
               <p className="site-tagline mt-1 text-[11px] text-white/90 md:text-sm">
-                Building Trust, Igniting Growth
+                Grounded in Evidence, Built for Growth.
               </p>
             </div>
           </Link>

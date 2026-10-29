@@ -2,11 +2,11 @@ export const organization = {
   name: "The Fiscal Initiative",
   shortName: "Fiscal Initiative",
   acronym: "FI",
-  tagline: "Building Trust, Igniting Growth",
+  tagline: "Grounded in Evidence, Built for Growth.",
   description:
     "An independent, non-partisan fiscal policy research institute strengthening Somalia's fiscal governance through applied research, institutional capacity building, and inclusive policy dialogue.",
   email: "info@fiscalinitiative.org",
-  location: "Mogadishu, Somalia",
+  location: "Airport Road, Wadajir District, Mogadishu, Somalia",
 };
 
 export const purpose =
@@ -45,6 +45,7 @@ export const researchNote =
 export const researchAreas = [
   {
     title: "Public Financial Management",
+    icon: "chart",
     description:
       "Somalia is undergoing significant fiscal policy change, marked by declining external grant support, limited revenue growth, and rising spending pressures. Against this backdrop, FI advances transparent fiscal policy through research, capacity building, and advocacy to support sustainable and competitive economic growth while safeguarding citizens' access to services. FI researches potential solutions for government budgets, the effectiveness of government spending, tax policy, responsible debt management, public procurement, federal-state fiscal relations, and the interaction between fiscal and monetary policy.",
     topics: [
@@ -57,12 +58,14 @@ export const researchAreas = [
   },
   {
     title: "Accountability and Integrity",
+    icon: "scales",
     description:
       "In the area of accountability and integrity, FI conducts studies on transparency and accountable public appropriation, firmly grounded in citizens' policy needs. FI also promotes making fiscal policy information accessible to the public, enabling citizens to make informed choices and hold government to account. We will unpack public procurement and contracting practices, combating corruption to protect public money.",
     topics: ["Independent Institutions", "Government Regulations", "Anti-Corruption"],
   },
   {
     title: "International Trade and Economic Integration",
+    icon: "globe",
     description:
       "Envisioned as a leading, independent voice in fiscal policymaking, the FI generates cutting-edge research and analysis on key issues in international trade, advancing the competitiveness to trade goods and services in international markets. The institute will also advance cross-border dialogues on regional and global economic integration, focusing on investment, tariffs, SMEs, labor mobility and supply chains. Recognizing global economic uncertainty, FI emphasizes the importance of enhancing Somalia's domestic production and resilience to future shocks.",
     topics: [
@@ -75,6 +78,7 @@ export const researchAreas = [
   },
   {
     title: "Inclusive Social Services",
+    icon: "people",
     description:
       "The FI works to inform sound policies and models for better social outcomes in Somalia through rigorous research and analysis, convenings that feature citizens' voices, and direct engagement with all partners, including government, private service providers, and international partners. The FI focuses its research on five core areas in interaction with the country's fiscal policy:",
     topics: [
@@ -86,11 +90,13 @@ export const researchAreas = [
   },
   {
     title: "Climate and Food Security Resilience",
+    icon: "sprout",
     description:
       "Recurrent climate shocks destroy livelihoods, deepen food insecurity and place heavy demands on public budgets. FI examines how fiscal policy can build resilience before crises hit. Its research covers how public and private resources are mobilised for climate adaptation and food systems, and how risk and anticipatory financing can protect households. It also looks at how investment in agriculture can reduce dependence on humanitarian aid. FI also tracks climate finance flows to ensure they reach national systems and the communities most at risk.",
   },
   {
     title: "Digital Public Infrastructure and AI",
+    icon: "chip",
     description:
       "Digital public infrastructure is reshaping how governments collect revenue, deliver services and manage public money. FI researches how digital identity, payment systems and data platforms can make public finance more efficient, transparent and inclusive. It also studies how artificial intelligence and sound data governance can improve policy decisions while protecting citizens' rights. FI promotes digital systems that widen access to public services, strengthen trust in government and support a competitive digital economy.",
   },
@@ -249,5 +255,64 @@ export const forums = [
     title: "Anniversary and Fundraising Dinner",
     description:
       "A convening of partners and stakeholders to celebrate progress, deepen relationships, and support long-term fiscal reform work.",
+  },
+];
+
+export const researchTopicIcons = {
+  "Tax Policy": "receipt",
+  "Government Budget": "pie",
+  "Debt Management": "coins",
+  "Federal-State Fiscal Relations": "network",
+  "Public-Private Partnership": "partnership",
+  "Independent Institutions": "institution",
+  "Government Regulations": "document",
+  "Anti-Corruption": "shield",
+  "Labor Mobility": "exchange",
+  "Foreign Direct Investment": "growth",
+  "EAC Bloc": "pin",
+  SMEs: "store",
+  "Supply Chains": "truck",
+  "Equal Access to Quality Education": "graduation",
+  Health: "health",
+  "Social Protection": "umbrella",
+  "Quality Jobs": "briefcase",
+};
+
+export const teamMembers = [
+  {
+    name: "Dr. Uweis Abdulahi Ali",
+    title: "Co-founder and Chief Executive Officer",
+    phone: "+252 61 380 8055",
+    email: "uweis.ali@fiscalinitiative.com",
+  },
+  {
+    name: "Abdihakim Ainte",
+    title: "Founding Associate",
+    phone: "+254 743 145 035",
+    email: "abdihakim.ainte@fiscalinitiative.com",
+  },
+  {
+    name: "Sadia Osman",
+    title: "Admin and Finance Manager",
+    phone: "+252 61 289 6434",
+    email: "sadia.osman@fiscalinitiative.com",
+  },
+  {
+    name: "Abubakar Mohamed Farah",
+    title: "Research Economist",
+    phone: "+254 727 379 089",
+    email: "abubakar.farah@fiscalinitiative.com",
+  },
+  {
+    name: "Ismail Mohamed Ali",
+    title: "Research Consultant",
+    phone: "+252 61 551 8478",
+    email: "ismail.ali@fiscalinitiative.com",
+  },
+  {
+    name: "Ahmed Abdi Garcad",
+    title: "Digital and Communications Specialist",
+    phone: "+60 11 3932 3789",
+    email: "ahmed.garcad@fiscalinitiative.com",
   },
 ];

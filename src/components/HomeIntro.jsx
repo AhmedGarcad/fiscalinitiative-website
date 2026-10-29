@@ -29,9 +29,9 @@ export default function HomeIntro() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#004D47]/90 via-[#004D47]/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
               <p className="text-sm uppercase tracking-[0.25em] text-white/80 mb-3">
-                Building Trust
+                Grounded in Evidence,
               </p>
-              <p className="text-2xl font-semibold">Building Growth</p>
+              <p className="text-2xl font-semibold">Built for Growth.</p>
             </div>
           </div>
         </div>
