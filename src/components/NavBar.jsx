@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.jpeg";
-import { organization, researchAreas, programs, forums, publicationGroups } from "../content/siteContent";
+import { organization, researchAreas, programs, forums, publicationGroups, eventGroups } from "../content/siteContent";
 import { slugify } from "../lib/slugify";
 
 const searchItems = [
@@ -20,6 +20,7 @@ const searchItems = [
     label: program.title,
     to: `/capacity#${slugify(program.title)}`,
   })),
+  { label: "Events", to: "/events" },
   { label: "Forums", to: "/forums" },
   ...forums.map((forum) => ({
     label: forum.title,
@@ -62,18 +63,13 @@ const menus = [
   {
     id: "forums",
     label: "Events",
-    items: [
-      { label: "Forums", to: "/forums" },
-      { label: "Capacity Development", to: "/capacity" },
-      ...programs.map((program) => ({
-        label: program.title,
-        to: `/capacity#${slugify(program.title)}`,
+    columns: eventGroups.map((group) => ({
+      title: group.title,
+      items: group.items.map((item) => ({
+        label: item.title,
+        to: `/events/${slugify(item.title)}`,
       })),
-      ...forums.map((forum) => ({
-        label: forum.title,
-        to: `/forums#${slugify(forum.title)}`,
-      })),
-    ],
+    })),
   },
   {
     id: "publications",

@@ -1,39 +1,7 @@
 import PageBanner from "./PageBanner";
-import SectionHeading from "./SectionHeading";
-import IconBadge from "./IconBadge";
-import {
-  approach,
-  mission,
-  organization,
-  pillars,
-  purpose,
-  vision,
-} from "../content/siteContent";
+import IconLinkGrid from "./IconLinkGrid";
+import { aboutSections, organization } from "../content/siteContent";
 import { profileAssets } from "../content/profileAssets";
-
-const purposeVisionMission = [
-  { icon: "target", title: "Purpose", text: purpose },
-  { icon: "binoculars", title: "Vision", text: vision },
-  { icon: "compass", title: "Mission", text: mission },
-];
-
-const objectives = [
-  "Deliver cutting-edge fiscal analysis and policy innovation.",
-  "Strengthen fiscal data systems, tax policy, and macro-fiscal forecasting.",
-  "Support public financial management and fiscal federalism reforms.",
-  "Convene national and state-level fiscal governance dialogues.",
-  "Advance citizen engagement, fiscal equity, and sustainable development.",
-];
-
-const principles = [
-  "Evidence before Policy",
-  "National Ownership",
-  "Equity and Inclusion",
-  "Transparency and Accountability",
-  "Capacity and Sustainability",
-  "Collaboration and Partnership",
-  "Innovation and Adaptability",
-];
 
 export default function AboutPage() {
   return (
@@ -44,112 +12,29 @@ export default function AboutPage() {
         background={profileAssets.cover}
       />
 
-      <section className="py-24 bg-gray-100">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <SectionHeading title="About Fiscal Initiative" />
-
-          <h3 className="text-xl font-bold text-gray-900 mb-4">
-            {organization.name} (FI)
-          </h3>
-
-          <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed mb-16">
-            is an independent, non-partisan fiscal policy research institute
-            dedicated to strengthening Somalia's fiscal governance through
-            applied research, capacity building, and inclusive policy
-            dialogue.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-10">
-            {purposeVisionMission.map((item) => (
-              <div key={item.title}>
-                <IconBadge icon={item.icon} />
-                <h4 className="text-lg font-bold text-gray-900 mt-5 mb-3">
-                  {item.title}
-                </h4>
-                <p className="text-gray-600 text-sm leading-relaxed max-w-xs mx-auto">
-                  {item.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
-          <SectionHeading
-            eyebrow="Objectives"
-            title="Practical priorities for better fiscal governance."
-          />
-
-          <div className="grid md:grid-cols-2 gap-5">
-            {objectives.map((item) => (
-              <div
-                key={item}
-                className="bg-slate-50 border border-slate-200 rounded-xl p-6 text-gray-700"
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-20">
-            <p className="text-center text-gray-600 leading-relaxed max-w-2xl mx-auto mb-10">
-              FI's work is anchored in integrity, evidence, and collaboration.
-              We uphold the principles of:
+          <div className="max-w-3xl mx-auto text-center mb-20">
+            <p className="text-xs uppercase tracking-[0.28em] text-emerald-700 font-semibold mb-4">
+              About
             </p>
-            <div className="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
-              {principles.map((principle, index) => (
-                <div
-                  key={principle}
-                  className="bg-[#1FA196] text-white flex items-center gap-6 px-7 py-6 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition"
-                >
-                  <span className="site-brand text-6xl md:text-7xl font-bold leading-none tracking-tight">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-base md:text-lg font-semibold leading-snug">
-                    {principle}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-950 leading-tight mb-6">
+              {organization.name} (FI)
+            </h2>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              is an independent, non-partisan fiscal policy research institute
+              dedicated to strengthening Somalia's fiscal governance through
+              applied research, capacity building, and inclusive policy
+              dialogue.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <section className="py-24 bg-gray-100">
-        <div className="max-w-6xl mx-auto px-6">
-          <SectionHeading
-            eyebrow="Operating Model"
-            title="Three mutually reinforcing pillars."
+          <IconLinkGrid
+            items={aboutSections}
+            hrefFor={(section) => `/about/${section.id}`}
+            itemWidth="w-full sm:w-72"
+            showSummary
           />
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {pillars.map((pillar, index) => (
-              <div key={pillar.title} className="bg-[#00564F] text-white p-8 rounded-xl">
-                <span className="text-white/75 font-black">0{index + 1}</span>
-                <h3 className="text-xl font-bold mt-4 mb-3">{pillar.title}</h3>
-                <p className="text-white/90 text-sm leading-relaxed">
-                  {pillar.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <SectionHeading
-            eyebrow="Our Approach"
-            title="Co-creation, capacity building, and rigorous evidence."
-          />
-          <p className="text-gray-700 leading-relaxed text-lg mb-6">
-            {approach}
-          </p>
-          <p className="text-gray-500 text-sm">
-            {organization.email} | {organization.location}
-          </p>
         </div>
       </section>
     </div>

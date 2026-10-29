@@ -11,6 +11,9 @@ import HomeStats from "./components/HomeStats";
 import HomeResearch from "./components/HomeResearch";
 
 import AboutPage from "./components/AboutPage";
+import AboutSectionPage from "./components/AboutSectionPage";
+import EventsPage from "./components/EventsPage";
+import EventPage from "./components/EventPage";
 import TeamPage from "./components/TeamPage";
 import FundingPage from "./components/FundingPage";
 import ContactPage from "./components/ContactPage";
@@ -47,6 +50,9 @@ export default function App() {
         />
 
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/about/:section" element={<AboutSectionPage />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/events/:slug" element={<EventPage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/work-with-us" element={<WorkWithUs />} />
         <Route path="/funding" element={<FundingPage />} />

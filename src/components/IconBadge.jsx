@@ -179,6 +179,13 @@ const icons = {
       <path d="M12 12v6a2 2 0 01-4 0" />
     </>
   ),
+  calendar: (
+    <>
+      <path d="M4 6h16v14H4z" />
+      <path d="M4 10h16M8 3v5M16 3v5" />
+      <path d="M8 14h2M14 14h2M8 17h2" />
+    </>
+  ),
   briefcase: (
     <>
       <path d="M3 8h18v11H3z" />

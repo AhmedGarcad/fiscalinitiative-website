@@ -316,3 +316,79 @@ export const teamMembers = [
     email: "ahmed.garcad@fiscalinitiative.com",
   },
 ];
+
+export const objectives = [
+  "Deliver cutting-edge fiscal analysis and policy innovation.",
+  "Strengthen fiscal data systems, tax policy, and macro-fiscal forecasting.",
+  "Support public financial management and fiscal federalism reforms.",
+  "Convene national and state-level fiscal governance dialogues.",
+  "Advance citizen engagement, fiscal equity, and sustainable development.",
+];
+
+export const principles = [
+  "Evidence before Policy",
+  "National Ownership",
+  "Equity and Inclusion",
+  "Transparency and Accountability",
+  "Capacity and Sustainability",
+  "Collaboration and Partnership",
+  "Innovation and Adaptability",
+];
+
+export const aboutSections = [
+  {
+    id: "objectives",
+    title: "Objectives and Mission",
+    icon: "target",
+    summary: mission,
+  },
+  {
+    id: "vision",
+    title: "Vision",
+    icon: "binoculars",
+    summary: vision,
+  },
+  {
+    id: "principles",
+    title: "Our Guiding Principles",
+    icon: "compass",
+    summary:
+      "FI's work is anchored in integrity, evidence, and collaboration. We uphold the principles of:",
+  },
+];
+
+const eventIcons = {
+  "Somalia Tax Policy Forum": "receipt",
+  "Annual Budget Engagement Roundtable": "pie",
+  "Ministerial Fiscal Federalism Dialogue": "network",
+  "Somalia Fiscal Outlook Conference": "growth",
+  "Macroeconomic Analysis and Forecasting Workshop": "chart",
+  "Young Economist Program": "graduation",
+  "Taxpayers Education Program": "people",
+  "Anniversary and Fundraising Dinner": "calendar",
+};
+
+const withIcon = (item) => ({ ...item, icon: eventIcons[item.title] });
+
+export const eventGroups = [
+  {
+    title: "Forums",
+    items: forums
+      .filter((forum) => forum.title !== "Anniversary and Fundraising Dinner")
+      .map(withIcon),
+  },
+  {
+    title: "Capacity Development",
+    items: programs.map(withIcon),
+  },
+  {
+    title: "Special Projects",
+    items: forums
+      .filter((forum) => forum.title === "Anniversary and Fundraising Dinner")
+      .map(withIcon),
+  },
+];
+
+export const events = eventGroups.flatMap((group) =>
+  group.items.map((item) => ({ ...item, group: group.title }))
+);
