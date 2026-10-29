@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.jpeg";
+import IconBadge from "./IconBadge";
 import { organization, researchAreas, programs, forums, publicationGroups, eventGroups } from "../content/siteContent";
 import { slugify } from "../lib/slugify";
 
@@ -58,7 +59,25 @@ const menus = [
   {
     id: "research",
     label: "Our Research",
-    to: "/research",
+    columns: [
+      {
+        items: [
+          { label: "Our Research", to: "/research", icon: "document" },
+          ...researchAreas.slice(0, 3).map((area) => ({
+            label: area.title,
+            to: `/research/${slugify(area.title)}`,
+            icon: area.icon,
+          })),
+        ],
+      },
+      {
+        items: researchAreas.slice(3).map((area) => ({
+          label: area.title,
+          to: `/research/${slugify(area.title)}`,
+          icon: area.icon,
+        })),
+      },
+    ],
   },
   {
     id: "forums",
@@ -68,6 +87,7 @@ const menus = [
       items: group.items.map((item) => ({
         label: item.title,
         to: `/events/${slugify(item.title)}`,
+        icon: item.icon,
       })),
     })),
   },
@@ -325,9 +345,14 @@ function MegaSection({ title, items, onNavigate }) {
           <li key={item.label}>
             <Link
               to={item.to}
-              className="block px-5 py-2.5 text-sm font-medium hover:bg-teal-50 hover:text-teal-700 transition whitespace-nowrap"
+              className="flex items-center gap-3 px-5 py-2.5 text-sm font-medium hover:bg-teal-50 hover:text-teal-700 transition whitespace-nowrap"
               onClick={onNavigate}
             >
+              {item.icon && (
+                <span className="shrink-0">
+                  <IconBadge icon={item.icon} size={30} />
+                </span>
+              )}
               {item.label}
             </Link>
           </li>
