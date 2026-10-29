@@ -25,6 +25,16 @@ const objectives = [
   "Advance citizen engagement, fiscal equity, and sustainable development.",
 ];
 
+const principles = [
+  "Evidence before Policy",
+  "National Ownership",
+  "Equity and Inclusion",
+  "Transparency and Accountability",
+  "Capacity and Sustainability",
+  "Collaboration and Partnership",
+  "Innovation and Adaptability",
+];
+
 export default function AboutPage() {
   return (
     <div>
@@ -81,6 +91,28 @@ export default function AboutPage() {
                 {item}
               </div>
             ))}
+          </div>
+
+          <div className="mt-20">
+            <p className="text-center text-gray-600 leading-relaxed max-w-2xl mx-auto mb-10">
+              FI's work is anchored in integrity, evidence, and collaboration.
+              We uphold the principles of:
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+              {principles.map((principle, index) => (
+                <div
+                  key={principle}
+                  className="bg-[#1FA196] text-white flex items-center gap-6 px-7 py-6 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition"
+                >
+                  <span className="site-brand text-6xl md:text-7xl font-bold leading-none tracking-tight">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-base md:text-lg font-semibold leading-snug">
+                    {principle}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

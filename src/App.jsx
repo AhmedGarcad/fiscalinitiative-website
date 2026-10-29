@@ -16,6 +16,7 @@ import FundingPage from "./components/FundingPage";
 import ContactPage from "./components/ContactPage";
 import WorkWithUs from "./components/WorkWithUs";
 import ResearchFocus from "./components/ResearchFocus";
+import ResearchAreaPage from "./components/ResearchAreaPage";
 import CapacityDevelopment from "./components/CapacityDevelopment";
 import Forums from "./components/Forums";
 import Publications from "./components/Publications";
@@ -52,6 +53,7 @@ export default function App() {
         <Route path="/contact" element={<ContactPage />} />
 
         <Route path="/research" element={<ResearchFocus />} />
+        <Route path="/research/:slug" element={<ResearchAreaPage />} />
 
         <Route path="/capacity" element={<CapacityDevelopment />} />
 

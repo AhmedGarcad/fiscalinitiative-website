@@ -10,10 +10,10 @@ const searchItems = [
   { label: "Work With Us", to: "/work-with-us" },
   { label: "Our Funding", to: "/funding" },
   { label: "Contact Us", to: "/contact" },
-  { label: "Research Focus", to: "/research" },
+  { label: "Our Research", to: "/research" },
   ...researchAreas.map((area) => ({
     label: area.title,
-    to: `/research#${slugify(area.title)}`,
+    to: `/research/${slugify(area.title)}`,
   })),
   { label: "Capacity Development", to: "/capacity" },
   ...programs.map((program) => ({
@@ -57,13 +57,7 @@ const menus = [
   {
     id: "research",
     label: "Our Research",
-    items: [
-      { label: "Research Focus", to: "/research" },
-      ...researchAreas.map((area) => ({
-        label: area.title,
-        to: `/research#${slugify(area.title)}`,
-      })),
-    ],
+    to: "/research",
   },
   {
     id: "forums",

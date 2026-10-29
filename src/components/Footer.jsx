@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { organization, researchAreas } from "../content/siteContent";
+import { slugify } from "../lib/slugify";
 
 export default function Footer() {
   return (
@@ -57,7 +58,7 @@ export default function Footer() {
             title="Research Focus"
             items={researchAreas
               .slice(0, 4)
-              .map((area) => ({ label: area.title, to: "/research" }))}
+              .map((area) => ({ label: area.title, to: `/research/${slugify(area.title)}` }))}
           />
 
           <div>

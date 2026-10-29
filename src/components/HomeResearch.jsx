@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { researchAreas } from "../content/siteContent";
 import { profileAssets } from "../content/profileAssets";
+import { slugify } from "../lib/slugify";
 
 export default function HomeResearch() {
   return (
@@ -29,7 +30,7 @@ export default function HomeResearch() {
           <div>
             <div className="grid md:grid-cols-2 gap-5">
               {researchAreas.map((area, index) => (
-                <Card key={area.title} title={area.title} index={index + 1} />
+                <Card key={area.title} title={area.title} index={index + 1} to={`/research/${slugify(area.title)}`} />
               ))}
             </div>
 
@@ -48,13 +49,13 @@ export default function HomeResearch() {
   );
 }
 
-function Card({ title, index }) {
+function Card({ title, index, to }) {
   return (
-    <div className="bg-white p-7 rounded-xl shadow-sm hover:shadow-xl transition border border-slate-100">
+    <Link to={to} className="block bg-white p-7 rounded-xl shadow-sm hover:shadow-xl hover:border-emerald-300 transition border border-slate-100">
       <p className="text-xs font-bold text-teal-600 mb-5">
         {String(index).padStart(2, "0")}
       </p>
       <h3 className="text-xl font-bold text-gray-900">{title}</h3>
-    </div>
+    </Link>
   );
 }
