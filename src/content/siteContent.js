@@ -44,49 +44,55 @@ export const researchNote =
 
 export const researchAreas = [
   {
-    title: "Taxation",
-    description:
-      "Analysis of tax policy design, administration, and compliance to widen Somalia's revenue base while keeping the system fair, predictable, and easy to administer.",
-  },
-  {
-    title: "Government Budget",
-    description:
-      "Evidence on budget formulation, credibility, and execution that helps federal and state institutions plan, prioritize, and spend more effectively.",
-  },
-  {
-    title: "Debt Management",
-    description:
-      "Debt sustainability analysis and borrowing-strategy research that supports responsible financing decisions and long-term fiscal stability.",
-  },
-  {
     title: "Public Financial Management",
     description:
-      "Research on budgeting systems, financial controls, and reporting that strengthens the institutions responsible for managing public resources.",
+      "Somalia is undergoing significant fiscal policy change, marked by declining external grant support, limited revenue growth, and rising spending pressures. Against this backdrop, FI advances transparent fiscal policy through research, capacity building, and advocacy to support sustainable and competitive economic growth while safeguarding citizens' access to services. FI researches potential solutions for government budgets, the effectiveness of government spending, tax policy, responsible debt management, public procurement, federal-state fiscal relations, and the interaction between fiscal and monetary policy.",
+    topics: [
+      "Tax Policy",
+      "Government Budget",
+      "Debt Management",
+      "Federal-State Fiscal Relations",
+      "Public-Private Partnership",
+    ],
   },
   {
-    title: "Public Procurement",
+    title: "Accountability and Integrity",
     description:
-      "Studies on procurement rules, transparency, and value for money to ensure public contracts deliver efficient and accountable outcomes.",
+      "In the area of accountability and integrity, FI conducts studies on transparency and accountable public appropriation, firmly grounded in citizens' policy needs. FI also promotes making fiscal policy information accessible to the public, enabling citizens to make informed choices and hold government to account. We will unpack public procurement and contracting practices, combating corruption to protect public money.",
+    topics: ["Independent Institutions", "Government Regulations", "Anti-Corruption"],
   },
   {
-    title: "Federal-State Fiscal Relations",
+    title: "International Trade and Economic Integration",
     description:
-      "Work on revenue sharing, fiscal transfers, and coordination mechanisms that support a functioning fiscal federalism model for Somalia.",
+      "Envisioned as a leading, independent voice in fiscal policymaking, the FI generates cutting-edge research and analysis on key issues in international trade, advancing the competitiveness to trade goods and services in international markets. The institute will also advance cross-border dialogues on regional and global economic integration, focusing on investment, tariffs, SMEs, labor mobility and supply chains. Recognizing global economic uncertainty, FI emphasizes the importance of enhancing Somalia's domestic production and resilience to future shocks.",
+    topics: [
+      "Labor Mobility",
+      "Foreign Direct Investment",
+      "EAC Bloc",
+      "SMEs",
+      "Supply Chains",
+    ],
   },
   {
-    title: "Combating Corruption",
+    title: "Inclusive Social Services",
     description:
-      "Research and policy recommendations on fiscal transparency, oversight, and accountability mechanisms that reduce opportunities for corruption.",
+      "The FI works to inform sound policies and models for better social outcomes in Somalia through rigorous research and analysis, convenings that feature citizens' voices, and direct engagement with all partners, including government, private service providers, and international partners. The FI focuses its research on five core areas in interaction with the country's fiscal policy:",
+    topics: [
+      "Equal Access to Quality Education",
+      "Health",
+      "Social Protection",
+      "Quality Jobs",
+    ],
   },
   {
-    title: "Business Regulation",
+    title: "Climate and Food Security Resilience",
     description:
-      "Analysis of the regulatory environment facing Somali businesses, identifying reforms that lower compliance costs and support formalization.",
+      "Recurrent climate shocks destroy livelihoods, deepen food insecurity and place heavy demands on public budgets. FI examines how fiscal policy can build resilience before crises hit. Its research covers how public and private resources are mobilised for climate adaptation and food systems, and how risk and anticipatory financing can protect households. It also looks at how investment in agriculture can reduce dependence on humanitarian aid. FI also tracks climate finance flows to ensure they reach national systems and the communities most at risk.",
   },
   {
-    title: "International Trade",
+    title: "Digital Public Infrastructure and AI",
     description:
-      "Research on trade policy, customs administration, and regional integration that supports revenue collection and economic competitiveness.",
+      "Digital public infrastructure is reshaping how governments collect revenue, deliver services and manage public money. FI researches how digital identity, payment systems and data platforms can make public finance more efficient, transparent and inclusive. It also studies how artificial intelligence and sound data governance can improve policy decisions while protecting citizens' rights. FI promotes digital systems that widen access to public services, strengthen trust in government and support a competitive digital economy.",
   },
 ];
 

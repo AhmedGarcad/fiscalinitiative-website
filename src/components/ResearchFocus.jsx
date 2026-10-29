@@ -34,30 +34,62 @@ export default function ResearchFocus() {
             />
           </div>
 
-          <SupabaseContentGrid
-            contentTypes={["research", "research_paper"]}
-            fallback={
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {researchAreas.map((area, index) => (
-                  <div
-                    key={area.title}
-                    id={slugify(area.title)}
-                    className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-slate-100 scroll-mt-40"
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8 mb-12">
+            <h3 className="text-2xl font-bold text-gray-950 mb-5">
+              Our areas of research:
+            </h3>
+            <ol className="grid gap-3 sm:grid-cols-2">
+              {researchAreas.map((area, index) => (
+                <li key={area.title}>
+                  <a
+                    href={`#${slugify(area.title)}`}
+                    className="flex gap-3 text-emerald-900 font-semibold hover:text-emerald-700"
                   >
-                    <p className="text-xs font-black text-teal-600 mb-6">
-                      {String(index + 1).padStart(2, "0")}
-                    </p>
-                    <h3 className="text-xl font-bold text-emerald-900 mb-4">
-                      {area.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {area.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            }
-          />
+                    <span className="text-teal-600">{index + 1}.</span>
+                    {area.title}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="space-y-8">
+            {researchAreas.map((area, index) => (
+              <article
+                key={area.title}
+                id={slugify(area.title)}
+                className="bg-white p-8 md:p-10 rounded-2xl shadow-md border border-slate-100 scroll-mt-40"
+              >
+                <p className="text-xs font-black text-teal-600 mb-4">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="text-2xl md:text-3xl font-bold text-emerald-900 mb-5">
+                  {area.title}
+                </h3>
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                  {area.description}
+                </p>
+                {area.topics && (
+                  <ul className="flex flex-wrap gap-2 mt-6">
+                    {area.topics.map((topic) => (
+                      <li
+                        key={topic}
+                        className="text-sm font-semibold text-emerald-800 bg-emerald-50 px-4 py-1.5 rounded-full"
+                      >
+                        {topic}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <SupabaseContentGrid contentTypes={["research", "research_paper"]} />
         </div>
       </section>
     </div>
