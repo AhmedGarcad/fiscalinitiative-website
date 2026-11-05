@@ -1,6 +1,6 @@
 import SupabaseContentGrid from "./SupabaseContentGrid";
 import { publicationGroups } from "../content/siteContent";
-import { profileAssets } from "../content/profileAssets";
+import PageBanner from "./PageBanner";
 
 const allContentTypes = publicationGroups.flatMap((group) =>
   group.types.map((type) => type.contentType)
@@ -8,27 +8,11 @@ const allContentTypes = publicationGroups.flatMap((group) =>
 
 export default function Publications() {
   return (
-    <section id="publications" className="pt-40 md:pt-48 bg-white">
-      <div className="relative min-h-[420px] overflow-hidden">
-        <img
-          src={profileAssets.strategy}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#003D39]/95 via-[#00796F]/80 to-black/20" />
-        <div className="relative max-w-7xl mx-auto px-6 py-24 text-white">
-          <p className="text-xs uppercase tracking-[0.28em] text-white/80 mb-5">
-            Evidence Library
-          </p>
-          <h1 className="text-5xl md:text-7xl font-black leading-none mb-6">
-            Publications
-          </h1>
-          <p className="max-w-2xl text-white/90 text-lg leading-relaxed">
-            Accessible, policy-relevant analysis for decision-makers,
-            institutions, researchers, and citizens.
-          </p>
-        </div>
-      </div>
+    <section id="publications" className="bg-gray-50">
+      <PageBanner
+        title="Publications"
+        subtitle="Accessible, policy-relevant analysis for decision-makers, institutions, researchers, and citizens."
+      />
 
       <div className="max-w-7xl mx-auto px-6 py-20">
         <SupabaseContentGrid

@@ -3,21 +3,19 @@ import PageBanner from "./PageBanner";
 import SupabaseContentGrid from "./SupabaseContentGrid";
 import IconBadge from "./IconBadge";
 import { researchAreas, researchNote } from "../content/siteContent";
-import { profileAssets } from "../content/profileAssets";
 import { slugify } from "../lib/slugify";
 
 export default function ResearchFocus() {
   return (
     <div>
-      <PageBanner
-        title="Our Research"
-        eyebrow={null}
-        background={profileAssets.guiding}
-      />
+      <PageBanner />
 
       <section id="research" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-20">
+            <h1 className="text-4xl md:text-5xl font-black text-gray-950 leading-tight mb-6">
+              Our Research
+            </h1>
             <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
               {researchNote}
             </p>

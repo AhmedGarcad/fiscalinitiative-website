@@ -1,7 +1,6 @@
 import PageBanner from "./PageBanner";
 import SupabaseContentGrid from "./SupabaseContentGrid";
 import { programs } from "../content/siteContent";
-import { profileAssets } from "../content/profileAssets";
 import { slugify } from "../lib/slugify";
 
 export default function CapacityDevelopment() {
@@ -10,7 +9,6 @@ export default function CapacityDevelopment() {
       <PageBanner
         title="Capacity Development"
         subtitle="Technical training, mentorship, and institutional support for stronger fiscal policy leadership."
-        background={profileAssets.priorities}
       />
 
       <section id="capacity" className="py-24 bg-white">

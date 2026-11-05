@@ -332,7 +332,7 @@ export const principles = [
 export const aboutSections = [
   {
     id: "objectives",
-    title: "Objectives and Mission",
+    title: "Mission and Objectives",
     icon: "target",
     summary: mission,
   },

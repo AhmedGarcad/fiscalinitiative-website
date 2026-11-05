@@ -10,8 +10,6 @@ export default function SequenceDetail({
   hrefFor,
   backTo,
   backLabel,
-  eyebrow,
-  background,
   children,
 }) {
   const item = items[index];
@@ -21,7 +19,7 @@ export default function SequenceDetail({
 
   return (
     <div>
-      <PageBanner title={item.title} subtitle={eyebrow} background={background} />
+      <PageBanner />
 
       <section className="py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-6">

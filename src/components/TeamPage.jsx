@@ -5,7 +5,6 @@ import SectionHeading from "./SectionHeading";
 import TeamMemberGrid from "./TeamMemberGrid";
 import { boardMembers, teamGroups, teamMembers } from "../content/siteContent";
 import { useAdminSession } from "../lib/useAdminSession";
-import { profileAssets } from "../content/profileAssets";
 import { slugify } from "../lib/slugify";
 
 // Drop a photo named after the person (e.g. sadia-osman.jpg) into src/assets/team.
@@ -48,7 +47,6 @@ export default function TeamPage() {
       <PageBanner
         title="FI Team"
         subtitle="Fiscal policy, public finance, research, and convening expertise supporting Somalia's fiscal governance ecosystem."
-        background={profileAssets.pillars}
       />
 
       <section className="py-24 bg-gray-100">

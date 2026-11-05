@@ -1,7 +1,6 @@
 import PageBanner from "./PageBanner";
 import IconLinkGrid from "./IconLinkGrid";
 import { eventGroups } from "../content/siteContent";
-import { profileAssets } from "../content/profileAssets";
 import { slugify } from "../lib/slugify";
 
 export default function EventsPage() {
@@ -10,7 +9,6 @@ export default function EventsPage() {
       <PageBanner
         title="Events"
         subtitle="Forums, capacity development programs, and special projects that bring Somalia's fiscal stakeholders together."
-        background={profileAssets.approach}
       />
 
       <section className="py-24 bg-gray-50">

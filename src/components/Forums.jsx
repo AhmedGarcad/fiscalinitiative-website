@@ -1,7 +1,6 @@
 import PageBanner from "./PageBanner";
 import SupabaseContentGrid from "./SupabaseContentGrid";
 import { forums } from "../content/siteContent";
-import { profileAssets } from "../content/profileAssets";
 import { slugify } from "../lib/slugify";
 
 export default function Forums() {
@@ -10,7 +9,6 @@ export default function Forums() {
       <PageBanner
         title="Forums"
         subtitle="National convenings that bring policymakers, institutions, and citizens together around Somalia's fiscal priorities."
-        background={profileAssets.approach}
       />
 
       <section className="py-24 bg-white">

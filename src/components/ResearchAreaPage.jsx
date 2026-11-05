@@ -2,7 +2,6 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import PageBanner from "./PageBanner";
 import IconBadge from "./IconBadge";
 import { researchAreas, researchTopicIcons } from "../content/siteContent";
-import { profileAssets } from "../content/profileAssets";
 import { slugify } from "../lib/slugify";
 
 export default function ResearchAreaPage() {
@@ -17,11 +16,7 @@ export default function ResearchAreaPage() {
 
   return (
     <div>
-      <PageBanner
-        title={area.title}
-        subtitle={`Research area ${index + 1} of ${researchAreas.length}`}
-        background={profileAssets.guiding}
-      />
+      <PageBanner />
 
       <section className="py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-6">

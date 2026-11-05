@@ -1,7 +1,6 @@
 import { Navigate, useParams } from "react-router-dom";
 import SequenceDetail from "./SequenceDetail";
 import { aboutSections, objectives, principles } from "../content/siteContent";
-import { profileAssets } from "../content/profileAssets";
 
 export default function AboutSectionPage() {
   const { section: sectionId } = useParams();
@@ -18,8 +17,6 @@ export default function AboutSectionPage() {
       hrefFor={(item) => `/about/${item.id}`}
       backTo="/about"
       backLabel="About Fiscal Initiative"
-      eyebrow="About Fiscal Initiative"
-      background={profileAssets.cover}
     >
       {section.id === "objectives" && <Objectives mission={section.summary} />}
       {section.id === "vision" && <Statement text={section.summary} />}

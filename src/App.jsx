@@ -7,7 +7,6 @@ import Footer from "./components/Footer";
 
 import Hero from "./components/Hero";
 import HomeIntro from "./components/HomeIntro";
-import HomeStats from "./components/HomeStats";
 import HomeResearch from "./components/HomeResearch";
 
 import AboutPage from "./components/AboutPage";
@@ -43,7 +42,6 @@ export default function App() {
             <>
               <Hero />
               <HomeIntro />
-              <HomeStats />
               <HomeResearch />
             </>
           }

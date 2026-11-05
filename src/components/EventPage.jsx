@@ -1,7 +1,6 @@
 import { Navigate, useParams } from "react-router-dom";
 import SequenceDetail from "./SequenceDetail";
 import { events } from "../content/siteContent";
-import { profileAssets } from "../content/profileAssets";
 import { slugify } from "../lib/slugify";
 
 export default function EventPage() {
@@ -19,8 +18,6 @@ export default function EventPage() {
       hrefFor={(item) => `/events/${slugify(item.title)}`}
       backTo="/events"
       backLabel="All events"
-      eyebrow={event.group}
-      background={profileAssets.approach}
     >
       <span className="inline-block rounded-full bg-emerald-50 px-4 py-1.5 text-sm font-semibold text-emerald-800 mb-6">
         {event.group}
