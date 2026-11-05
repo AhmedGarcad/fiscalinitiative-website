@@ -1,6 +1,6 @@
 import { Navigate, useParams } from "react-router-dom";
 import SequenceDetail from "./SequenceDetail";
-import { aboutSections, objectives, principles } from "../content/siteContent";
+import { aboutSections, objectives, principles, specialProjects } from "../content/siteContent";
 
 export default function AboutSectionPage() {
   const { section: sectionId } = useParams();
@@ -21,7 +21,24 @@ export default function AboutSectionPage() {
       {section.id === "objectives" && <Objectives mission={section.summary} />}
       {section.id === "vision" && <Statement text={section.summary} />}
       {section.id === "principles" && <Principles intro={section.summary} />}
+      {section.id === "special-projects" && <SpecialProjects intro={section.summary} />}
     </SequenceDetail>
+  );
+}
+
+function SpecialProjects({ intro }) {
+  return (
+    <>
+      <p className="text-gray-700 text-lg leading-relaxed mb-8">{intro}</p>
+      <div className="space-y-4">
+        {specialProjects.map((project) => (
+          <div key={project.title} className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+            <h3 className="icon-label text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
+            <p className="text-gray-700 leading-relaxed">{project.description}</p>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 

@@ -51,6 +51,7 @@ const menus = [
       },
       {
         items: [
+          { label: "Special Projects", to: "/about/special-projects" },
           { label: "Work With Us", to: "/work-with-us" },
           { label: "Contact Us", to: "/contact" },
         ],
@@ -163,6 +164,8 @@ export default function NavBar() {
             <div
               key={menu.id}
               className="relative h-full flex items-center"
+              onMouseEnter={() => setActiveMenu(menu.to ? null : menu.id)}
+              onMouseLeave={() => setActiveMenu(null)}
             >
               {menu.to ? (
                 <Link
@@ -176,11 +179,7 @@ export default function NavBar() {
                 <NavItem
                   label={menu.label}
                   active={activeMenu === menu.id}
-                  onClick={() =>
-                    setActiveMenu((current) =>
-                      current === menu.id ? null : menu.id
-                    )
-                  }
+                  onClick={() => setActiveMenu(menu.id)}
                 />
               )}
 

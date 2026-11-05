@@ -27,7 +27,7 @@ export default function AboutPage() {
           <IconLinkGrid
             items={aboutSections}
             hrefFor={(section) => `/about/${section.id}`}
-            itemWidth="w-full sm:w-72"
+            itemWidth="w-full sm:w-56"
             showSummary
           />
         </div>

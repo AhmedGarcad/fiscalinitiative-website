@@ -242,15 +242,13 @@ export const forums = [
       "A structured dialogue between policymakers, analysts, civil society, and stakeholders on budget priorities and expenditure effectiveness.",
   },
   {
-    title: "Ministerial Fiscal Federalism Dialogue",
-    description:
-      "High-level coordination between federal and state institutions on fiscal assignments, transfers, revenue sharing, and public finance reform.",
-  },
-  {
     title: "Somalia Fiscal Outlook Conference",
     description:
       "An annual review of Somalia's fiscal performance, economic outlook, revenue trends, and policy priorities.",
   },
+];
+
+export const specialProjects = [
   {
     title: "Anniversary and Fundraising Dinner",
     description:
@@ -349,17 +347,22 @@ export const aboutSections = [
     summary:
       "FI's work is anchored in integrity, evidence, and collaboration. We uphold the principles of:",
   },
+  {
+    id: "special-projects",
+    title: "Special Projects",
+    icon: "calendar",
+    summary:
+      "Initiatives that bring FI's partners and stakeholders together in support of long-term fiscal reform.",
+  },
 ];
 
 const eventIcons = {
   "Somalia Tax Policy Forum": "receipt",
   "Annual Budget Engagement Roundtable": "pie",
-  "Ministerial Fiscal Federalism Dialogue": "network",
   "Somalia Fiscal Outlook Conference": "growth",
   "Macroeconomic Analysis and Forecasting Workshop": "chart",
   "Young Economist Program": "graduation",
   "Taxpayers Education Program": "people",
-  "Anniversary and Fundraising Dinner": "calendar",
 };
 
 const withIcon = (item) => ({ ...item, icon: eventIcons[item.title] });
@@ -367,19 +370,11 @@ const withIcon = (item) => ({ ...item, icon: eventIcons[item.title] });
 export const eventGroups = [
   {
     title: "Forums",
-    items: forums
-      .filter((forum) => forum.title !== "Anniversary and Fundraising Dinner")
-      .map(withIcon),
+    items: forums.map(withIcon),
   },
   {
     title: "Capacity Development",
     items: programs.map(withIcon),
-  },
-  {
-    title: "Special Projects",
-    items: forums
-      .filter((forum) => forum.title === "Anniversary and Fundraising Dinner")
-      .map(withIcon),
   },
 ];
 
