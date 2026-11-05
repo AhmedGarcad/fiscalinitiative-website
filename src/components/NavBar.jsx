@@ -61,7 +61,25 @@ const menus = [
   {
     id: "research",
     label: "Our Research",
-    to: "/research",
+    columns: [
+      {
+        items: [
+          { label: "All Research Areas", to: "/research", icon: "document" },
+          ...researchAreas.slice(0, 3).map((area) => ({
+            label: area.title,
+            to: `/research/${slugify(area.title)}`,
+            icon: area.icon,
+          })),
+        ],
+      },
+      {
+        items: researchAreas.slice(3).map((area) => ({
+          label: area.title,
+          to: `/research/${slugify(area.title)}`,
+          icon: area.icon,
+        })),
+      },
+    ],
   },
   {
     id: "forums",
