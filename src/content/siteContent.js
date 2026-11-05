@@ -244,7 +244,7 @@ export const forums = [
   {
     title: "Somalia Fiscal Outlook Conference",
     description:
-      "An annual review of Somalia's fiscal performance, economic outlook, revenue trends, and policy priorities.",
+      "The Somalia Fiscal Outlook Conference is a premier annual event held in Mogadishu that examines Somalia's fiscal performance, economic outlook, revenue trends, and policy priorities. Organized by Fiscal Initiative (FI) in partnership with the federal Ministry of Finance and FMS, the two-day conference brings together finance ministries from federal and state governments, business leaders, international development partners, strategic thinkers, academics, the media, and civil society.",
   },
 ];
 
