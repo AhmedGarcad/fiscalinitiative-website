@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.jpeg";
 import IconBadge from "./IconBadge";
 import { organization, researchAreas, programs, forums, publicationGroups, eventGroups } from "../content/siteContent";
@@ -32,6 +32,12 @@ const searchItems = [
   { label: "Media", to: "/media" },
 ];
 
+const researchLink = (area) => ({
+  label: area.title,
+  to: `/research/${slugify(area.title)}`,
+  icon: area.icon,
+});
+
 const menus = [
   {
     id: "home",
@@ -61,24 +67,11 @@ const menus = [
   {
     id: "research",
     label: "Our Research",
+    // Clicking the label opens this page; the dropdown lists the areas.
+    overviewTo: "/research",
     columns: [
-      {
-        items: [
-          { label: "All Research Areas", to: "/research", icon: "document" },
-          ...researchAreas.slice(0, 3).map((area) => ({
-            label: area.title,
-            to: `/research/${slugify(area.title)}`,
-            icon: area.icon,
-          })),
-        ],
-      },
-      {
-        items: researchAreas.slice(3).map((area) => ({
-          label: area.title,
-          to: `/research/${slugify(area.title)}`,
-          icon: area.icon,
-        })),
-      },
+      { items: researchAreas.slice(0, 3).map(researchLink) },
+      { items: researchAreas.slice(3).map(researchLink) },
     ],
   },
   {
@@ -115,6 +108,7 @@ const menus = [
 ];
 
 export default function NavBar() {
+  const navigate = useNavigate();
   const isAdmin = useAdminSession();
   const visibleMenus = isAdmin ? menus : menus.map(withoutTeamLink);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -197,7 +191,14 @@ export default function NavBar() {
                 <NavItem
                   label={menu.label}
                   active={activeMenu === menu.id}
-                  onClick={() => setActiveMenu(menu.id)}
+                  onClick={() => {
+                    if (menu.overviewTo) {
+                      setActiveMenu(null);
+                      navigate(menu.overviewTo);
+                    } else {
+                      setActiveMenu(menu.id);
+                    }
+                  }}
                 />
               )}
 
@@ -246,23 +247,36 @@ export default function NavBar() {
                 />
               ) : (
                 <>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setMobileSection((current) => (current === menu.id ? null : menu.id))
-                    }
-                    aria-expanded={mobileSection === menu.id}
-                    className="w-full flex items-center justify-between py-4 text-base font-semibold"
-                  >
-                    {menu.label}
-                    <span
-                      className={`text-white/70 transition-transform duration-200 ${
-                        mobileSection === menu.id ? "rotate-180" : ""
+                  <div className="flex items-center justify-between">
+                    {menu.overviewTo && (
+                      <MobileLink
+                        to={menu.overviewTo}
+                        label={menu.label}
+                        setMobileOpen={setMobileOpen}
+                        className="block py-4 text-base font-semibold hover:text-white/75"
+                      />
+                    )}
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setMobileSection((current) => (current === menu.id ? null : menu.id))
+                      }
+                      aria-expanded={mobileSection === menu.id}
+                      aria-label={menu.overviewTo ? `Show ${menu.label} sections` : undefined}
+                      className={`flex items-center justify-between py-4 text-base font-semibold ${
+                        menu.overviewTo ? "pl-8" : "w-full"
                       }`}
                     >
-                      ▾
-                    </span>
-                  </button>
+                      {!menu.overviewTo && menu.label}
+                      <span
+                        className={`text-white/70 transition-transform duration-200 ${
+                          mobileSection === menu.id ? "rotate-180" : ""
+                        }`}
+                      >
+                        ▾
+                      </span>
+                    </button>
+                  </div>
                   {mobileSection === menu.id && (
                     <div className="space-y-3 pb-4 pl-3 border-l-2 border-white/20 ml-1">
                       {(menu.columns
