@@ -1,6 +1,6 @@
 import { Navigate, useParams } from "react-router-dom";
 import SequenceDetail from "./SequenceDetail";
-import { aboutSections, objectives, principles, specialProjects } from "../content/siteContent";
+import { aboutSections, objectives, principles, specialProjectServices } from "../content/siteContent";
 
 export default function AboutSectionPage() {
   const { section: sectionId } = useParams();
@@ -30,14 +30,19 @@ function SpecialProjects({ intro }) {
   return (
     <>
       <p className="text-gray-700 text-lg leading-relaxed mb-8">{intro}</p>
-      <div className="space-y-4">
-        {specialProjects.map((project) => (
-          <div key={project.title} className="bg-slate-50 border border-slate-200 rounded-xl p-6">
-            <h3 className="icon-label text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
-            <p className="text-gray-700 leading-relaxed">{project.description}</p>
-          </div>
+      <ol className="space-y-4">
+        {specialProjectServices.map((service, index) => (
+          <li
+            key={service}
+            className="flex items-center gap-5 bg-slate-50 border border-slate-200 rounded-xl p-5"
+          >
+            <span className="site-brand shrink-0 w-11 h-11 rounded-full bg-[#00564F] text-white flex items-center justify-center text-lg font-bold">
+              {index + 1}
+            </span>
+            <span className="text-gray-800 text-base md:text-lg font-semibold">{service}</span>
+          </li>
         ))}
-      </div>
+      </ol>
     </>
   );
 }

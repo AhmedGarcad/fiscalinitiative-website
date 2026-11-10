@@ -248,7 +248,7 @@ export const forums = [
   },
 ];
 
-export const specialProjects = [
+export const fundraisingEvents = [
   {
     title: "Anniversary and Fundraising Dinner",
     description:
@@ -351,9 +351,14 @@ export const aboutSections = [
     id: "special-projects",
     title: "Special Projects",
     icon: "calendar",
-    summary:
-      "Initiatives that bring FI's partners and stakeholders together in support of long-term fiscal reform.",
+    summary: "FI offers the following services at a cost:",
   },
+];
+
+export const specialProjectServices = [
+  "Research and deployment consultancy",
+  "Survey and statistics analysis",
+  "Training workshops",
 ];
 
 const eventIcons = {
@@ -363,6 +368,7 @@ const eventIcons = {
   "Macroeconomic Analysis and Forecasting Workshop": "chart",
   "Young Economist Program": "graduation",
   "Taxpayers Education Program": "people",
+  "Anniversary and Fundraising Dinner": "calendar",
 };
 
 const withIcon = (item) => ({ ...item, icon: eventIcons[item.title] });
@@ -375,6 +381,10 @@ export const eventGroups = [
   {
     title: "Capacity Development",
     items: programs.map(withIcon),
+  },
+  {
+    title: "Fundraising",
+    items: fundraisingEvents.map(withIcon),
   },
 ];
 

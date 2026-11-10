@@ -1,4 +1,4 @@
-import PageBanner from "./PageBanner";
+﻿import PageBanner from "./PageBanner";
 import IconLinkGrid from "./IconLinkGrid";
 import { eventGroups } from "../content/siteContent";
 import { slugify } from "../lib/slugify";
@@ -8,7 +8,7 @@ export default function EventsPage() {
     <div>
       <PageBanner
         title="Events"
-        subtitle="Forums and capacity development programs that bring Somalia's fiscal stakeholders together."
+        subtitle="Forums, capacity development programs, and fundraising events that bring Somalia's fiscal stakeholders together."
       />
 
       <section className="py-24 bg-gray-50">
